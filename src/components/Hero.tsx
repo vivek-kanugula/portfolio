@@ -33,39 +33,40 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
         </div>
 
         {/* Hero Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Bio & Core Actions */}
-          <div className="lg:col-span-7 xl:col-span-8">
+          <div className="md:col-span-7 xl:col-span-8">
             
-            {/* Headline & Mobile Profile Pic Row (Headline on left, Photo on right — same as laptop view) */}
-            <div className="flex items-center justify-between gap-4 lg:block">
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-mono-50 font-sans leading-tight">
-                Hi, I'm {PROFILE_DATA.name}.
-              </h1>
-
-              {/* Mobile Profile Photo (Visible on mobile, hidden on lg; sits to the right of headline) */}
-              <div className="lg:hidden shrink-0">
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-mono-800 bg-gradient-to-b from-mono-900/90 to-mono-950 p-1.5 shadow-xl">
-                  <div className="relative aspect-square w-full h-full overflow-hidden rounded-xl bg-mono-900">
-                    <img
-                      src="/profile.jpg"
-                      alt={PROFILE_DATA.name}
-                      className="h-full w-full object-cover object-top"
-                      loading="eager"
-                    />
-                  </div>
+            {/* Mobile Profile Photo (Floated to top right on mobile; hidden on md+) */}
+            <div className="float-right ml-3.5 mb-2 sm:ml-5 sm:mb-3 md:hidden">
+              <div className="relative w-28 h-28 min-[375px]:w-32 min-[375px]:h-32 min-[410px]:w-36 min-[410px]:h-36 rounded-2xl border border-mono-800 bg-gradient-to-b from-mono-900/90 to-mono-950 p-1.5 shadow-xl">
+                <div className="relative aspect-square w-full h-full overflow-hidden rounded-xl bg-mono-900">
+                  <img
+                    src="/profile.jpg"
+                    alt={PROFILE_DATA.name}
+                    className="h-full w-full object-cover object-top"
+                    loading="eager"
+                  />
                 </div>
               </div>
             </div>
 
-            {/* Bio Paragraph */}
-            <p className="mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed text-mono-300 font-sans max-w-2xl text-justify">
+            {/* Headline */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-mono-50 font-sans leading-tight">
+              Hi, I'm {PROFILE_DATA.name}.
+            </h1>
+
+            {/* Bio Paragraph - tight, natural spacing below headline; left-aligned on mobile to avoid awkward river gaps */}
+            <p className="mt-2.5 sm:mt-3 md:mt-5 text-sm sm:text-base lg:text-lg leading-relaxed text-mono-300 font-sans max-w-2xl text-left md:text-justify">
               {PROFILE_DATA.bio}
             </p>
 
+            {/* Clear float before action controls on mobile */}
+            <div className="clear-both md:hidden" />
+
             {/* Action Buttons */}
-            <div className="mt-7 flex flex-wrap items-center gap-3 sm:gap-4">
+            <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-2.5 sm:gap-4">
               <a
                 href="#experience"
                 className="inline-flex items-center gap-2 rounded bg-mono-100 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-mono-950 transition-colors hover:bg-white"
@@ -100,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </div>
 
             {/* Direct Profiles Row */}
-            <div className="mt-7 pt-6 border-t border-mono-800/80 flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-mono text-mono-400">
+            <div className="mt-6 sm:mt-7 pt-5 sm:pt-6 border-t border-mono-800/80 flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-mono text-mono-400">
               <a
                 href={PROFILE_DATA.socials.github}
                 target="_blank"
@@ -143,9 +144,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
           </div>
 
-          {/* Right Column: Desktop Profile Portrait Card (Visible on Desktop) */}
-          <div className="hidden lg:flex lg:col-span-5 xl:col-span-4 justify-center lg:justify-end">
-            <div className="relative w-full max-w-[340px] xl:max-w-[360px]">
+          {/* Right Column: Desktop Profile Portrait Card (Visible on md+ including Mobile 'Desktop Site' 980px & Laptops) */}
+          <div className="hidden md:flex md:col-span-5 xl:col-span-4 justify-center md:justify-end">
+            <div className="relative w-full max-w-[300px] lg:max-w-[340px] xl:max-w-[360px]">
               
               {/* Card Container */}
               <div className="relative rounded-2xl border border-mono-800 bg-gradient-to-b from-mono-900/90 to-mono-950 p-2 sm:p-2.5 shadow-2xl backdrop-blur-sm group transition-all duration-300 hover:border-mono-700">
