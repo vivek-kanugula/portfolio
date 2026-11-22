@@ -21,9 +21,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
               <span className="text-mono-600">/</span>
               <span className="text-mono-400 font-normal">{PROFILE_DATA.specialization}</span>
             </div>
-            <p className="mt-1 text-[11px] text-mono-500 font-sans">
-              Software Engineer focused on Java backend systems, distributed architectures, and AI tooling.
-            </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-6">

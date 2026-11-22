@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { PROFILE_DATA } from '../data/profile';
-import { Mail, MapPin, Copy, Check, ExternalLink, Clock, Send, Loader2, CheckCircle2 } from 'lucide-react';
+import { Mail, Copy, Check, ExternalLink, Send, Loader2, CheckCircle2 } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [name, setName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
+  const [company, setCompany] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -34,8 +35,9 @@ export const ContactSection: React.FC = () => {
         body: JSON.stringify({
           name: name.trim(),
           email: senderEmail.trim(),
+          company: company.trim() || 'Independent / Not specified',
           message: message.trim(),
-          _subject: `New Portfolio Inquiry from ${name.trim()}`,
+          _subject: `New Portfolio Inquiry from ${name.trim()} (${company.trim() || 'Direct'})`,
           _captcha: 'false',
           _template: 'table',
         }),
@@ -47,20 +49,21 @@ export const ContactSection: React.FC = () => {
         setSubmitted(true);
         setName('');
         setSenderEmail('');
+        setCompany('');
         setMessage('');
       } else {
         // Fallback to mailto if service encountered an issue
         const fallbackUrl = `mailto:${PROFILE_DATA.email}?subject=${encodeURIComponent(
-          `Inquiry from ${name} via Portfolio`
-        )}&body=${encodeURIComponent(`From: ${name} (${senderEmail})\n\n${message}`)}`;
+          `Inquiry from ${name} (${company || 'Direct'}) via Portfolio`
+        )}&body=${encodeURIComponent(`From: ${name} (${senderEmail})\nCompany: ${company || 'N/A'}\n\n${message}`)}`;
         window.open(fallbackUrl, '_blank');
         setSubmitted(true);
       }
     } catch {
       // In case of network error, launch mail client directly
       const fallbackUrl = `mailto:${PROFILE_DATA.email}?subject=${encodeURIComponent(
-        `Inquiry from ${name} via Portfolio`
-      )}&body=${encodeURIComponent(`From: ${name} (${senderEmail})\n\n${message}`)}`;
+        `Inquiry from ${name} (${company || 'Direct'}) via Portfolio`
+      )}&body=${encodeURIComponent(`From: ${name} (${senderEmail})\nCompany: ${company || 'N/A'}\n\n${message}`)}`;
       window.open(fallbackUrl, '_blank');
       setSubmitted(true);
     } finally {
@@ -165,18 +168,6 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Location & Timezone Indicator */}
-            <div className="rounded-lg border border-mono-800 bg-mono-900/40 p-4 flex items-center justify-between text-xs font-mono text-mono-400">
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-mono-400" />
-                <span>{PROFILE_DATA.location}</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-mono-300">
-                <Clock className="h-3.5 w-3.5 text-telemetry-amber" />
-                <span>IST (UTC +5:30)</span>
-              </div>
-            </div>
-
           </div>
 
           {/* Direct Working Message Form */}
@@ -223,6 +214,17 @@ export const ContactSection: React.FC = () => {
                     value={senderEmail}
                     onChange={(e) => setSenderEmail(e.target.value)}
                     placeholder="alex@company.com"
+                    className="w-full rounded border border-mono-800 bg-mono-950 px-3.5 py-2.5 text-xs sm:text-sm text-mono-100 outline-none focus:border-telemetry-amber placeholder:text-mono-600 font-sans"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-mono-400 mb-1">Company / Organization</label>
+                  <input
+                    type="text"
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                    placeholder="e.g. Acme Corp, Startup, or Independent"
                     className="w-full rounded border border-mono-800 bg-mono-950 px-3.5 py-2.5 text-xs sm:text-sm text-mono-100 outline-none focus:border-telemetry-amber placeholder:text-mono-600 font-sans"
                   />
                 </div>

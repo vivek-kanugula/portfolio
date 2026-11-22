@@ -19,9 +19,8 @@ export interface OpenSourceItem {
   prUrl: string;
   issueNumber: string;
   issueUrl: string;
-  techStack: string[];
   summary: string;
-  details: string;
+  quantifiableMetric: string;
 }
 
 export interface ExperienceItem {
@@ -107,23 +106,21 @@ export const PROFILE_DATA = {
       prUrl: "https://github.com/traccar/traccar/pull/6125",
       issueNumber: "#6102",
       issueUrl: "https://github.com/traccar/traccar/issues/6102",
-      techStack: ["Java", "JAX-RS", "OpenAPI", "Gradle"],
-      summary: "Added configurable limit parameter to positions endpoint to prevent oversized payloads.",
-      details: "Addressed an issue where requesting device positions returned unbounded datasets that could cause high memory consumption and context window overflows in automated tools. Added an optional limit query parameter to PositionResource and updated the OpenAPI specification.",
+      summary: "Enforced defensive query parameter bounding on device position endpoints to prevent uncontrolled database fetches.",
+      quantifiableMetric: "Bounded massive 17,000-record queries (~3 MB payload) to prevent server memory strain and downstream LLM context overflows.",
     },
     {
       id: "traccar-offset",
       repo: "traccar/traccar",
       repoUrl: "https://github.com/traccar/traccar",
-      title: "Offset-Based Pagination for Positions Endpoint",
+      title: "Offset-Based Pagination for Historical Telemetry Endpoints",
       status: "Merged",
       prNumber: "#6126",
       prUrl: "https://github.com/traccar/traccar/pull/6126",
       issueNumber: "#5871",
       issueUrl: "https://github.com/traccar/traccar/issues/5871",
-      techStack: ["Java", "JAX-RS", "OpenAPI", "Gradle"],
-      summary: "Implemented offset pagination across historical telemetry queries in Traccar.",
-      details: "Followed up on PR #6125 to add offset pagination to the /positions endpoint. Overloaded PositionUtil.getPositionsStream to pass offset parameters preserving backward compatibility, exposed @QueryParam('offset') in PositionResource, and documented the API schema in openapi.yaml.",
+      summary: "Implemented backward-compatible offset pagination across historical device position queries and export routines.",
+      quantifiableMetric: "Enabled chunked data retrieval across large telemetry streams, eliminating response timeouts on high-frequency device trackers.",
     },
     {
       id: "stirling-pdf",
@@ -135,9 +132,8 @@ export const PROFILE_DATA = {
       prUrl: "https://github.com/Stirling-Tools/Stirling-PDF/pull/8947",
       issueNumber: "#8947",
       issueUrl: "https://github.com/Stirling-Tools/Stirling-PDF/issues/8947",
-      techStack: ["Java", "Spring Boot", "Apache PDFBox", "Gradle", "JUnit 5"],
-      summary: "Diagnosed unhandled server errors on encrypted files, opened Issue #8947, and submitted PR #8947.",
-      details: "Discovered that analyzing password-protected PDF files caused unhandled HTTP 400 server errors. Audited the underlying PDFBox library routines, identified the exception handling gap, and raised PR #8947 to handle encrypted documents gracefully, avoid application crashes, and properly surface document access permission flags.",
+      summary: "Investigated, reported, and patched an unhandled server error during encrypted file security inspection.",
+      quantifiableMetric: "Resolved unhandled HTTP 400 server crashes on encrypted uploads and correctly surfaced all 8 standard ISO 32000-1 document access flags.",
     },
   ] as OpenSourceItem[],
 
@@ -189,7 +185,7 @@ export const PROFILE_DATA = {
     {
       title: "Philosophy & Human Thought",
       subtitle: "Perspectives on reason & knowledge",
-      description: "I enjoy reading and reflecting on philosophical ideas — questions of ethics, reason, and how humans construct meaning. Thinking about these foundational questions keeps my thinking grounded, curious, and thoughtful beyond code.",
+      description: "I enjoy reflecting on philosophical ideas — questions of ethics, reason, and how humans construct meaning. Thinking about these foundational questions keeps my thinking grounded, curious, and thoughtful beyond code.",
     },
     {
       title: "Cinema & Storytelling",

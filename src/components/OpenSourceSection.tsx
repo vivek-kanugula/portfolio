@@ -1,6 +1,6 @@
 import React from 'react';
 import { PROFILE_DATA } from '../data/profile';
-import { GitPullRequest, GitMerge, AlertCircle, ExternalLink } from 'lucide-react';
+import { GitPullRequest, GitMerge, AlertCircle, ExternalLink, TrendingUp } from 'lucide-react';
 
 export const OpenSourceSection: React.FC = () => {
   return (
@@ -17,7 +17,7 @@ export const OpenSourceSection: React.FC = () => {
             Open Source Contributions
           </h2>
           <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
-            Real-world bug fixes and feature contributions submitted to established open-source projects.
+            Real-world bug fixes and feature contributions submitted to established open-source repositories.
           </p>
         </div>
 
@@ -89,20 +89,17 @@ export const OpenSourceSection: React.FC = () => {
                     {contrib.summary}
                   </p>
 
-                  <p className="mt-3 text-xs sm:text-sm text-mono-400 font-sans leading-relaxed text-justify">
-                    {contrib.details}
-                  </p>
-
-                  {/* Tech stack */}
-                  <div className="mt-5 flex flex-wrap gap-1.5 pt-3 border-t border-mono-800/60">
-                    {contrib.techStack.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="rounded border border-mono-800 bg-mono-850 px-2 py-0.5 text-xs font-mono text-mono-400"
-                      >
-                        {tech}
+                  {/* Quantifiable Metric Highlight Box */}
+                  <div className="mt-4 rounded border border-mono-800 bg-mono-850/80 p-3.5 flex items-start gap-3">
+                    <TrendingUp className="h-4 w-4 text-telemetry-emerald shrink-0 mt-0.5" />
+                    <div>
+                      <span className="text-[11px] font-mono text-mono-400 block uppercase tracking-wider mb-0.5">
+                        Quantifiable Outcome & Impact
                       </span>
-                    ))}
+                      <p className="text-xs sm:text-sm text-mono-200 font-sans leading-relaxed text-justify">
+                        {contrib.quantifiableMetric}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </article>
