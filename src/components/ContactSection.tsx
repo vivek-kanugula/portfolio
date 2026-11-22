@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PROFILE_DATA } from '../data/profile';
-import { Mail, Copy, Check, ExternalLink, Send, Loader2, CheckCircle2 } from 'lucide-react';
+import { Mail, Copy, Check, ExternalLink, Send, Loader2, CheckCircle2, MapPin } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -129,6 +129,15 @@ export const ContactSection: React.FC = () => {
                     </>
                   )}
                 </button>
+              </div>
+
+              {/* Mobility & Work Preferences Callout */}
+              <div className="mt-3.5 rounded border border-mono-800/80 bg-mono-850/60 p-3 text-xs font-mono text-mono-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span className="flex items-center gap-1.5 text-mono-200">
+                  <MapPin className="h-3.5 w-3.5 text-telemetry-amber shrink-0" />
+                  <span>Based in Hyderabad · Open to Bengaluru, Chennai, Pune</span>
+                </span>
+                <span className="text-telemetry-cyan font-medium">Hybrid · Remote · On-site</span>
               </div>
 
               {/* Direct Gmail Compose Button */}

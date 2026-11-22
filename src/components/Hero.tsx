@@ -12,20 +12,23 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
     <section className="relative border-b border-mono-800 bg-mono-950 pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* Meta Bar */}
-        <div className="mb-5 sm:mb-6 flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono text-mono-400">
-          <span className="flex items-center gap-1.5 text-mono-300">
-            <MapPin className="h-3.5 w-3.5 text-telemetry-amber" />
-            {PROFILE_DATA.location}
+        {/* Meta Bar - Attention Grabbing Location, Mobility & Preferences */}
+        <div className="mb-6 flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs font-mono">
+          <span className="flex items-center gap-1.5 rounded-full border border-mono-800 bg-mono-900/90 px-3 py-1 text-mono-200">
+            <MapPin className="h-3.5 w-3.5 text-telemetry-amber shrink-0" />
+            <span>Hyderabad</span>
+            <span className="text-mono-600">·</span>
+            <span className="text-telemetry-amber font-medium">Open to Bengaluru, Chennai, Pune</span>
           </span>
-          <span className="text-mono-700 hidden sm:inline">•</span>
-          <span className="rounded bg-mono-900 px-2 py-0.5 text-mono-300 border border-mono-800">
-            {PROFILE_DATA.specialization}
+
+          <span className="flex items-center gap-1.5 rounded-full border border-mono-800 bg-mono-900/90 px-3 py-1 text-mono-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-telemetry-cyan" />
+            <span>Hybrid · On-site · Remote</span>
           </span>
-          <span className="text-mono-700 hidden sm:inline">•</span>
-          <span className="text-telemetry-emerald font-medium flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-telemetry-emerald" />
-            {PROFILE_DATA.availability}
+
+          <span className="flex items-center gap-1.5 rounded-full border border-telemetry-emerald/30 bg-telemetry-emerald/10 px-3 py-1 text-telemetry-emerald font-medium">
+            <span className="h-1.5 w-1.5 rounded-full bg-telemetry-emerald animate-pulse" />
+            <span>{PROFILE_DATA.availability}</span>
           </span>
         </div>
 
