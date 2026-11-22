@@ -2,8 +2,8 @@ export interface ProjectItem {
   id: string;
   title: string;
   tagline: string;
-  description: string;
   objective: string;
+  description: string;
   techStack: string[];
   githubUrl: string;
   liveDemoUrl?: string;
@@ -46,7 +46,7 @@ export interface EducationItem {
 export const PROFILE_DATA = {
   name: "Vivek Kanugula",
   role: "Software Engineer",
-  specialization: "Java Backend, Distributed Systems & AI Engineering",
+  specialization: "Java Backend, Distributed Systems & AI Tooling",
   location: "Hyderabad, India",
   availability: "Available for Software Engineering Roles",
   email: "connectwithvivekk@gmail.com",
@@ -65,7 +65,7 @@ export const PROFILE_DATA = {
       tagline: "Multi-Tenant Notification Delivery Service",
       objective: "Decouple notification delivery (Email, Webhook, and In-App) from core business services so that slow third-party gateways and network drops never block customer requests or lose messages.",
       description: "A centralized notification gateway that accepts incoming alerts and reliably dispatches them across multiple delivery channels. It persists incoming messages to an outbox before acknowledgment, streams them through Kafka topics partitioned by tenant, and suppresses duplicate retries using distributed caching.",
-      techStack: ["Java 25", "Spring Boot", "Apache Kafka", "PostgreSQL", "Redis", "Docker", "Azure"],
+      techStack: ["Java", "Spring Boot", "Apache Kafka", "PostgreSQL", "Redis", "Docker", "Azure"],
       githubUrl: "https://github.com/vivek-kanugula/Notify",
       liveDemoUrl: "https://notify-demo.azurecontainerapps.io",
     },
@@ -92,18 +92,32 @@ export const PROFILE_DATA = {
 
   openSource: [
     {
-      id: "traccar",
+      id: "traccar-limit",
       repo: "traccar/traccar",
       repoUrl: "https://github.com/traccar/traccar",
-      title: "Query Bounding & Pagination for Telemetry REST APIs",
+      title: "Query Parameter Bounding for Positions Telemetry API",
       status: "Merged",
       prNumber: "#6125",
       prUrl: "https://github.com/traccar/traccar/pull/6125",
       issueNumber: "#6102",
       issueUrl: "https://github.com/traccar/traccar/issues/6102",
       techStack: ["Java", "JAX-RS", "OpenAPI", "Gradle"],
-      summary: "Implemented query limit and offset pagination across telemetry endpoints and data export engines.",
-      details: "Addressed an issue where requesting historical device positions returned unbounded, massive datasets that could cause memory strain and context window overflows in automated tools. Added database-level offset and limit query bounding parameters to ensure safe, chunked data retrieval.",
+      summary: "Added configurable limit parameter to positions endpoint to prevent oversized payloads.",
+      details: "Addressed an issue where requesting device positions returned unbounded datasets that could cause high memory consumption and context window overflows in automated tools. Added an optional limit query parameter to PositionResource and updated the OpenAPI specification.",
+    },
+    {
+      id: "traccar-offset",
+      repo: "traccar/traccar",
+      repoUrl: "https://github.com/traccar/traccar",
+      title: "Offset-Based Pagination for Positions Endpoint",
+      status: "Merged",
+      prNumber: "#6126",
+      prUrl: "https://github.com/traccar/traccar/pull/6126",
+      issueNumber: "#5871",
+      issueUrl: "https://github.com/traccar/traccar/issues/5871",
+      techStack: ["Java", "JAX-RS", "OpenAPI", "Gradle"],
+      summary: "Implemented offset pagination across historical telemetry queries in Traccar.",
+      details: "Followed up on PR #6125 to add offset pagination to the /positions endpoint. Overloaded PositionUtil.getPositionsStream to pass offset parameters preserving backward compatibility, exposed @QueryParam('offset') in PositionResource, and documented the API schema in openapi.yaml.",
     },
     {
       id: "stirling-pdf",
@@ -122,7 +136,7 @@ export const PROFILE_DATA = {
   ] as OpenSourceItem[],
 
   skills: {
-    languages: ["Java (17 / 21 / 25)", "Python", "SQL", "C / C++"],
+    languages: ["Java", "Python", "SQL"],
     backend: ["Spring Boot", "Spring Security", "Spring Data JPA", "Hibernate", "FastAPI", "RESTful APIs"],
     dataAndDistributed: ["Apache Kafka", "PostgreSQL", "pgvector", "Redis", "Quartz Scheduler"],
     aiAndTools: ["Model Context Protocol (MCP)", "Hybrid RAG", "n8n Automation", "LLM APIs (Gemini, Groq)"],
@@ -168,8 +182,8 @@ export const PROFILE_DATA = {
     },
     {
       title: "LeetCode & Problem Solving",
-      badge: "850+ Solved",
-      description: "Solved over 850 problems across LeetCode and GeeksforGeeks with a 500-day problem-solving streak and active contest participation.",
+      badge: "500+ Active Days",
+      description: "Earned the 500-Day Badge on LeetCode representing 500+ active days of problem solving, with over 850 problems solved across competitive programming platforms.",
       url: "https://leetcode.com/u/21241A0595/",
     },
   ],

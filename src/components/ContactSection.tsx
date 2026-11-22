@@ -25,7 +25,7 @@ export const ContactSection: React.FC = () => {
     setErrorMsg(null);
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${PROFILE_DATA.email}`, {
+      const response = await fetch('https://formsubmit.co/ajax/424687857c065b47007c419fca44c74f', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
