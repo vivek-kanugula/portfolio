@@ -105,8 +105,11 @@ export const ContactSection: React.FC = () => {
               </div>
               <div className="mt-3 flex items-center justify-between gap-4">
                 <a
-                  href={`mailto:${PROFILE_DATA.email}`}
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(PROFILE_DATA.email)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-base sm:text-lg font-mono font-semibold text-mono-100 hover:text-telemetry-amber transition-colors truncate"
+                  title="Open compose window in Gmail"
                 >
                   {PROFILE_DATA.email}
                 </a>
@@ -126,6 +129,27 @@ export const ContactSection: React.FC = () => {
                     </>
                   )}
                 </button>
+              </div>
+
+              {/* Direct Gmail Compose Button */}
+              <div className="mt-4 pt-3.5 border-t border-mono-800/80 flex flex-wrap items-center gap-2.5">
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(PROFILE_DATA.email)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded bg-mono-100 px-3.5 py-1.5 text-xs font-mono font-semibold text-mono-950 hover:bg-white transition-colors"
+                >
+                  <Mail className="h-3.5 w-3.5" />
+                  <span>Send via Gmail</span>
+                  <ExternalLink className="h-3 w-3 text-mono-600" />
+                </a>
+
+                <a
+                  href={`mailto:${PROFILE_DATA.email}`}
+                  className="inline-flex items-center gap-1.5 rounded border border-mono-700 bg-mono-850 px-3 py-1.5 text-xs font-mono text-mono-300 hover:text-white hover:bg-mono-800 transition-colors"
+                >
+                  <span>Default Mail App</span>
+                </a>
               </div>
             </div>
 
