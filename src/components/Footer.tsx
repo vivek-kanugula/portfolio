@@ -13,10 +13,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
         
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-mono-800">
           <div>
-            <div className="flex items-center gap-2 font-semibold text-mono-200">
-              <span className="flex h-5 w-5 items-center justify-center rounded border border-mono-700 bg-mono-900 text-telemetry-amber text-[10px]">
-                VK
-              </span>
+            <div className="flex items-center gap-2.5 font-semibold text-mono-200">
+              <img
+                src="/profile.jpg"
+                alt="VK"
+                className="h-5 w-5 rounded-full object-cover object-top border border-mono-700 bg-mono-900"
+              />
               <span>{PROFILE_DATA.name}</span>
               <span className="text-mono-600">/</span>
               <span className="text-mono-400 font-normal">{PROFILE_DATA.specialization}</span>

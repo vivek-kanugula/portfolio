@@ -56,6 +56,7 @@ export const PROFILE_DATA = {
   availability: "Available for Software Engineering Roles",
   email: "connectwithvivekk@gmail.com",
   phone: "+91 8639216315",
+  avatar: "/profile.jpg",
   socials: {
     github: "https://github.com/vivek-kanugula",
     linkedin: "https://linkedin.com/in/vivek-kanugula",

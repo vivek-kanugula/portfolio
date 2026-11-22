@@ -22,9 +22,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
         {/* Brand */}
         <div className="flex items-center gap-3 shrink-0">
           <a href="#" className="flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight text-mono-50">
-            <span className="flex h-7 w-7 items-center justify-center rounded border border-mono-700 bg-mono-900 text-telemetry-amber font-bold">
-              VK
-            </span>
+            <img
+              src="/profile.jpg"
+              alt="VK"
+              className="h-7 w-7 rounded-full object-cover object-top border border-mono-700 bg-mono-900"
+            />
             <span className="hidden sm:inline-block font-sans text-mono-200">Vivek Kanugula</span>
           </a>
         </div>
