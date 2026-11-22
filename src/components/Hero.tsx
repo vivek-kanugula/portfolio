@@ -38,25 +38,26 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           {/* Left Column: Bio & Core Actions */}
           <div className="lg:col-span-7 xl:col-span-8">
             
-            {/* Mobile-only Avatar (Hidden on Desktop) */}
-            <div className="lg:hidden mb-5">
-              <div className="relative inline-block">
-                <img
-                  src="/profile.jpg"
-                  alt={PROFILE_DATA.name}
-                  className="h-24 w-24 sm:h-28 sm:w-28 rounded-2xl object-cover object-top border-2 border-mono-750 bg-mono-900 shadow-xl"
-                  loading="eager"
-                />
-                <span className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-mono-950 border-2 border-mono-900">
-                  <span className="h-2 w-2 rounded-full bg-telemetry-emerald animate-pulse" />
-                </span>
+            {/* Headline & Mobile Profile Pic Row (Headline on left, Photo on right — same as laptop view) */}
+            <div className="flex items-center justify-between gap-4 lg:block">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-mono-50 font-sans leading-tight">
+                Hi, I'm {PROFILE_DATA.name}.
+              </h1>
+
+              {/* Mobile Profile Photo (Visible on mobile, hidden on lg; sits to the right of headline) */}
+              <div className="lg:hidden shrink-0">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-mono-800 bg-gradient-to-b from-mono-900/90 to-mono-950 p-1.5 shadow-xl">
+                  <div className="relative aspect-square w-full h-full overflow-hidden rounded-xl bg-mono-900">
+                    <img
+                      src="/profile.jpg"
+                      alt={PROFILE_DATA.name}
+                      className="h-full w-full object-cover object-top"
+                      loading="eager"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-mono-50 font-sans leading-tight">
-              Hi, I'm {PROFILE_DATA.name}.
-            </h1>
 
             {/* Bio Paragraph */}
             <p className="mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed text-mono-300 font-sans max-w-2xl text-justify">
@@ -147,26 +148,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             <div className="relative w-full max-w-[340px] xl:max-w-[360px]">
               
               {/* Card Container */}
-              <div className="relative rounded-2xl border border-mono-800 bg-gradient-to-b from-mono-900/90 to-mono-950 p-2.5 shadow-2xl backdrop-blur-sm group transition-all duration-300 hover:border-mono-700">
+              <div className="relative rounded-2xl border border-mono-800 bg-gradient-to-b from-mono-900/90 to-mono-950 p-2 sm:p-2.5 shadow-2xl backdrop-blur-sm group transition-all duration-300 hover:border-mono-700">
                 
                 {/* Image Frame */}
                 <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-mono-900">
                   <img
                     src="/profile.jpg"
-                    alt={`${PROFILE_DATA.name} — ${PROFILE_DATA.role}`}
+                    alt={PROFILE_DATA.name}
                     className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                     loading="eager"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-mono-950/60 via-transparent to-transparent opacity-50 pointer-events-none" />
-                </div>
-
-                {/* Technical Caption Bar */}
-                <div className="mt-3 px-2 pb-1 flex items-center justify-between text-xs font-mono">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-telemetry-emerald animate-pulse" />
-                    <span className="text-mono-200 font-medium font-sans">{PROFILE_DATA.name}</span>
-                  </div>
-                  <span className="text-mono-400 text-[11px] font-mono">{PROFILE_DATA.role}</span>
                 </div>
 
               </div>
