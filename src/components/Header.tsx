@@ -20,32 +20,47 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
     <header className="sticky top-0 z-40 w-full border-b border-mono-800 bg-mono-950/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand & Status */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 shrink-0">
           <a href="#" className="flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight text-mono-50">
             <span className="flex h-7 w-7 items-center justify-center rounded border border-mono-700 bg-mono-900 text-telemetry-amber font-bold">
               VK
             </span>
             <span className="hidden sm:inline-block font-sans text-mono-200">Vivek Kanugula</span>
           </a>
-          <div className="hidden md:flex items-center gap-2 rounded-full border border-mono-800 bg-mono-900/80 px-2.5 py-1 text-xs text-mono-300">
+          <div className="hidden md:flex items-center gap-2 rounded-full border border-mono-800 bg-mono-900/80 px-2.5 py-1 text-xs text-mono-300 whitespace-nowrap shrink-0">
             <span className="h-1.5 w-1.5 rounded-full bg-telemetry-emerald animate-pulse" />
-            <span>{PROFILE_DATA.availability}</span>
+            <span className="hidden 2xl:inline">{PROFILE_DATA.availability}</span>
+            <span className="2xl:hidden">Available</span>
           </div>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6 text-xs font-mono uppercase tracking-wider text-mono-400">
-          <a href="#experience" className="transition-colors hover:text-mono-100">Experience</a>
-          <a href="#projects" className="transition-colors hover:text-mono-100">Projects</a>
-          <a href="#open-source" className="transition-colors hover:text-mono-100">Open Source</a>
-          <a href="#skills" className="transition-colors hover:text-mono-100">Skills</a>
-          <a href="#education" className="transition-colors hover:text-mono-100">Education</a>
-          <a href="#interests" className="transition-colors hover:text-mono-100">Interests</a>
-          <a href="#contact" className="transition-colors hover:text-mono-100">Contact</a>
+        {/* Desktop Navigation - perfectly spaced with whitespace-nowrap */}
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5 2xl:gap-7 text-xs font-mono uppercase tracking-wider text-mono-400">
+          <a href="#experience" className="whitespace-nowrap transition-colors hover:text-mono-100 py-1">
+            Experience
+          </a>
+          <a href="#projects" className="whitespace-nowrap transition-colors hover:text-mono-100 py-1">
+            Projects
+          </a>
+          <a href="#open-source" className="whitespace-nowrap transition-colors hover:text-mono-100 py-1">
+            Open Source
+          </a>
+          <a href="#skills" className="whitespace-nowrap transition-colors hover:text-mono-100 py-1">
+            Skills
+          </a>
+          <a href="#education" className="whitespace-nowrap transition-colors hover:text-mono-100 py-1">
+            Education
+          </a>
+          <a href="#interests" className="whitespace-nowrap transition-colors hover:text-mono-100 py-1">
+            Interests
+          </a>
+          <a href="#contact" className="whitespace-nowrap transition-colors hover:text-mono-100 py-1">
+            Contact
+          </a>
         </nav>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={onOpenResume}
             className="flex items-center gap-1.5 rounded border border-mono-800 bg-mono-900 px-3 py-1.5 text-xs font-mono text-mono-300 transition-colors hover:border-mono-700 hover:text-mono-100"

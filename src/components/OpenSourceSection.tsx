@@ -29,7 +29,7 @@ export const OpenSourceSection: React.FC = () => {
             return (
               <article
                 key={contrib.id}
-                className="rounded-lg border border-mono-800 bg-mono-900/50 p-6 sm:p-7 transition-colors hover:border-mono-700 hover:bg-mono-900"
+                className="rounded-lg border border-mono-800 bg-mono-900/50 p-6 sm:p-8 transition-colors hover:border-mono-700 hover:bg-mono-900"
               >
                 {/* Header Row */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-mono-800/80 pb-4">
@@ -38,10 +38,10 @@ export const OpenSourceSection: React.FC = () => {
                       href={contrib.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-mono text-xs sm:text-sm font-semibold text-mono-200 hover:text-white transition-colors flex items-center gap-1.5"
+                      className="font-mono text-sm sm:text-base font-semibold text-mono-200 hover:text-white transition-colors flex items-center gap-1.5"
                     >
                       <span>{contrib.repo}</span>
-                      <ExternalLink className="h-3 w-3 text-mono-500" />
+                      <ExternalLink className="h-3.5 w-3.5 text-mono-500" />
                     </a>
 
                     <span
@@ -56,26 +56,33 @@ export const OpenSourceSection: React.FC = () => {
                     </span>
                   </div>
 
-                  {/* Links Row */}
-                  <div className="flex flex-wrap items-center gap-4 text-xs font-mono">
-                    <a
-                      href={contrib.issueUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-mono-400 hover:text-mono-200 transition-colors flex items-center gap-1"
-                    >
-                      <span>Issue {contrib.issueNumber}</span>
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
-                    <a
-                      href={contrib.prUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-telemetry-cyan hover:text-white transition-colors flex items-center gap-1 font-semibold"
-                    >
-                      <span>Pull Request {contrib.prNumber}</span>
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
+                  {/* Direct Issue and PR Links */}
+                  <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-mono">
+                    {contrib.links.issues.map((issue, idx) => (
+                      <a
+                        key={idx}
+                        href={issue.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-mono-400 hover:text-mono-200 transition-colors flex items-center gap-1"
+                      >
+                        <span>{issue.label}</span>
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    ))}
+
+                    {contrib.links.prs.map((pr, idx) => (
+                      <a
+                        key={idx}
+                        href={pr.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-telemetry-cyan hover:text-white transition-colors flex items-center gap-1 font-semibold"
+                      >
+                        <span>{pr.label}</span>
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    ))}
                   </div>
                 </div>
 
@@ -85,21 +92,31 @@ export const OpenSourceSection: React.FC = () => {
                     {contrib.title}
                   </h3>
                   
-                  <p className="mt-2 text-xs sm:text-sm text-mono-300 font-sans leading-relaxed text-justify">
-                    {contrib.summary}
-                  </p>
+                  {/* Points from resume */}
+                  <ul className="mt-3 space-y-2 text-xs sm:text-sm text-mono-300 font-sans">
+                    {contrib.bullets.map((bullet, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <span className="text-telemetry-emerald font-mono font-bold shrink-0 mt-0.5">›</span>
+                        <span className="text-justify leading-relaxed">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                  {/* Quantifiable Metric Highlight Box */}
-                  <div className="mt-4 rounded border border-mono-800 bg-mono-850/80 p-3.5 flex items-start gap-3">
-                    <TrendingUp className="h-4 w-4 text-telemetry-emerald shrink-0 mt-0.5" />
-                    <div>
-                      <span className="text-[11px] font-mono text-mono-400 block uppercase tracking-wider mb-0.5">
-                        Quantifiable Outcome & Impact
-                      </span>
-                      <p className="text-xs sm:text-sm text-mono-200 font-sans leading-relaxed text-justify">
-                        {contrib.quantifiableMetric}
-                      </p>
+                  {/* Quantifiable Metrics Highlight Box */}
+                  <div className="mt-5 rounded border border-mono-800 bg-mono-850/80 p-4 space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-mono text-mono-400 uppercase tracking-wider">
+                      <TrendingUp className="h-3.5 w-3.5 text-telemetry-emerald" />
+                      <span>Quantifiable Outcomes & Metrics Achieved</span>
                     </div>
+
+                    <ul className="space-y-1.5 text-xs sm:text-sm text-mono-200 font-sans">
+                      {contrib.metrics.map((metric, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="text-telemetry-cyan font-mono font-bold shrink-0 mt-0.5">•</span>
+                          <span className="text-justify leading-relaxed">{metric}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </article>

@@ -15,12 +15,12 @@ export interface OpenSourceItem {
   repoUrl: string;
   title: string;
   status: 'Merged' | 'Open / Under Review';
-  prNumber: string;
-  prUrl: string;
-  issueNumber: string;
-  issueUrl: string;
-  summary: string;
-  quantifiableMetric: string;
+  links: {
+    issues: { label: string; url: string }[];
+    prs: { label: string; url: string }[];
+  };
+  bullets: string[];
+  metrics: string[];
 }
 
 export interface ExperienceItem {
@@ -97,30 +97,29 @@ export const PROFILE_DATA = {
 
   openSource: [
     {
-      id: "traccar-limit",
+      id: "traccar",
       repo: "traccar/traccar",
       repoUrl: "https://github.com/traccar/traccar",
-      title: "Query Parameter Bounding for Positions Telemetry API",
+      title: "Database-Backed Limit-Offset Pagination for Telemetry APIs",
       status: "Merged",
-      prNumber: "#6125",
-      prUrl: "https://github.com/traccar/traccar/pull/6125",
-      issueNumber: "#6102",
-      issueUrl: "https://github.com/traccar/traccar/issues/6102",
-      summary: "Enforced defensive query parameter bounding on device position endpoints to prevent uncontrolled database fetches.",
-      quantifiableMetric: "Bounded massive 17,000-record queries (~3 MB payload) to prevent server memory strain and downstream LLM context overflows.",
-    },
-    {
-      id: "traccar-offset",
-      repo: "traccar/traccar",
-      repoUrl: "https://github.com/traccar/traccar",
-      title: "Offset-Based Pagination for Historical Telemetry Endpoints",
-      status: "Merged",
-      prNumber: "#6126",
-      prUrl: "https://github.com/traccar/traccar/pull/6126",
-      issueNumber: "#5871",
-      issueUrl: "https://github.com/traccar/traccar/issues/5871",
-      summary: "Implemented backward-compatible offset pagination across historical device position queries and export routines.",
-      quantifiableMetric: "Enabled chunked data retrieval across large telemetry streams, eliminating response timeouts on high-frequency device trackers.",
+      links: {
+        issues: [
+          { label: "Issue #6102", url: "https://github.com/traccar/traccar/issues/6102" },
+          { label: "Issue #5871", url: "https://github.com/traccar/traccar/issues/5871" },
+        ],
+        prs: [
+          { label: "PR #6125 (Merged)", url: "https://github.com/traccar/traccar/pull/6125" },
+          { label: "PR #6126 (Merged)", url: "https://github.com/traccar/traccar/pull/6126" },
+        ],
+      },
+      bullets: [
+        "Implemented database-backed limit-offset pagination and defensive server-side caps across Traccar REST APIs, bounding 17,000-record queries (~3 MB) to prevent downstream LLM context overflow.",
+        "Overloaded positions telemetry query utilities to pass limit and offset parameters preserving backward compatibility across existing callers.",
+      ],
+      metrics: [
+        "17,000-record queries (~3 MB payload / ~800k tokens) safely bounded across telemetry REST endpoints.",
+        "2 Pull Requests merged into core upstream repository (PR #6125 and PR #6126).",
+      ],
     },
     {
       id: "stirling-pdf",
@@ -128,12 +127,22 @@ export const PROFILE_DATA = {
       repoUrl: "https://github.com/Stirling-Tools/Stirling-PDF",
       title: "Password-Protected PDF Security Inspection & Access Flags",
       status: "Open / Under Review",
-      prNumber: "#8947",
-      prUrl: "https://github.com/Stirling-Tools/Stirling-PDF/pull/8947",
-      issueNumber: "#8947",
-      issueUrl: "https://github.com/Stirling-Tools/Stirling-PDF/issues/8947",
-      summary: "Investigated, reported, and patched an unhandled server error during encrypted file security inspection.",
-      quantifiableMetric: "Resolved unhandled HTTP 400 server crashes on encrypted uploads and correctly surfaced all 8 standard ISO 32000-1 document access flags.",
+      links: {
+        issues: [
+          { label: "Issue #8947", url: "https://github.com/Stirling-Tools/Stirling-PDF/issues/8947" },
+        ],
+        prs: [
+          { label: "PR #8947 (Under Review)", url: "https://github.com/Stirling-Tools/Stirling-PDF/pull/8947" },
+        ],
+      },
+      bullets: [
+        "Diagnosed unhandled HTTP 400 crashes on password-protected uploads, auditing Apache PDFBox library routines to isolate the exception handling gap.",
+        "Refactored Stirling-PDF security APIs to support password-protected fallback inspection and exposed all eight standard ISO 32000-1 access flags, adding JUnit/Mockito regression test suites.",
+      ],
+      metrics: [
+        "All 8 standard ISO 32000-1 access permission flags correctly exposed and validated.",
+        "Zero unhandled HTTP 400 crashes verified with JUnit 5 and Mockito regression test suites.",
+      ],
     },
   ] as OpenSourceItem[],
 
