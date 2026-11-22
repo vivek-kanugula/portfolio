@@ -33,7 +33,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
         </div>
 
         {/* Hero Main Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-start">
           
           {/* Left Column: Bio & Core Actions */}
           <div className="md:col-span-7 xl:col-span-8">
@@ -146,7 +146,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
           {/* Right Column: Desktop Profile Portrait Card (Visible on md+ including Mobile 'Desktop Site' 980px & Laptops) */}
           <div className="hidden md:flex md:col-span-5 xl:col-span-4 justify-center md:justify-end">
-            <div className="relative w-full max-w-[300px] lg:max-w-[340px] xl:max-w-[360px]">
+            <div className="relative w-full max-w-[360px] lg:max-w-[380px] xl:max-w-[400px]">
               
               {/* Card Container */}
               <div className="relative rounded-2xl border border-mono-800 bg-gradient-to-b from-mono-900/90 to-mono-950 p-2 sm:p-2.5 shadow-2xl backdrop-blur-sm group transition-all duration-300 hover:border-mono-700">
