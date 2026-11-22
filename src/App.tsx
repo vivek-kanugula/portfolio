@@ -22,8 +22,8 @@ export function App() {
         onOpenResume={() => setResumeOpen(true)}
       />
 
-      {/* Main Content: Hero -> Experience -> Projects -> Open Source -> Skills -> Education -> Contact */}
-      <main className="flex-1">
+      {/* Main Content with top offset for fixed navbar */}
+      <main className="flex-1 pt-16">
         <Hero
           onOpenResume={() => setResumeOpen(true)}
         />

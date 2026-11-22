@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-mono-800 bg-mono-950/95 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-40 w-full border-b border-mono-800 bg-mono-950/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand */}
         <div className="flex items-center gap-3 shrink-0">
