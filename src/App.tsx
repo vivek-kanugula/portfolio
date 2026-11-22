@@ -8,6 +8,7 @@ import { SkillsMatrix } from './components/SkillsMatrix';
 import { EducationSection } from './components/EducationSection';
 import { InterestsSection } from './components/InterestsSection';
 import { ContactSection } from './components/ContactSection';
+import { ThankYouSection } from './components/ThankYouSection';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
 
@@ -40,6 +41,8 @@ export function App() {
         <InterestsSection />
 
         <ContactSection />
+
+        <ThankYouSection />
       </main>
 
       {/* Footer */}

@@ -8,26 +8,9 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
   return (
-    <footer className="border-t border-mono-800 bg-mono-950 py-12 text-xs font-mono text-mono-400">
+    <footer className="bg-mono-950 py-12 text-xs font-mono text-mono-400">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* Personal Thank You Card */}
-        <div className="mb-10 rounded-lg border border-mono-800 bg-mono-900/60 p-6 sm:p-7 relative overflow-hidden">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="max-w-2xl">
-              <h3 className="font-sans text-sm sm:text-base font-semibold text-mono-100">
-                Thanks for taking the time to scroll all the way through!
-              </h3>
-              <p className="mt-1.5 text-xs sm:text-sm text-mono-300 font-sans leading-relaxed">
-                Whether you have an open engineering role, an interesting problem to solve, or just want to chat backend systems and tech — my inbox is always open.
-              </p>
-            </div>
-            <div className="shrink-0 self-end sm:self-center font-mono text-xs text-telemetry-amber font-semibold">
-              — Vivek
-            </div>
-          </div>
-        </div>
-
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-mono-800">
           <div>
             <div className="flex items-center gap-2 font-semibold text-mono-200">
