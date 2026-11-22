@@ -14,12 +14,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
       <div className="flex flex-col w-full max-w-5xl h-[92vh] rounded-lg border border-mono-700 bg-mono-900 shadow-2xl overflow-hidden">
         
         {/* Top Control Bar */}
-        <div className="flex items-center justify-between border-b border-mono-800 bg-mono-850 px-4 sm:px-6 py-3 shrink-0">
-          <div className="flex items-center gap-2.5">
-            <span className="font-mono text-xs sm:text-sm font-semibold text-mono-200 uppercase tracking-wider">
+        <div className="flex items-center justify-between border-b border-mono-800 bg-mono-850 px-3 sm:px-6 py-2.5 sm:py-3 shrink-0 gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="font-mono text-xs sm:text-sm font-semibold text-mono-200 uppercase tracking-wider truncate">
               Vivek Kanugula — Resume
             </span>
-            <span className="hidden sm:inline rounded bg-telemetry-emerald/10 border border-telemetry-emerald/30 px-2 py-0.5 text-[10px] font-mono text-telemetry-emerald font-medium">
+            <span className="hidden sm:inline rounded bg-telemetry-emerald/10 border border-telemetry-emerald/30 px-2 py-0.5 text-[10px] font-mono text-telemetry-emerald font-medium shrink-0">
               Verified PDF
             </span>
           </div>

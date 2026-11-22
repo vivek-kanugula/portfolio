@@ -13,21 +13,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Meta Bar - Attention Grabbing Location, Mobility & Preferences */}
-        <div className="mb-6 flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs font-mono">
-          <span className="flex items-center gap-1.5 rounded-full border border-mono-800 bg-mono-900/90 px-3 py-1 text-mono-200">
+        <div className="mb-6 flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs font-mono">
+          <span className="inline-flex flex-wrap items-center gap-1.5 rounded-xl sm:rounded-full border border-mono-800 bg-mono-900/90 px-3 py-1.5 sm:py-1 text-mono-200 max-w-full">
             <MapPin className="h-3.5 w-3.5 text-telemetry-amber shrink-0" />
             <span>Hyderabad</span>
             <span className="text-mono-600">·</span>
             <span className="text-telemetry-amber font-medium">Open to Bengaluru, Chennai, Pune</span>
           </span>
 
-          <span className="flex items-center gap-1.5 rounded-full border border-mono-800 bg-mono-900/90 px-3 py-1 text-mono-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-telemetry-cyan" />
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-mono-800 bg-mono-900/90 px-3 py-1 text-mono-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-telemetry-cyan shrink-0" />
             <span>Hybrid · On-site · Remote</span>
           </span>
 
-          <span className="flex items-center gap-1.5 rounded-full border border-telemetry-emerald/30 bg-telemetry-emerald/10 px-3 py-1 text-telemetry-emerald font-medium">
-            <span className="h-1.5 w-1.5 rounded-full bg-telemetry-emerald animate-pulse" />
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-telemetry-emerald/30 bg-telemetry-emerald/10 px-3 py-1 text-telemetry-emerald font-medium">
+            <span className="h-1.5 w-1.5 rounded-full bg-telemetry-emerald animate-pulse shrink-0" />
             <span>{PROFILE_DATA.availability}</span>
           </span>
         </div>
