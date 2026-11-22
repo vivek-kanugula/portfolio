@@ -72,7 +72,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="border-b border-mono-800 bg-mono-950 py-16 lg:py-24">
+    <section id="contact" className="border-b border-mono-800/80 bg-mono-950 pt-12 pb-8 sm:pt-16 sm:pb-10 lg:pt-18 lg:pb-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -89,7 +89,7 @@ export const ContactSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           
           {/* Channel Cards */}
           <div className="space-y-4">

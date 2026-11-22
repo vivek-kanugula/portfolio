@@ -4,7 +4,7 @@ import { PROFILE_DATA } from '../data/profile';
 
 export const ThankYouSection: React.FC = () => {
   return (
-    <section className="border-b border-mono-800 bg-mono-900/30 py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <section className="border-b border-mono-800/80 bg-mono-900/30 pt-8 pb-12 sm:pt-10 sm:pb-14 lg:pt-10 lg:pb-14 relative overflow-hidden">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         {/* Subtle Accent Pill */}
         <div className="inline-flex items-center gap-1.5 rounded-full border border-mono-800 bg-mono-900 px-3.5 py-1 text-xs font-mono text-telemetry-amber">
