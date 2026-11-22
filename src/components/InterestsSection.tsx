@@ -18,7 +18,7 @@ export const InterestsSection: React.FC = () => {
   };
 
   return (
-    <section id="interests" className="border-b border-mono-800 bg-mono-950 py-10 sm:py-12 lg:py-14">
+    <section id="interests" className="border-b border-mono-800 bg-mono-950 py-6 sm:py-7 lg:py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -30,13 +30,13 @@ export const InterestsSection: React.FC = () => {
           <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-mono-50 font-sans">
             Curiosity & Interests
           </h2>
-          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
+          <p className="mt-2.5 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
             Writing code is how I solve problems, but genuine curiosity about how things work is what drives me. Here is a glimpse into what occupies my thoughts outside of the terminal.
           </p>
         </div>
 
         {/* Interests Grid */}
-        <div className="mt-7 sm:mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div className="mt-5 sm:mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {PROFILE_DATA.interests.map((item, idx) => (
             <div
               key={idx}

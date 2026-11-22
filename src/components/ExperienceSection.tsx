@@ -4,7 +4,7 @@ import { Briefcase, Award, Calendar, MapPin, ExternalLink } from 'lucide-react';
 
 export const ExperienceSection: React.FC = () => {
   return (
-    <section id="experience" className="border-b border-mono-800 bg-mono-950 py-10 sm:py-12 lg:py-14">
+    <section id="experience" className="border-b border-mono-800 bg-mono-950 py-6 sm:py-7 lg:py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -18,7 +18,7 @@ export const ExperienceSection: React.FC = () => {
           </h2>
         </div>
 
-        <div className="mt-7 sm:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="mt-5 sm:mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           {/* Work Experience Column (Spans 2 cols) */}
           <div className="lg:col-span-2 space-y-8">

@@ -8,7 +8,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
   return (
-    <footer className="bg-mono-950 py-8 sm:py-10 text-xs font-mono text-mono-400">
+    <footer className="bg-mono-950 py-6 sm:py-7 text-xs font-mono text-mono-400">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-mono-800">

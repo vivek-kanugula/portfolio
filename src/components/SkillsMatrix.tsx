@@ -13,7 +13,7 @@ export const SkillsMatrix: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="border-b border-mono-800 bg-mono-950 py-10 sm:py-12 lg:py-14">
+    <section id="skills" className="border-b border-mono-800 bg-mono-950 py-6 sm:py-7 lg:py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -25,13 +25,13 @@ export const SkillsMatrix: React.FC = () => {
           <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-mono-50 font-sans">
             Skills & Technologies
           </h2>
-          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
+          <p className="mt-2.5 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
             Technologies, frameworks, and core computer science areas I work with across distributed architectures and backend engineering.
           </p>
         </div>
 
         {/* Skills Grid */}
-        <div className="mt-7 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-5 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((cat, idx) => (
             <div
               key={idx}

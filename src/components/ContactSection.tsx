@@ -72,7 +72,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="border-b border-mono-800/80 bg-mono-950 pt-12 pb-8 sm:pt-16 sm:pb-10 lg:pt-18 lg:pb-10">
+    <section id="contact" className="border-b border-mono-800/80 bg-mono-950 pt-8 pb-6 sm:pt-9 sm:pb-6 lg:pt-10 lg:pb-6">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -84,12 +84,12 @@ export const ContactSection: React.FC = () => {
           <h2 className="mt-2 text-2xl sm:text-4xl font-bold tracking-tight text-mono-50 font-sans">
             Get in Touch
           </h2>
-          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
+          <p className="mt-2.5 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
             Whether you want to discuss a software engineering role, talk backend architectures and systems, recommend a good movie, or chat about philosophy — my inbox is always open. Drop a note below!
           </p>
         </div>
 
-        <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        <div className="mt-5 sm:mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           
           {/* Channel Cards */}
           <div className="space-y-4">
