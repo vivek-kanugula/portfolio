@@ -25,8 +25,8 @@ export const SkillsMatrix: React.FC = () => {
           <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-mono-50 font-sans">
             Skills & Technologies
           </h2>
-          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed">
-            Technologies, frameworks, and core computer science areas I work with.
+          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
+            Technologies, frameworks, and core computer science areas I work with across distributed architectures and backend engineering.
           </p>
         </div>
 
@@ -35,16 +35,17 @@ export const SkillsMatrix: React.FC = () => {
           {skillCategories.map((cat, idx) => (
             <div
               key={idx}
-              className="rounded-lg border border-mono-800 bg-mono-900/50 p-5 sm:p-6 transition-colors hover:border-mono-700 hover:bg-mono-900"
+              className="rounded-lg border border-mono-800 bg-mono-900/50 p-6 transition-colors hover:border-mono-700 hover:bg-mono-900"
             >
-              <h3 className="text-sm font-mono font-semibold uppercase tracking-wider text-mono-200 pb-3 border-b border-mono-800">
+              <h3 className="text-sm font-bold font-sans text-mono-100 uppercase tracking-wider border-b border-mono-800/80 pb-3">
                 {cat.title}
               </h3>
+
               <div className="mt-4 flex flex-wrap gap-2">
                 {cat.skills.map((skill, sIdx) => (
                   <span
                     key={sIdx}
-                    className="rounded border border-mono-800 bg-mono-850 px-2.5 py-1 text-xs font-mono text-mono-300"
+                    className="rounded border border-mono-800 bg-mono-850 px-2.5 py-1 text-xs font-mono text-mono-300 transition-colors hover:border-mono-600 hover:text-white"
                   >
                     {skill}
                   </span>

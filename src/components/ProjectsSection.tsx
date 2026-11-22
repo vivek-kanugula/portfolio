@@ -17,7 +17,7 @@ export const ProjectsSection: React.FC = () => {
           <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-mono-50 font-sans">
             Projects
           </h2>
-          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed">
+          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
             Key applications and systems I have designed and built, highlighting their objectives, practical use cases, and technical stacks.
           </p>
         </div>
@@ -43,13 +43,13 @@ export const ProjectsSection: React.FC = () => {
                   <span className="text-xs font-mono uppercase tracking-wider text-mono-400 block mb-1">
                     Objective & Use Case
                   </span>
-                  <p className="text-xs sm:text-sm text-mono-300 font-sans leading-relaxed">
+                  <p className="text-xs sm:text-sm text-mono-300 font-sans leading-relaxed text-justify">
                     {project.objective}
                   </p>
                 </div>
 
                 {/* Summary Description */}
-                <p className="mt-3 text-xs sm:text-sm text-mono-400 font-sans leading-relaxed">
+                <p className="mt-3 text-xs sm:text-sm text-mono-400 font-sans leading-relaxed text-justify">
                   {project.description}
                 </p>
               </div>

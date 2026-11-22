@@ -16,7 +16,7 @@ export const OpenSourceSection: React.FC = () => {
           <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-mono-50 font-sans">
             Open Source Contributions
           </h2>
-          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed">
+          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
             Real-world bug fixes and feature contributions submitted to established open-source projects.
           </p>
         </div>
@@ -85,11 +85,11 @@ export const OpenSourceSection: React.FC = () => {
                     {contrib.title}
                   </h3>
                   
-                  <p className="mt-2 text-xs sm:text-sm text-mono-300 font-sans leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-sm text-mono-300 font-sans leading-relaxed text-justify">
                     {contrib.summary}
                   </p>
 
-                  <p className="mt-3 text-xs sm:text-sm text-mono-400 font-sans leading-relaxed">
+                  <p className="mt-3 text-xs sm:text-sm text-mono-400 font-sans leading-relaxed text-justify">
                     {contrib.details}
                   </p>
 

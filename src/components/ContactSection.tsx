@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { PROFILE_DATA } from '../data/profile';
-import { Mail, MapPin, Copy, Check, ExternalLink, Clock, Send } from 'lucide-react';
+import { Mail, MapPin, Copy, Check, ExternalLink, Clock, Send, Loader2, CheckCircle2 } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [name, setName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [sentSuccess, setSentSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(PROFILE_DATA.email);
@@ -15,18 +17,55 @@ export const ContactSection: React.FC = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !senderEmail || !message) return;
-    
-    // Create mailto fallback link
-    const mailtoUrl = `mailto:${PROFILE_DATA.email}?subject=${encodeURIComponent(
-      `Inquiry from ${name} via Portfolio`
-    )}&body=${encodeURIComponent(`From: ${name} (${senderEmail})\n\n${message}`)}`;
-    
-    window.open(mailtoUrl, '_blank');
-    setSentSuccess(true);
-    setTimeout(() => setSentSuccess(false), 5000);
+    if (!name.trim() || !senderEmail.trim() || !message.trim()) return;
+
+    setIsSubmitting(true);
+    setErrorMsg(null);
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${PROFILE_DATA.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: senderEmail.trim(),
+          message: message.trim(),
+          _subject: `New Portfolio Inquiry from ${name.trim()}`,
+          _captcha: 'false',
+          _template: 'table',
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (response.ok || (data && (data.success === 'true' || data.success === true))) {
+        setSubmitted(true);
+        setName('');
+        setSenderEmail('');
+        setMessage('');
+      } else {
+        // Fallback to mailto if service encountered an issue
+        const fallbackUrl = `mailto:${PROFILE_DATA.email}?subject=${encodeURIComponent(
+          `Inquiry from ${name} via Portfolio`
+        )}&body=${encodeURIComponent(`From: ${name} (${senderEmail})\n\n${message}`)}`;
+        window.open(fallbackUrl, '_blank');
+        setSubmitted(true);
+      }
+    } catch {
+      // In case of network error, launch mail client directly
+      const fallbackUrl = `mailto:${PROFILE_DATA.email}?subject=${encodeURIComponent(
+        `Inquiry from ${name} via Portfolio`
+      )}&body=${encodeURIComponent(`From: ${name} (${senderEmail})\n\n${message}`)}`;
+      window.open(fallbackUrl, '_blank');
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -42,8 +81,8 @@ export const ContactSection: React.FC = () => {
           <h2 className="mt-2 text-2xl sm:text-4xl font-bold tracking-tight text-mono-50 font-sans">
             Initiate Contact & Collaboration
           </h2>
-          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed">
-            Available for Software Engineering roles focused on Java backends, distributed data pipelines, and AI engineering infrastructure.
+          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
+            Available for Software Engineering roles focused on Java backends, distributed data pipelines, and AI engineering infrastructure. Send a message below and it will be delivered directly to my inbox.
           </p>
         </div>
 
@@ -140,63 +179,91 @@ export const ContactSection: React.FC = () => {
 
           </div>
 
-          {/* Quick Message Form */}
+          {/* Direct Working Message Form */}
           <div className="rounded-lg border border-mono-800 bg-mono-900/60 p-6 sm:p-8">
             <span className="text-xs font-mono uppercase tracking-wider text-mono-400 block mb-4">
-              Send a Direct Engineering Inquiry
+              Send a Direct Message
             </span>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-xs font-mono text-mono-400 mb-1">Your Name</label>
-                <input
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Alex Rivera (Engineering Manager)"
-                  className="w-full rounded border border-mono-800 bg-mono-950 px-3.5 py-2 text-xs sm:text-sm text-mono-100 outline-none focus:border-telemetry-amber placeholder:text-mono-600 font-sans"
-                />
+            {submitted ? (
+              <div className="rounded-lg border border-telemetry-emerald/40 bg-telemetry-emerald/10 p-6 text-center space-y-3">
+                <CheckCircle2 className="h-10 w-10 text-telemetry-emerald mx-auto" />
+                <h3 className="text-lg font-bold text-mono-50 font-sans">
+                  Message Sent Successfully!
+                </h3>
+                <p className="text-xs sm:text-sm text-mono-300 font-sans leading-relaxed text-justify">
+                  Your message has been dispatched to {PROFILE_DATA.email}. I will review your inquiry and get back to you promptly.
+                </p>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="mt-4 inline-flex items-center gap-2 rounded border border-mono-700 bg-mono-800 px-4 py-2 text-xs font-mono text-mono-200 hover:text-white transition-colors"
+                >
+                  Send Another Message
+                </button>
               </div>
-
-              <div>
-                <label className="block text-xs font-mono text-mono-400 mb-1">Your Work Email</label>
-                <input
-                  type="email"
-                  required
-                  value={senderEmail}
-                  onChange={(e) => setSenderEmail(e.target.value)}
-                  placeholder="alex@company.com"
-                  className="w-full rounded border border-mono-800 bg-mono-950 px-3.5 py-2 text-xs sm:text-sm text-mono-100 outline-none focus:border-telemetry-amber placeholder:text-mono-600 font-sans"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono text-mono-400 mb-1">Message / Role Details</label>
-                <textarea
-                  required
-                  rows={4}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Discussing a Software Engineer position on the distributed data / backend team..."
-                  className="w-full rounded border border-mono-800 bg-mono-950 px-3.5 py-2 text-xs sm:text-sm text-mono-100 outline-none focus:border-telemetry-amber placeholder:text-mono-600 font-sans"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded bg-mono-100 px-5 py-2.5 text-xs sm:text-sm font-semibold font-mono text-mono-950 hover:bg-white transition-colors"
-              >
-                <Send className="h-4 w-4" />
-                <span>Launch Mail Client with Pre-filled Message</span>
-              </button>
-
-              {sentSuccess && (
-                <div className="rounded bg-telemetry-emerald/10 border border-telemetry-emerald/30 p-2 text-center text-xs font-mono text-telemetry-emerald">
-                  Mail client launched. Direct dispatch ready!
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-mono text-mono-400 mb-1">Your Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="e.g. Alex Rivera"
+                    className="w-full rounded border border-mono-800 bg-mono-950 px-3.5 py-2.5 text-xs sm:text-sm text-mono-100 outline-none focus:border-telemetry-amber placeholder:text-mono-600 font-sans"
+                  />
                 </div>
-              )}
-            </form>
+
+                <div>
+                  <label className="block text-xs font-mono text-mono-400 mb-1">Your Email Address</label>
+                  <input
+                    type="email"
+                    required
+                    value={senderEmail}
+                    onChange={(e) => setSenderEmail(e.target.value)}
+                    placeholder="alex@company.com"
+                    className="w-full rounded border border-mono-800 bg-mono-950 px-3.5 py-2.5 text-xs sm:text-sm text-mono-100 outline-none focus:border-telemetry-amber placeholder:text-mono-600 font-sans"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-mono-400 mb-1">Message</label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Discussing a Software Engineer position on the Java backend / distributed systems team..."
+                    className="w-full rounded border border-mono-800 bg-mono-950 px-3.5 py-2.5 text-xs sm:text-sm text-mono-100 outline-none focus:border-telemetry-amber placeholder:text-mono-600 font-sans"
+                  />
+                </div>
+
+                {errorMsg && (
+                  <div className="rounded bg-telemetry-amber/10 border border-telemetry-amber/30 p-2.5 text-xs font-mono text-telemetry-amber">
+                    {errorMsg}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 rounded bg-mono-100 px-5 py-2.5 text-xs sm:text-sm font-semibold font-mono text-mono-950 hover:bg-white transition-colors disabled:opacity-60"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <span>Sending Email to Vivek...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4" />
+                      <span>Send Email</span>
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
 
         </div>

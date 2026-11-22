@@ -33,12 +33,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
           </div>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation: Experience -> Projects -> Open Source -> Skills -> Education -> Contact */}
         <nav className="hidden lg:flex items-center gap-6 text-xs font-mono uppercase tracking-wider text-mono-400">
+          <a href="#experience" className="transition-colors hover:text-mono-100">Experience</a>
           <a href="#projects" className="transition-colors hover:text-mono-100">Projects</a>
           <a href="#open-source" className="transition-colors hover:text-mono-100">Open Source</a>
           <a href="#skills" className="transition-colors hover:text-mono-100">Skills</a>
-          <a href="#experience" className="transition-colors hover:text-mono-100">Experience</a>
+          <a href="#education" className="transition-colors hover:text-mono-100">Education</a>
           <a href="#contact" className="transition-colors hover:text-mono-100">Contact</a>
         </nav>
 
@@ -84,6 +85,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
       {mobileMenuOpen && (
         <div className="lg:hidden border-b border-mono-800 bg-mono-900 px-4 py-4 space-y-3 font-mono text-sm text-mono-300">
           <a 
+            href="#experience" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1 hover:text-mono-100"
+          >
+            → Experience
+          </a>
+          <a 
             href="#projects" 
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1 hover:text-mono-100"
@@ -105,11 +113,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
             → Skills
           </a>
           <a 
-            href="#experience" 
+            href="#education" 
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1 hover:text-mono-100"
           >
-            → Experience & Education
+            → Education
           </a>
           <a 
             href="#contact" 

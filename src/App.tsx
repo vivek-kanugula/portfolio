@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { ExperienceSection } from './components/ExperienceSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { OpenSourceSection } from './components/OpenSourceSection';
 import { SkillsMatrix } from './components/SkillsMatrix';
-import { ExperienceSection } from './components/ExperienceSection';
+import { EducationSection } from './components/EducationSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
@@ -19,11 +20,13 @@ export function App() {
         onOpenResume={() => setResumeOpen(true)}
       />
 
-      {/* Main Content */}
+      {/* Main Content: Hero -> Experience -> Projects -> Open Source -> Skills -> Education -> Contact */}
       <main className="flex-1">
         <Hero
           onOpenResume={() => setResumeOpen(true)}
         />
+
+        <ExperienceSection />
 
         <ProjectsSection />
 
@@ -31,7 +34,7 @@ export function App() {
 
         <SkillsMatrix />
 
-        <ExperienceSection />
+        <EducationSection />
 
         <ContactSection />
       </main>
@@ -41,7 +44,7 @@ export function App() {
         onOpenResume={() => setResumeOpen(true)}
       />
 
-      {/* Printable Resume Modal */}
+      {/* Official PDF Resume Modal */}
       <ResumeModal
         isOpen={resumeOpen}
         onClose={() => setResumeOpen(false)}
