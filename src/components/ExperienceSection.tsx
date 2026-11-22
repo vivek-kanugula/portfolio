@@ -57,17 +57,6 @@ export const ExperienceSection: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-
-                <div className="mt-5 flex flex-wrap gap-1.5 pt-4 border-t border-mono-800/80">
-                  {exp.technologies.map((tech, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="rounded bg-mono-850 px-2 py-0.5 text-xs font-mono text-mono-400 border border-mono-800"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
               </div>
             ))}
           </div>

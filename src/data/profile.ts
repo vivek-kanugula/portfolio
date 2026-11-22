@@ -30,7 +30,7 @@ export interface ExperienceItem {
   location: string;
   summary?: string;
   bullets: string[];
-  technologies: string[];
+  technologies?: string[];
 }
 
 export interface EducationItem {
@@ -166,7 +166,6 @@ export const PROFILE_DATA = {
         "Triaged production incidents using Power BI and ICM operational dashboards, investigating CPU and memory telemetry to identify root causes.",
         "Automated repetitive operational workflows using Python and AI tooling, parsing exported SAP short dumps (ST22) to cut daily audit time by 60%.",
       ],
-      technologies: ["Python", "SAP Application Servers", "Power BI", "Log Forensics", "Telemetry"],
     },
   ] as ExperienceItem[],
 
