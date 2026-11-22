@@ -28,7 +28,7 @@ export interface ExperienceItem {
   role: string;
   period: string;
   location: string;
-  summary: string;
+  summary?: string;
   bullets: string[];
   technologies: string[];
 }
@@ -161,11 +161,10 @@ export const PROFILE_DATA = {
       role: "Associate Software Engineer",
       period: "Oct 2025 – July 2026",
       location: "Hyderabad, India",
-      summary: "Focused on keeping enterprise SAP servers healthy and responsive — troubleshooting server bottlenecks, digging into crash logs to find root causes, and writing Python tools to automate daily audit tasks.",
       bullets: [
-        "Monitored enterprise application servers to identify memory bottlenecks and performance slowdowns before they affected operations.",
-        "Investigated production incidents by analyzing system telemetry, work processes, and SAP short dumps (ST22).",
-        "Wrote Python automation scripts to parse error logs automatically, cutting down the time required for routine morning system checks.",
+        "Diagnosed system anomalies and memory bottlenecks across SAP application servers by analyzing work process utilization and error logs.",
+        "Triaged production incidents using Power BI and ICM operational dashboards, investigating CPU and memory telemetry to identify root causes.",
+        "Automated repetitive operational workflows using Python and AI tooling, parsing exported SAP short dumps (ST22) to cut daily audit time by 60%.",
       ],
       technologies: ["Python", "SAP Application Servers", "Power BI", "Log Forensics", "Telemetry"],
     },

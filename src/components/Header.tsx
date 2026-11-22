@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-mono-800 bg-mono-950/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Brand & Status */}
+        {/* Brand */}
         <div className="flex items-center gap-3 shrink-0">
           <a href="#" className="flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight text-mono-50">
             <span className="flex h-7 w-7 items-center justify-center rounded border border-mono-700 bg-mono-900 text-telemetry-amber font-bold">
@@ -27,11 +27,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
             </span>
             <span className="hidden sm:inline-block font-sans text-mono-200">Vivek Kanugula</span>
           </a>
-          <div className="hidden md:flex items-center gap-2 rounded-full border border-mono-800 bg-mono-900/80 px-2.5 py-1 text-xs text-mono-300 whitespace-nowrap shrink-0">
-            <span className="h-1.5 w-1.5 rounded-full bg-telemetry-emerald animate-pulse" />
-            <span className="hidden 2xl:inline">{PROFILE_DATA.availability}</span>
-            <span className="2xl:hidden">Available</span>
-          </div>
         </div>
 
         {/* Desktop Navigation - perfectly spaced with whitespace-nowrap */}

@@ -17,7 +17,7 @@ export const ExperienceSection: React.FC = () => {
             Work Experience
           </h2>
           <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
-            A look at what I've worked on so far — from troubleshooting real-world server performance issues at Accenture to writing automation tools that save hours of manual effort.
+            From troubleshooting real-world server performance issues at Accenture to writing automation tools that save hours of manual effort.
           </p>
         </div>
 
@@ -52,11 +52,7 @@ export const ExperienceSection: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="mt-4 text-xs sm:text-sm text-mono-300 font-sans leading-relaxed text-justify">
-                  {exp.summary}
-                </p>
-
-                <ul className="mt-4 space-y-2 text-xs sm:text-sm text-mono-300 font-sans">
+                <ul className="mt-5 space-y-2.5 text-xs sm:text-sm text-mono-300 font-sans">
                   {exp.bullets.map((bullet, bIdx) => (
                     <li key={bIdx} className="flex items-start gap-2">
                       <span className="text-telemetry-emerald font-mono font-bold shrink-0 mt-0.5">›</span>
