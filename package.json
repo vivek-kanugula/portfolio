@@ -1,5 +1,6 @@
 {
   "name": "vivek-kanugula-portfolio",
+  "description": "Personal portfolio website of Vivek Kanugula — Software Engineer specializing in Java, distributed systems, and AI tooling.",
   "private": true,
   "version": "1.0.0",
   "type": "module",
