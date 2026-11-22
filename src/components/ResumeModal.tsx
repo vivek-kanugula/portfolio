@@ -22,10 +22,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         <div className="flex items-center justify-between border-b border-mono-800 bg-mono-850 px-4 sm:px-6 py-3 rounded-t-lg">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs font-semibold text-mono-200 uppercase tracking-wider">
-              ATS-Calibrated Single-Column Resume
+              Resume View
             </span>
             <span className="hidden sm:inline rounded bg-telemetry-emerald/10 border border-telemetry-emerald/30 px-2 py-0.5 text-[10px] font-mono text-telemetry-emerald font-medium">
-              Verified 2026 Edition
+              Vivek Kanugula
             </span>
           </div>
 
@@ -74,7 +74,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </a>
               <span>•</span>
               <a href={PROFILE_DATA.socials.leetcode} target="_blank" rel="noreferrer" className="text-blue-700 underline">
-                LeetCode
+                LeetCode (21241A0595)
               </a>
             </div>
           </div>
@@ -86,19 +86,19 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             </h2>
             <ul className="mt-2 space-y-1 text-xs text-zinc-800 leading-relaxed">
               <li>
-                <strong className="font-semibold">Languages & Core CS:</strong> Java, Python, Data Structures & Algorithms, Object-Oriented Design, Computer Networks, OS, DBMS
+                <strong className="font-semibold">Languages & Core CS:</strong> Java, Python, SQL, Data Structures & Algorithms, Object-Oriented Design, Computer Networks, Operating Systems, Database Management Systems
               </li>
               <li>
-                <strong className="font-semibold">Backend Frameworks:</strong> Spring Boot 4, Spring Security, Spring Data JPA, Hibernate, RESTful APIs, Apache PDFBox
+                <strong className="font-semibold">Backend Frameworks:</strong> Spring Boot, Spring Security, Spring Data JPA, Hibernate, RESTful APIs, Apache PDFBox
               </li>
               <li>
-                <strong className="font-semibold">Distributed Systems & Caching:</strong> PostgreSQL, Apache Kafka (KRaft), Redis (Distributed Locks), Resilience4j, Quartz
+                <strong className="font-semibold">Distributed Systems & Databases:</strong> PostgreSQL, Apache Kafka, Redis, Resilience4j, Quartz
               </li>
               <li>
-                <strong className="font-semibold">AI Agents & Automation:</strong> Model Context Protocol (MCP), AI Agents & Workflows (n8n), LLM APIs (Gemini, Groq)
+                <strong className="font-semibold">AI Tools & Automation:</strong> Model Context Protocol (MCP), AI Workflows (n8n), LLM APIs
               </li>
               <li>
-                <strong className="font-semibold">Cloud, DevOps & Testing:</strong> Microsoft Azure, Docker, GitHub Actions, Prometheus, Grafana, OpenTelemetry, k6 Load Testing, JUnit 5, Mockito
+                <strong className="font-semibold">Cloud, DevOps & Testing:</strong> Microsoft Azure, Docker, GitHub Actions, Prometheus, Grafana, OpenTelemetry, JUnit 5, Mockito
               </li>
             </ul>
           </div>
@@ -114,18 +114,18 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                   <strong className="font-bold text-zinc-900">Accenture</strong> | <em>Associate Software Engineer</em>
                 </div>
                 <div className="text-zinc-600 font-mono text-[11px]">
-                  Oct 2025 – July 2026 | Hyderabad, India
+                  Oct 2025 – Present | Hyderabad, India
                 </div>
               </div>
               <ul className="mt-1.5 list-disc list-outside pl-4 space-y-1 text-xs text-zinc-800 leading-relaxed">
                 <li>
-                  Diagnosed system anomalies and memory bottlenecks across <strong>SAP application servers</strong> by analyzing work process utilization and error logs.
+                  Diagnosed system anomalies and performance bottlenecks across enterprise application servers by analyzing work process utilization and error logs.
                 </li>
                 <li>
-                  Triaged production incidents using <strong>Power BI and ICM</strong> operational dashboards, investigating CPU and memory telemetry to identify root causes.
+                  Triaged production incidents using operational dashboards and system telemetry, investigating CPU and memory metrics to identify root causes.
                 </li>
                 <li>
-                  Automated repetitive operational workflows using Python and AI tooling, parsing exported SAP short dumps (<strong>ST22</strong>) to <strong>cut daily audit time by 60%</strong>.
+                  Automated repetitive operational workflows using Python and automation scripts to accelerate daily audit and log analysis tasks.
                 </li>
               </ul>
             </div>
@@ -142,24 +142,49 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <div className="flex justify-between items-baseline text-xs">
                 <div>
                   <strong className="font-bold text-zinc-900">Notify</strong> | 
-                  <span className="text-zinc-700 italic ml-1">Java 25, Spring Boot 4, Kafka, PostgreSQL, Redis, Azure</span>
+                  <span className="text-zinc-700 italic ml-1">Java, Spring Boot, Kafka, PostgreSQL, Redis, Azure</span>
                 </div>
                 <div className="text-blue-700 text-[11px]">
-                  github.com/vivek-kanugula/Notify
+                  <a href="https://github.com/vivek-kanugula/Notify" target="_blank" rel="noreferrer" className="underline">
+                    github.com/vivek-kanugula/Notify
+                  </a>
                 </div>
               </div>
               <ul className="mt-1.5 list-disc list-outside pl-4 space-y-1 text-xs text-zinc-800 leading-relaxed">
                 <li>
-                  Architected a multi-tenant notification gateway (Email, Webhook, In-App) with PostgreSQL Transactional Outbox and Java 25 Virtual Threads for <strong>12.2ms median ingestion</strong>.
+                  Built a multi-tenant notification gateway supporting Email, Webhook, and In-App channels using PostgreSQL Transactional Outbox pattern and Java Virtual Threads.
                 </li>
                 <li>
-                  Eliminated PostgreSQL row-lock contention in outbox relay pipelines using <code>FOR UPDATE SKIP LOCKED</code>, <strong>cutting DB CPU from 95% to 12%</strong> under load.
+                  Optimized database concurrency during outbox event relay using non-blocking row selection to avoid lock contention under high traffic.
                 </li>
                 <li>
-                  Engineered two-tier idempotency using atomic Redis <code>SET NX</code> locks and PostgreSQL unique constraints, serving duplicate requests with <strong>zero database reads</strong>.
+                  Implemented two-tier request idempotency with atomic Redis locks and database unique constraints to eliminate duplicate deliveries.
                 </li>
                 <li>
-                  Partitioned Kafka event streams by tenant ID and integrated Resilience4j circuit breakers, achieving <strong>28.5ms p95 latency</strong> under 120 concurrent virtual users.
+                  Partitioned Kafka topic streams by tenant ID and integrated Resilience4j circuit breakers to isolate failures and maintain high availability.
+                </li>
+              </ul>
+            </div>
+
+            {/* QueryFusion */}
+            <div className="mt-3">
+              <div className="flex justify-between items-baseline text-xs">
+                <div>
+                  <strong className="font-bold text-zinc-900">QueryFusion</strong> | 
+                  <span className="text-zinc-700 italic ml-1">Java, Spring Boot, PostgreSQL, Redis, Groq API</span>
+                </div>
+                <div className="text-blue-700 text-[11px]">
+                  <a href="https://github.com/vivek-kanugula/QueryFusion" target="_blank" rel="noreferrer" className="underline">
+                    github.com/vivek-kanugula/QueryFusion
+                  </a>
+                </div>
+              </div>
+              <ul className="mt-1.5 list-disc list-outside pl-4 space-y-1 text-xs text-zinc-800 leading-relaxed">
+                <li>
+                  Designed an intelligent SQL query generation and optimization assistant translating natural language requests into schema-safe SQL queries.
+                </li>
+                <li>
+                  Implemented schema introspection, automated index recommendations, and query cost analysis with cached performance plans.
                 </li>
               </ul>
             </div>
@@ -169,18 +194,20 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <div className="flex justify-between items-baseline text-xs">
                 <div>
                   <strong className="font-bold text-zinc-900">Morning Tech Pulse</strong> | 
-                  <span className="text-zinc-700 italic ml-1">n8n, Python, GitHub Actions, Groq API, ReportLab, Gmail SMTP</span>
+                  <span className="text-zinc-700 italic ml-1">Python, n8n, GitHub Actions, ReportLab, Groq API</span>
                 </div>
                 <div className="text-blue-700 text-[11px]">
-                  github.com/vivek-kanugula/morning-tech-pulse
+                  <a href="https://github.com/vivek-kanugula/morning-tech-pulse" target="_blank" rel="noreferrer" className="underline">
+                    github.com/vivek-kanugula/morning-tech-pulse
+                  </a>
                 </div>
               </div>
               <ul className="mt-1.5 list-disc list-outside pl-4 space-y-1 text-xs text-zinc-800 leading-relaxed">
                 <li>
-                  Architected a <strong>9-node n8n workflow</strong> across GitHub and Hacker News APIs, routing multi-source signals through <strong>Groq LPUs</strong> for daily technical synthesis.
+                  Built an automated news digestion and synthesis workflow aggregating top engineering topics and GitHub trending repos.
                 </li>
                 <li>
-                  Automated end-to-end report delivery via Python ReportLab and scheduled Gmail SMTP, distributing structured <strong>3-page executive PDFs daily at $0 compute cost</strong>.
+                  Automated scheduled daily email report generation and dispatch using Python and GitHub Actions.
                 </li>
               </ul>
             </div>
@@ -198,16 +225,18 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 <div>
                   <strong className="font-bold text-zinc-900">Traccar</strong> | <em>PR #6125 (Merged)</em>
                 </div>
-                <div className="text-zinc-600 italic text-[11px]">
-                  Java 17/21, JAX-RS, Model Context Protocol (MCP), OpenAPI 3.0, Gradle
+                <div className="text-blue-700 text-[11px]">
+                  <a href="https://github.com/traccar/traccar/pull/6125" target="_blank" rel="noreferrer" className="underline">
+                    PR #6125
+                  </a>
                 </div>
               </div>
               <ul className="mt-1.5 list-disc list-outside pl-4 space-y-1 text-xs text-zinc-800 leading-relaxed">
                 <li>
-                  Engineered database-backed query bounding across REST telemetry APIs, restricting <strong>17,000-record payloads (~3 MB, ~800k tokens)</strong> to prevent LLM context overflows in MCP tooling.
+                  Implemented database-level limit-offset pagination across telemetry REST APIs and core export engines to support streaming and prevent memory exhaustion.
                 </li>
                 <li>
-                  Implemented database-level limit-offset pagination across telemetry REST APIs and <strong>7 core export engines</strong>, enabling chunked time-series streaming and removing memory bottlenecks.
+                  Added request bounds to prevent oversized telemetry responses during external API and Model Context Protocol (MCP) integrations.
                 </li>
               </ul>
             </div>
@@ -216,18 +245,24 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <div className="mt-3">
               <div className="flex justify-between items-baseline text-xs">
                 <div>
-                  <strong className="font-bold text-zinc-900">Stirling-Tools / Stirling-PDF</strong> | <em>PR #8947</em>
+                  <strong className="font-bold text-zinc-900">Stirling-Tools / Stirling-PDF</strong> | <em>Issue #8947 & PR #8947 (Under Review)</em>
                 </div>
-                <div className="text-zinc-600 italic text-[11px]">
-                  Java 21, Spring Boot 3, Apache PDFBox 3.0, Gradle, JUnit 5
+                <div className="text-blue-700 text-[11px] flex gap-2">
+                  <a href="https://github.com/Stirling-Tools/Stirling-PDF/issues/8947" target="_blank" rel="noreferrer" className="underline">
+                    Issue #8947
+                  </a>
+                  <span>•</span>
+                  <a href="https://github.com/Stirling-Tools/Stirling-PDF/pull/8947" target="_blank" rel="noreferrer" className="underline">
+                    PR #8947
+                  </a>
                 </div>
               </div>
               <ul className="mt-1.5 list-disc list-outside pl-4 space-y-1 text-xs text-zinc-800 leading-relaxed">
                 <li>
-                  Diagnosed unhandled HTTP 400 crashes on password-protected uploads (Issue #8947), auditing <strong>Apache PDFBox</strong> source code to disprove speculative null-pointer claims.
+                  Identified, reproduced, and reported an HTTP 400 error triggered during upload of password-protected PDF files, opening Issue #8947.
                 </li>
                 <li>
-                  Refactored security inspection endpoints for password decryption and fallback metadata, exposing all <strong>8 standard ISO 32000-1 access flags</strong> with JUnit 5 regression tests.
+                  Submitted PR #8947 refactoring security inspection endpoints with Apache PDFBox to handle password decryption, ISO 32000-1 access flags, and unit regression tests.
                 </li>
               </ul>
             </div>
@@ -240,7 +275,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             </h2>
             <ul className="mt-1.5 list-disc list-outside pl-4 space-y-1 text-xs text-zinc-800 leading-relaxed">
               <li>
-                Achieved <strong>AIR 7912</strong> in GATE CS 2025 and earned the <strong>500-Day Badge</strong> on LeetCode/GeeksforGeeks, securing a <strong>1534 contest rating</strong> (<strong>850+ problems solved</strong>).
+                <strong>GATE CS 2025:</strong> All India Rank (AIR) 7912.
+              </li>
+              <li>
+                <strong>LeetCode:</strong> Consistent problem solving (Username: <a href="https://leetcode.com/u/21241A0595/" target="_blank" rel="noreferrer" className="text-blue-700 underline">21241A0595</a>) with 500-day badge and 850+ problems solved across competitive programming platforms.
               </li>
             </ul>
           </div>
@@ -254,7 +292,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <div>
                 <strong className="font-bold text-zinc-900">Gokaraju Rangaraju Institute of Engineering & Technology</strong>
                 <div className="italic text-zinc-700">
-                  Bachelor of Technology in Computer Science & Engineering <strong>-- CGPA: 9.21</strong>
+                  Bachelor of Technology in Computer Science & Engineering — <strong>CGPA: 9.21</strong>
                 </div>
               </div>
               <div className="text-right text-zinc-600 font-mono text-[11px]">

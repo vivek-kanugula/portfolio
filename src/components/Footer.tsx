@@ -1,13 +1,12 @@
 import React from 'react';
 import { PROFILE_DATA } from '../data/profile';
-import { Terminal, GitCommit } from 'lucide-react';
+import { GitCommit } from 'lucide-react';
 
 interface FooterProps {
-  onOpenTerminal: () => void;
   onOpenResume: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenTerminal, onOpenResume }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
   return (
     <footer className="border-t border-mono-800 bg-mono-950 py-12 text-xs font-mono text-mono-400">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -23,24 +22,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerminal, onOpenResume }) 
               <span className="text-mono-400 font-normal">{PROFILE_DATA.specialization}</span>
             </div>
             <p className="mt-1 text-[11px] text-mono-500 font-sans">
-              Authoritative systems engineering monograph. Zero AI slop, zero decoration.
+              Software Engineer focused on Java backend systems, distributed architectures, and AI tooling.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-6">
             <button
-              onClick={onOpenTerminal}
-              className="flex items-center gap-1.5 hover:text-mono-100 transition-colors"
-            >
-              <Terminal className="h-3.5 w-3.5 text-telemetry-amber" />
-              <span>CLI Terminal</span>
-            </button>
-
-            <button
               onClick={onOpenResume}
               className="hover:text-mono-100 transition-colors"
             >
-              Printable Resume
+              Resume
             </button>
 
             <a
@@ -75,11 +66,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerminal, onOpenResume }) 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-mono-500">
           <div className="flex items-center gap-2">
             <GitCommit className="h-3.5 w-3.5 text-telemetry-emerald" />
-            <span>Built with React 19, TypeScript & Tailwind CSS • Strict WCAG AA Accessible</span>
+            <span>Built with React, TypeScript & Tailwind CSS • Responsive & Device Compliant</span>
           </div>
 
           <div>
-            © {new Date().getFullYear()} {PROFILE_DATA.name}. All verified technical benchmarks documented.
+            © {new Date().getFullYear()} {PROFILE_DATA.name}. All rights reserved.
           </div>
         </div>
 
