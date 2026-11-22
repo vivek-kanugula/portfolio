@@ -62,22 +62,49 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
         {/* Embedded PDF Viewer */}
         <div className="flex-1 w-full bg-mono-950 relative overflow-hidden flex flex-col">
-          <iframe
-            src="/resume.pdf#view=FitH&toolbar=0&navpanes=0"
-            className="w-full h-full border-0 bg-white"
-            title="Vivek Kanugula Resume"
-          />
+          {/* Desktop View: Interactive Native PDF Iframe */}
+          <div className="hidden sm:block w-full h-full">
+            <iframe
+              src="/resume.pdf#view=FitH&toolbar=0&navpanes=0"
+              className="w-full h-full border-0 bg-white"
+              title="Vivek Kanugula Resume"
+            />
+          </div>
 
-          {/* Mobile / Fallback Footer */}
-          <div className="sm:hidden border-t border-mono-800 bg-mono-900 p-2 text-center text-xs font-mono text-mono-400">
-            <span>Can't see the preview? </span>
-            <a
-              href="/resume.pdf"
-              download="Vivek_Kanugula_Resume.pdf"
-              className="text-telemetry-amber underline font-medium"
-            >
-              Tap to download PDF
-            </a>
+          {/* Mobile View: High-Resolution Rendered Document Preview */}
+          <div className="sm:hidden flex-1 w-full overflow-y-auto p-2.5 bg-mono-950 flex flex-col items-center">
+            <div className="w-full max-w-full rounded bg-white shadow-xl overflow-hidden border border-mono-700/60">
+              <img
+                src="/resume-preview.png"
+                alt="Vivek Kanugula Official Resume"
+                className="w-full h-auto block select-none"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          {/* Mobile Bottom Action Bar */}
+          <div className="sm:hidden border-t border-mono-800 bg-mono-900 p-2.5 flex items-center justify-between text-xs font-mono shrink-0">
+            <span className="text-mono-400">PDF • Verified</span>
+            <div className="flex items-center gap-2">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded border border-mono-700 bg-mono-800 px-2.5 py-1 text-mono-200 hover:text-white"
+              >
+                <ExternalLink className="h-3 w-3 text-telemetry-cyan" />
+                <span>Full Tab</span>
+              </a>
+              <a
+                href="/resume.pdf"
+                download="Vivek_Kanugula_Resume.pdf"
+                className="inline-flex items-center gap-1 rounded bg-telemetry-emerald/20 border border-telemetry-emerald/40 px-2.5 py-1 text-telemetry-emerald font-semibold"
+              >
+                <Download className="h-3 w-3" />
+                <span>Download</span>
+              </a>
+            </div>
           </div>
         </div>
 
