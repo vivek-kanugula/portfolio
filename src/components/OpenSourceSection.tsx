@@ -4,7 +4,7 @@ import { GitPullRequest, GitMerge, AlertCircle, ExternalLink, TrendingUp } from 
 
 export const OpenSourceSection: React.FC = () => {
   return (
-    <section id="open-source" className="border-b border-mono-800 bg-mono-950 py-16 sm:py-20 lg:py-24">
+    <section id="open-source" className="border-b border-mono-800 bg-mono-950 py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -22,7 +22,7 @@ export const OpenSourceSection: React.FC = () => {
         </div>
 
         {/* Contributions Grid */}
-        <div className="mt-10 sm:mt-12 space-y-6">
+        <div className="mt-7 sm:mt-8 space-y-6">
           {PROFILE_DATA.openSource.map((contrib) => {
             const isMerged = contrib.status === 'Merged';
 

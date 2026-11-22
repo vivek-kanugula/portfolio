@@ -9,7 +9,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   return (
-    <section className="relative border-b border-mono-800 bg-mono-950 pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
+    <section className="relative border-b border-mono-800 bg-mono-950 pt-10 pb-12 sm:pt-14 sm:pb-14 lg:pt-18 lg:pb-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Meta Bar - Attention Grabbing Location, Mobility & Preferences */}

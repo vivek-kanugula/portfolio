@@ -4,7 +4,7 @@ import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
 
 export const EducationSection: React.FC = () => {
   return (
-    <section id="education" className="border-b border-mono-800 bg-mono-950 py-16 sm:py-20 lg:py-24">
+    <section id="education" className="border-b border-mono-800 bg-mono-950 py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -22,7 +22,7 @@ export const EducationSection: React.FC = () => {
         </div>
 
         {/* Education Cards */}
-        <div className="mt-10 sm:mt-12 max-w-4xl space-y-6">
+        <div className="mt-7 sm:mt-8 max-w-4xl space-y-6">
           {PROFILE_DATA.education.map((edu, idx) => (
             <div
               key={idx}

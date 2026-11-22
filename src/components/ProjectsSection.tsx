@@ -5,7 +5,7 @@ import { GithubIcon } from './Icons';
 
 export const ProjectsSection: React.FC = () => {
   return (
-    <section id="projects" className="border-b border-mono-800 bg-mono-950 py-16 sm:py-20 lg:py-24">
+    <section id="projects" className="border-b border-mono-800 bg-mono-950 py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -23,7 +23,7 @@ export const ProjectsSection: React.FC = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="mt-10 sm:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="mt-7 sm:mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {PROFILE_DATA.projects.map((project) => (
             <div
               key={project.id}

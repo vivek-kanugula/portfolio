@@ -13,7 +13,7 @@ export const SkillsMatrix: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="border-b border-mono-800 bg-mono-950 py-16 sm:py-20 lg:py-24">
+    <section id="skills" className="border-b border-mono-800 bg-mono-950 py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -31,7 +31,7 @@ export const SkillsMatrix: React.FC = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-7 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((cat, idx) => (
             <div
               key={idx}
