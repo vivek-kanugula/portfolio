@@ -17,7 +17,7 @@ export const ExperienceSection: React.FC = () => {
             Work Experience
           </h2>
           <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
-            Professional software engineering experience diagnosing production anomalies, triaging server incidents, and engineering automation tooling.
+            A look at what I've worked on so far — from troubleshooting real-world server performance issues at Accenture to writing automation tools that save hours of manual effort.
           </p>
         </div>
 

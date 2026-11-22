@@ -33,13 +33,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
           </div>
         </div>
 
-        {/* Desktop Navigation: Experience -> Projects -> Open Source -> Skills -> Education -> Contact */}
+        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6 text-xs font-mono uppercase tracking-wider text-mono-400">
           <a href="#experience" className="transition-colors hover:text-mono-100">Experience</a>
           <a href="#projects" className="transition-colors hover:text-mono-100">Projects</a>
           <a href="#open-source" className="transition-colors hover:text-mono-100">Open Source</a>
           <a href="#skills" className="transition-colors hover:text-mono-100">Skills</a>
           <a href="#education" className="transition-colors hover:text-mono-100">Education</a>
+          <a href="#interests" className="transition-colors hover:text-mono-100">Interests</a>
           <a href="#contact" className="transition-colors hover:text-mono-100">Contact</a>
         </nav>
 
@@ -118,6 +119,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
             className="block py-1 hover:text-mono-100"
           >
             → Education
+          </a>
+          <a 
+            href="#interests" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1 hover:text-mono-100"
+          >
+            → Interests
           </a>
           <a 
             href="#contact" 

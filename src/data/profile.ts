@@ -43,6 +43,12 @@ export interface EducationItem {
   highlights: string[];
 }
 
+export interface InterestItem {
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
 export const PROFILE_DATA = {
   name: "Vivek Kanugula",
   role: "Software Engineer",
@@ -56,15 +62,15 @@ export const PROFILE_DATA = {
     linkedin: "https://linkedin.com/in/vivek-kanugula",
     leetcode: "https://leetcode.com/u/21241A0595/",
   },
-  bio: "Software Engineer focused on building dependable backend systems, event-driven services, and practical AI integrations. Experienced in Java, Spring Boot, distributed data patterns, and open-source contributions.",
+  bio: "I'm a software engineer who loves understanding how things actually work under the hood — whether that's tracing database internals, untangling distributed message queues, or experimenting with AI. Outside of engineering, I'm drawn to philosophy, enjoy watching great cinema, and am always curious about how humans and machines think.",
 
   projects: [
     {
       id: "notify",
       title: "Notify",
-      tagline: "Multi-Tenant Notification Delivery Service",
-      objective: "Decouple notification delivery (Email, Webhook, and In-App) from core business services so that slow third-party gateways and network drops never block customer requests or lose messages.",
-      description: "A centralized notification gateway that accepts incoming alerts and reliably dispatches them across multiple delivery channels. It persists incoming messages to an outbox before acknowledgment, streams them through Kafka topics partitioned by tenant, and suppresses duplicate retries using distributed caching.",
+      tagline: "Reliable notification service built to handle high traffic without dropping alerts",
+      objective: "Separate notification delivery (emails, webhooks, and alerts) from core services so slow third-party gateways or network blips never slow down user requests.",
+      description: "An event-driven backend built with Java, Spring Boot, and Kafka. It uses PostgreSQL transactional outbox pattern to guarantee messages are safely recorded before dispatch, streams events partitioned by tenant, and suppresses duplicate retries using Redis caching.",
       techStack: ["Java", "Spring Boot", "Apache Kafka", "PostgreSQL", "Redis", "Docker", "Azure"],
       githubUrl: "https://github.com/vivek-kanugula/Notify",
       liveDemoUrl: "https://notify-demo.azurecontainerapps.io",
@@ -72,9 +78,9 @@ export const PROFILE_DATA = {
     {
       id: "queryfusion",
       title: "QueryFusion",
-      tagline: "Hybrid Retrieval-Augmented Generation (RAG) Platform",
-      objective: "Eliminate search blindspots in AI question-answering systems by pairing semantic meaning with exact keyword matching.",
-      description: "An evaluation-driven search platform that processes queries using both vector similarity search (for conceptual understanding) and lexical BM25 search (for exact codes, error IDs, and identifiers). Results are fused, reranked for precision, and verified for factual accuracy before delivering answers.",
+      tagline: "Smart search combining exact keyword matching with semantic AI search",
+      objective: "Fix search blindspots where vector AI search fails on exact product codes or IDs, while basic keyword search misses conceptual meaning.",
+      description: "A hybrid search platform that combines pgvector embeddings for conceptual search with BM25 lexical indexing for exact identifiers. Queries are fused and reranked to deliver answers that are both contextually relevant and factually exact.",
       techStack: ["Python", "FastAPI", "PostgreSQL (pgvector)", "BM25s", "Docker", "Azure"],
       githubUrl: "https://github.com/vivek-kanugula/QueryFusion",
       liveDemoUrl: "https://queryfusion-demo.azurecontainerapps.io",
@@ -82,9 +88,9 @@ export const PROFILE_DATA = {
     {
       id: "morning-tech-pulse",
       title: "Morning Tech Pulse",
-      tagline: "Automated Daily Technical Digest",
-      objective: "Deliver curated, structured summaries of emerging software engineering and AI breakthroughs directly to subscriber inboxes every morning at zero operational cost.",
-      description: "An automated workflow that monitors developer communities, extracts key technical discussions, synthesizes the updates into executive briefs using LLM APIs, and automatically formats and emails clean multi-page PDF digests on a daily schedule.",
+      tagline: "Automated daily tech & AI briefings delivered directly to my inbox",
+      objective: "Stay on top of emerging engineering discussions, research, and trending repositories every morning without spending hours browsing feeds.",
+      description: "An automated workflow built with n8n, Python, and Groq LLMs that collects top developer discussions from GitHub and tech communities, synthesizes the updates into clean executive digests, and emails them out every morning.",
       techStack: ["n8n", "Python", "GitHub Actions", "Groq API", "ReportLab", "Gmail SMTP"],
       githubUrl: "https://github.com/vivek-kanugula/morning-tech-pulse",
     },
@@ -150,11 +156,11 @@ export const PROFILE_DATA = {
       role: "Associate Software Engineer",
       period: "Oct 2025 – July 2026",
       location: "Hyderabad, India",
-      summary: "Worked on enterprise application server reliability, performance diagnostics, and operational workflow automation.",
+      summary: "Focused on keeping enterprise SAP servers healthy and responsive — troubleshooting server bottlenecks, digging into crash logs to find root causes, and writing Python tools to automate daily audit tasks.",
       bullets: [
-        "Monitored and diagnosed system anomalies across distributed SAP application servers to maintain high availability and prevent downtime.",
-        "Conducted root-cause analysis on production incidents using telemetry dashboards and error log forensics.",
-        "Built Python automation utilities to parse error dumps and streamline daily system health audits.",
+        "Monitored enterprise application servers to identify memory bottlenecks and performance slowdowns before they affected operations.",
+        "Investigated production incidents by analyzing system telemetry, work processes, and SAP short dumps (ST22).",
+        "Wrote Python automation scripts to parse error logs automatically, cutting down the time required for routine morning system checks.",
       ],
       technologies: ["Python", "SAP Application Servers", "Power BI", "Log Forensics", "Telemetry"],
     },
@@ -173,6 +179,29 @@ export const PROFILE_DATA = {
       ],
     },
   ] as EducationItem[],
+
+  interests: [
+    {
+      title: "Under-the-Hood Curiosity",
+      subtitle: "How things actually work",
+      description: "I'm genuinely fascinated by what happens beneath high-level abstractions — whether it's understanding how database engines handle row locks, how the OS schedules threads, or how network packets route through distributed systems.",
+    },
+    {
+      title: "Philosophy & Human Thought",
+      subtitle: "Perspectives on reason & knowledge",
+      description: "I enjoy reading and reflecting on philosophical ideas — questions of ethics, reason, and how humans construct meaning. Thinking about these foundational questions keeps my thinking grounded, curious, and thoughtful beyond code.",
+    },
+    {
+      title: "Cinema & Storytelling",
+      subtitle: "Appreciating craft & narrative",
+      description: "A passionate movie watcher. I appreciate great storytelling, nuanced character arcs, and creative direction in cinema. Good films offer a different kind of architectural beauty — structure, pacing, and human emotion.",
+    },
+    {
+      title: "Continuous Learning in Tech",
+      subtitle: "Always a student",
+      description: "Technology evolves rapidly, but the fundamentals remain timeless. I love exploring emerging tools, reading open-source codebases, and building small experiments to test ideas from first principles.",
+    },
+  ] as InterestItem[],
 
   achievements: [
     {

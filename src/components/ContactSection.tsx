@@ -76,13 +76,13 @@ export const ContactSection: React.FC = () => {
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-telemetry-amber">
             <Mail className="h-4 w-4" />
-            <span>Direct Channels</span>
+            <span>Let's Connect</span>
           </div>
           <h2 className="mt-2 text-2xl sm:text-4xl font-bold tracking-tight text-mono-50 font-sans">
-            Initiate Contact & Collaboration
+            Get in Touch
           </h2>
           <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
-            Available for Software Engineering roles focused on Java backends, distributed data pipelines, and AI engineering infrastructure. Send a message below and it will be delivered directly to my inbox.
+            Whether you want to discuss a software engineering role, talk backend architectures and systems, recommend a good movie, or chat about philosophy — my inbox is always open. Drop a note below!
           </p>
         </div>
 
