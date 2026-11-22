@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { PROFILE_DATA } from '../data/profile';
-import { Mail, Copy, Check, ExternalLink, Send, Loader2, CheckCircle2, MapPin } from 'lucide-react';
+import { Mail, Copy, Check, ExternalLink, Send, Loader2, CheckCircle2, MapPin, Phone, MessageSquare } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
-  const [copied, setCopied] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
   const [name, setName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
   const [company, setCompany] = useState('');
@@ -12,10 +13,16 @@ export const ContactSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleCopy = () => {
+  const handleCopyEmail = () => {
     navigator.clipboard.writeText(PROFILE_DATA.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(PROFILE_DATA.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -114,10 +121,10 @@ export const ContactSection: React.FC = () => {
                   {PROFILE_DATA.email}
                 </a>
                 <button
-                  onClick={handleCopy}
+                  onClick={handleCopyEmail}
                   className="flex items-center gap-1.5 rounded border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono text-mono-200 hover:bg-mono-750 transition-colors shrink-0"
                 >
-                  {copied ? (
+                  {copiedEmail ? (
                     <>
                       <Check className="h-3.5 w-3.5 text-telemetry-emerald" />
                       <span>Copied</span>
@@ -151,6 +158,66 @@ export const ContactSection: React.FC = () => {
                   <Mail className="h-3.5 w-3.5" />
                   <span>Send via Gmail</span>
                   <ExternalLink className="h-3 w-3 text-mono-600" />
+                </a>
+              </div>
+            </div>
+
+            {/* Direct Phone & WhatsApp Card */}
+            <div className="rounded-lg border border-mono-800 bg-mono-900/60 p-6">
+              <div className="flex items-center justify-between text-xs font-mono text-mono-400">
+                <span className="flex items-center gap-1.5">
+                  <Phone className="h-3.5 w-3.5 text-telemetry-cyan" />
+                  <span>DIRECT MOBILE &amp; WHATSAPP</span>
+                </span>
+                <span className="flex items-center gap-1.5 text-telemetry-emerald font-medium">
+                  <span className="h-1.5 w-1.5 rounded-full bg-telemetry-emerald" />
+                  Available
+                </span>
+              </div>
+              <div className="mt-3 flex items-center justify-between gap-4">
+                <a
+                  href={`tel:${PROFILE_DATA.phone.replace(/\s+/g, '')}`}
+                  className="text-base sm:text-lg font-mono font-semibold text-mono-100 hover:text-telemetry-cyan transition-colors"
+                  title="Tap to call"
+                >
+                  {PROFILE_DATA.phone}
+                </a>
+                <button
+                  onClick={handleCopyPhone}
+                  className="flex items-center gap-1.5 rounded border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono text-mono-200 hover:bg-mono-750 transition-colors shrink-0"
+                >
+                  {copiedPhone ? (
+                    <>
+                      <Check className="h-3.5 w-3.5 text-telemetry-emerald" />
+                      <span>Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-3.5 w-3.5 text-mono-400" />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Quick Actions: Call & WhatsApp */}
+              <div className="mt-4 pt-3.5 border-t border-mono-800/80 flex flex-wrap items-center gap-2.5">
+                <a
+                  href={`tel:${PROFILE_DATA.phone.replace(/\s+/g, '')}`}
+                  className="inline-flex items-center gap-1.5 rounded bg-mono-100 px-3.5 py-1.5 text-xs font-mono font-semibold text-mono-950 hover:bg-white transition-colors"
+                >
+                  <Phone className="h-3.5 w-3.5" />
+                  <span>Call Directly</span>
+                </a>
+                <a
+                  href={`https://wa.me/${PROFILE_DATA.phone.replace(/[^0-9]/g, '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded border border-mono-700 bg-mono-800 px-3.5 py-1.5 text-xs font-mono font-medium text-mono-200 hover:border-mono-600 hover:bg-mono-750 transition-colors"
+                >
+                  <MessageSquare className="h-3.5 w-3.5 text-telemetry-emerald" />
+                  <span>WhatsApp</span>
+                  <ExternalLink className="h-3 w-3 text-mono-500" />
                 </a>
               </div>
             </div>

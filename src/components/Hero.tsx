@@ -1,6 +1,6 @@
 import React from 'react';
 import { PROFILE_DATA } from '../data/profile';
-import { ArrowDownRight, FileText, Download, MapPin, ExternalLink } from 'lucide-react';
+import { ArrowDownRight, FileText, Download, MapPin, ExternalLink, Phone } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
 interface HeroProps {
@@ -107,6 +107,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           >
             <span>LeetCode (21241A0595)</span>
             <ExternalLink className="h-3 w-3" />
+          </a>
+
+          <a
+            href={`tel:${PROFILE_DATA.phone.replace(/\s+/g, '')}`}
+            className="flex items-center gap-1.5 hover:text-mono-100 transition-colors text-mono-300"
+            title="Call directly"
+          >
+            <Phone className="h-3.5 w-3.5 text-telemetry-cyan" />
+            <span>{PROFILE_DATA.phone}</span>
           </a>
         </div>
 

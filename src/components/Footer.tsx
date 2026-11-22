@@ -1,6 +1,6 @@
 import React from 'react';
 import { PROFILE_DATA } from '../data/profile';
-import { GitCommit } from 'lucide-react';
+import { GitCommit, Phone } from 'lucide-react';
 
 interface FooterProps {
   onOpenResume: () => void;
@@ -30,6 +30,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
             >
               Resume
             </button>
+
+            <a
+              href={`tel:${PROFILE_DATA.phone.replace(/\s+/g, '')}`}
+              className="flex items-center gap-1.5 hover:text-mono-100 transition-colors text-mono-300"
+              title="Call directly"
+            >
+              <Phone className="h-3.5 w-3.5 text-telemetry-cyan" />
+              <span>{PROFILE_DATA.phone}</span>
+            </a>
 
             <a
               href={PROFILE_DATA.socials.github}
