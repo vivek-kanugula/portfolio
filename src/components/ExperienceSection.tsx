@@ -16,9 +16,6 @@ export const ExperienceSection: React.FC = () => {
           <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-mono-50 font-sans">
             Work Experience
           </h2>
-          <p className="mt-3 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
-            From troubleshooting real-world server performance issues at Accenture to writing automation tools that save hours of manual effort.
-          </p>
         </div>
 
         <div className="mt-10 sm:mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">

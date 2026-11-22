@@ -132,7 +132,7 @@ export const ContactSection: React.FC = () => {
               </div>
 
               {/* Direct Gmail Compose Button */}
-              <div className="mt-4 pt-3.5 border-t border-mono-800/80 flex flex-wrap items-center gap-2.5">
+              <div className="mt-4 pt-3.5 border-t border-mono-800/80 flex items-center">
                 <a
                   href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(PROFILE_DATA.email)}`}
                   target="_blank"
@@ -142,13 +142,6 @@ export const ContactSection: React.FC = () => {
                   <Mail className="h-3.5 w-3.5" />
                   <span>Send via Gmail</span>
                   <ExternalLink className="h-3 w-3 text-mono-600" />
-                </a>
-
-                <a
-                  href={`mailto:${PROFILE_DATA.email}`}
-                  className="inline-flex items-center gap-1.5 rounded border border-mono-700 bg-mono-850 px-3 py-1.5 text-xs font-mono text-mono-300 hover:text-white hover:bg-mono-800 transition-colors"
-                >
-                  <span>Default Mail App</span>
                 </a>
               </div>
             </div>
