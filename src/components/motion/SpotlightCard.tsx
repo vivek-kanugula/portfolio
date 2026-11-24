@@ -7,15 +7,17 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   spotlightRadius?: number;
   enableTilt?: boolean;
   tiltIntensity?: number;
+  featured?: boolean;
 }
 
 export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = '',
-  spotlightColor = 'rgba(6, 182, 212, 0.08)',
-  spotlightRadius = 350,
+  spotlightColor = 'rgba(99, 102, 241, 0.12)',
+  spotlightRadius = 380,
   enableTilt = true,
   tiltIntensity = 2.5,
+  featured = false,
   ...rest
 }) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
@@ -25,7 +27,6 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   const [supportsFinePointer, setSupportsFinePointer] = useState(false);
 
   useEffect(() => {
-    // Only enable interactive 3D tilt and mouse spotlight on devices with fine pointer (mouse/trackpad)
     const pointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -56,11 +57,9 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
     if (enableTilt) {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      // Calculate normalized delta from center (-1 to 1)
       const deltaX = (x - centerX) / centerX;
       const deltaY = (y - centerY) / centerY;
 
-      // Invert Y for standard 3D perspective feel
       setTilt({
         x: -deltaY * tiltIntensity,
         y: deltaX * tiltIntensity,
@@ -78,7 +77,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   };
 
   const transformStyle = supportsFinePointer && enableTilt && isHovered
-    ? `perspective(1000px) rotateX(${tilt.x.toFixed(2)}deg) rotateY(${tilt.y.toFixed(2)}deg) translateY(-2px)`
+    ? `perspective(1000px) rotateX(${tilt.x.toFixed(2)}deg) rotateY(${tilt.y.toFixed(2)}deg) translateY(-3px)`
     : undefined;
 
   return (
@@ -93,28 +92,35 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
           ? 'transform 0.1s ease-out, border-color 0.25s ease, box-shadow 0.25s ease'
           : 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease',
       }}
-      className={`relative rounded-xl border border-mono-800/90 bg-mono-900/60 transition-all overflow-hidden will-change-transform ${className}`}
+      className={`relative rounded-xl border border-mono-800/80 bg-mono-900/70 transition-all overflow-hidden will-change-transform backdrop-blur-sm ${
+        featured ? 'ring-1 ring-aurora-indigo/30' : ''
+      } ${className}`}
       {...rest}
     >
+      {/* Featured Subtle Aurora Ambient Backlight */}
+      {featured && (
+        <div className="pointer-events-none absolute -top-12 -right-12 h-28 w-28 rounded-full bg-aurora-indigo/15 blur-2xl" />
+      )}
+
       {/* Interactive Cursor Spotlight Glow */}
       {supportsFinePointer && isHovered && (
         <div
           className="pointer-events-none absolute -inset-px transition-opacity duration-300"
           style={{
             opacity: isHovered ? 1 : 0,
-            background: `radial-gradient(${spotlightRadius}px circle at ${mousePos.x}px ${mousePos.y}px, ${spotlightColor}, transparent 80%)`,
+            background: `radial-gradient(${spotlightRadius}px circle at ${mousePos.x}px ${mousePos.y}px, ${spotlightColor}, transparent 75%)`,
           }}
           aria-hidden="true"
         />
       )}
 
-      {/* Subtle border highlight following cursor */}
+      {/* Dynamic Cursor Border Highlight */}
       {supportsFinePointer && isHovered && (
         <div
           className="pointer-events-none absolute -inset-px rounded-xl transition-opacity duration-300"
           style={{
-            opacity: isHovered ? 0.6 : 0,
-            background: `radial-gradient(250px circle at ${mousePos.x}px ${mousePos.y}px, rgba(6, 182, 212, 0.25), transparent 70%)`,
+            opacity: isHovered ? 0.75 : 0,
+            background: `radial-gradient(280px circle at ${mousePos.x}px ${mousePos.y}px, rgba(99, 102, 241, 0.35), transparent 70%)`,
             mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
             WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
             maskComposite: 'exclude',

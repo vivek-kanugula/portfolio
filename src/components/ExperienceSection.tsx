@@ -4,22 +4,23 @@ import { Briefcase, Award, Calendar, MapPin, ExternalLink } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
 import { SpotlightCard } from './motion/SpotlightCard';
 import { AnimatedCounter } from './motion/AnimatedCounter';
+import { MagneticButton } from './motion/MagneticButton';
 
 export const ExperienceSection: React.FC = () => {
   return (
-    <section id="experience" className="relative border-b border-mono-800 bg-mono-950 py-8 sm:py-10 lg:py-12 overflow-hidden">
+    <section id="experience" className="relative border-b border-mono-800/80 bg-mono-950 py-8 sm:py-10 lg:py-12 overflow-hidden">
       {/* Subtle Ambient Background Spotlight */}
-      <div className="absolute inset-0 radial-spotlight-cyan pointer-events-none" />
+      <div className="absolute inset-0 radial-spotlight-violet pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <AnimatedSection className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-telemetry-amber">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-telemetry-amber font-semibold">
             <Briefcase className="h-4 w-4" />
             <span>Professional Career</span>
           </div>
-          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-mono-50 font-sans">
+          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white font-sans">
             Work Experience
           </h2>
         </AnimatedSection>
@@ -34,21 +35,22 @@ export const ExperienceSection: React.FC = () => {
                 delayMs={idx * 100}
               >
                 <SpotlightCard
-                  spotlightColor="rgba(245, 158, 11, 0.1)"
-                  spotlightRadius={400}
+                  spotlightColor="rgba(99, 102, 241, 0.16)"
+                  spotlightRadius={420}
                   enableTilt={true}
                   tiltIntensity={2.0}
-                  className="group relative p-6 sm:p-7 hover:border-mono-600 hover:shadow-2xl"
+                  featured={true}
+                  className="group relative p-6 sm:p-7 hover:border-aurora-indigo/50 hover:shadow-2xl"
                 >
                   {/* Subtle top edge glow */}
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-telemetry-amber/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-aurora-indigo/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-mono-800/80 pb-4">
                     <div>
                       <h3 className="text-lg sm:text-xl font-bold text-mono-50 font-sans group-hover:text-white transition-colors">
                         {exp.role}
                       </h3>
-                      <span className="text-sm font-mono text-telemetry-amber font-medium">
+                      <span className="text-sm font-mono text-telemetry-amber font-semibold">
                         {exp.company}
                       </span>
                     </div>
@@ -73,7 +75,7 @@ export const ExperienceSection: React.FC = () => {
                           {bullet.includes('60%') ? (
                             <>
                               Automated repetitive operational workflows using Python and AI tooling, parsing exported SAP short dumps (ST22) to cut daily audit time by{' '}
-                              <span className="inline-flex items-center font-mono font-bold text-telemetry-emerald bg-telemetry-emerald/10 border border-telemetry-emerald/30 px-1.5 py-0.2 rounded">
+                              <span className="inline-flex items-center font-mono font-bold text-telemetry-emerald bg-telemetry-emerald/15 border border-telemetry-emerald/40 px-1.5 py-0.2 rounded">
                                 <AnimatedCounter value={60} suffix="%" />
                               </span>
                               .
@@ -109,14 +111,14 @@ export const ExperienceSection: React.FC = () => {
                   delayMs={200 + idx * 100}
                 >
                   <SpotlightCard
-                    spotlightColor={isGate ? 'rgba(245, 158, 11, 0.12)' : 'rgba(6, 182, 212, 0.12)'}
-                    spotlightRadius={300}
+                    spotlightColor={isGate ? 'rgba(245, 158, 11, 0.16)' : 'rgba(6, 182, 212, 0.16)'}
+                    spotlightRadius={320}
                     enableTilt={true}
                     tiltIntensity={2.5}
-                    className="group relative p-5 sm:p-6 hover:border-mono-600 hover:shadow-xl"
+                    className="group relative p-5 sm:p-6 hover:border-aurora-indigo/40 hover:shadow-xl"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1 rounded-md bg-mono-800/90 px-2.5 py-1 text-xs font-mono font-bold text-telemetry-amber border border-mono-700 shadow-sm">
+                      <span className="inline-flex items-center gap-1 rounded-lg bg-mono-800/90 px-2.5 py-1 text-xs font-mono font-bold text-telemetry-amber border border-mono-700 shadow-sm">
                         {isGate ? (
                           <>AIR <AnimatedCounter value={7912} /></>
                         ) : isLeetcode ? (
@@ -146,15 +148,17 @@ export const ExperienceSection: React.FC = () => {
                     </p>
 
                     {item.url && (
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-tactile mt-4 inline-flex items-center gap-1.5 text-xs font-mono text-telemetry-cyan hover:text-white transition-colors font-medium"
-                      >
-                        <span>View LeetCode Profile (21241A0595)</span>
-                        <ExternalLink className="h-3 w-3" />
-                      </a>
+                      <MagneticButton strength={0.3}>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-tactile mt-4 inline-flex items-center gap-1.5 text-xs font-mono text-telemetry-cyan hover:text-white transition-colors font-medium"
+                        >
+                          <span>View LeetCode Profile (21241A0595)</span>
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      </MagneticButton>
                     )}
                   </SpotlightCard>
                 </AnimatedSection>

@@ -4,10 +4,11 @@ import { GitPullRequest, ExternalLink, TrendingUp } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
 import { SpotlightCard } from './motion/SpotlightCard';
 import { LivePulseBadge } from './motion/LivePulseBadge';
+import { MagneticButton } from './motion/MagneticButton';
 
 export const OpenSourceSection: React.FC = () => {
   return (
-    <section id="open-source" className="relative border-b border-mono-800 bg-mono-950 py-8 sm:py-10 lg:py-12 overflow-hidden">
+    <section id="open-source" className="relative border-b border-mono-800/80 bg-mono-950 py-8 sm:py-10 lg:py-12 overflow-hidden">
       {/* Subtle Ambient Background Spotlight */}
       <div className="absolute inset-0 radial-spotlight-emerald pointer-events-none" />
 
@@ -15,11 +16,11 @@ export const OpenSourceSection: React.FC = () => {
         
         {/* Section Header */}
         <AnimatedSection className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-telemetry-emerald">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-telemetry-emerald font-semibold">
             <GitPullRequest className="h-4 w-4" />
             <span>Open Source</span>
           </div>
-          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-mono-50 font-sans">
+          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white font-sans">
             Open Source Contributions
           </h2>
           <p className="mt-2.5 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
@@ -38,11 +39,12 @@ export const OpenSourceSection: React.FC = () => {
                 delayMs={idx * 120}
               >
                 <SpotlightCard
-                  spotlightColor={isMerged ? 'rgba(16, 185, 129, 0.12)' : 'rgba(245, 158, 11, 0.12)'}
+                  spotlightColor={isMerged ? 'rgba(16, 185, 129, 0.16)' : 'rgba(245, 158, 11, 0.16)'}
                   spotlightRadius={420}
                   enableTilt={true}
                   tiltIntensity={1.8}
-                  className="group relative p-6 sm:p-8 hover:border-mono-600 hover:shadow-2xl"
+                  featured={isMerged}
+                  className="group relative p-6 sm:p-8 hover:border-telemetry-emerald/40 hover:shadow-2xl"
                 >
                   {/* Subtle top edge glow */}
                   <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent ${isMerged ? 'via-telemetry-emerald/70' : 'via-telemetry-amber/70'} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
@@ -69,29 +71,31 @@ export const OpenSourceSection: React.FC = () => {
                     {/* Direct Issue and PR Links */}
                     <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-mono">
                       {contrib.links.issues.map((issue, iIdx) => (
-                        <a
-                          key={iIdx}
-                          href={issue.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn-tactile text-mono-400 hover:text-mono-200 transition-colors flex items-center gap-1"
-                        >
-                          <span>{issue.label}</span>
-                          <ExternalLink className="h-3 w-3" />
-                        </a>
+                        <MagneticButton key={iIdx} strength={0.25}>
+                          <a
+                            href={issue.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-tactile text-mono-400 hover:text-mono-200 transition-colors flex items-center gap-1"
+                          >
+                            <span>{issue.label}</span>
+                            <ExternalLink className="h-3 w-3" />
+                          </a>
+                        </MagneticButton>
                       ))}
 
                       {contrib.links.prs.map((pr, pIdx) => (
-                        <a
-                          key={pIdx}
-                          href={pr.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn-tactile text-telemetry-cyan hover:text-white transition-colors flex items-center gap-1 font-semibold"
-                        >
-                          <span>{pr.label}</span>
-                          <ExternalLink className="h-3 w-3" />
-                        </a>
+                        <MagneticButton key={pIdx} strength={0.25}>
+                          <a
+                            href={pr.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-tactile text-telemetry-cyan hover:text-white transition-colors flex items-center gap-1 font-semibold"
+                          >
+                            <span>{pr.label}</span>
+                            <ExternalLink className="h-3 w-3" />
+                          </a>
+                        </MagneticButton>
                       ))}
                     </div>
                   </div>
@@ -112,8 +116,8 @@ export const OpenSourceSection: React.FC = () => {
                       ))}
                     </ul>
 
-                    {/* Quantifiable Metrics Highlight Box */}
-                    <div className="mt-5 rounded-xl border border-mono-800 bg-mono-850/90 p-4 space-y-2 shadow-inner">
+                    {/* Quantifiable Metrics Highlight Box with Aurora Glass */}
+                    <div className="mt-5 rounded-xl border border-aurora-indigo/20 bg-mono-850/80 p-4 space-y-2 shadow-inner">
                       <div className="flex items-center gap-2 text-xs font-mono text-mono-400 uppercase tracking-wider">
                         <TrendingUp className="h-3.5 w-3.5 text-telemetry-emerald" />
                         <span>Quantifiable Outcomes & Metrics Achieved</span>

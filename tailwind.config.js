@@ -8,25 +8,39 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Obsidian Space Palette: Rich, deep, midnight obsidian undertones (never dull gray)
         mono: {
-          950: '#07080a',
-          900: '#0c0d11',
-          850: '#111318',
-          800: '#181a22',
-          700: '#232634',
-          600: '#34384b',
-          500: '#52586d',
-          400: '#7b829a',
-          300: '#a3a9be',
-          200: '#cdd2e1',
-          100: '#e7eaf2',
-          50: '#f6f7fa',
+          950: '#05060a',
+          900: '#090b13',
+          850: '#0f121e',
+          800: '#161a2b',
+          700: '#22273f',
+          600: '#343c5e',
+          500: '#545f8b',
+          400: '#8491be',
+          300: '#aeb9dc',
+          200: '#d7def2',
+          100: '#edf1fb',
+          50: '#f8f9fe',
         },
+        // Quantum Aurora telemetry colors
         telemetry: {
           amber: '#f59e0b',
           emerald: '#10b981',
           cyan: '#06b6d4',
           rose: '#f43f5e',
+          violet: '#8b5cf6',
+          indigo: '#6366f1',
+          sky: '#38bdf8',
+        },
+        // Aurora Accent Accents
+        aurora: {
+          indigo: '#6366f1',
+          violet: '#8b5cf6',
+          fuchsia: '#d946ef',
+          cyan: '#06b6d4',
+          emerald: '#10b981',
+          amber: '#f59e0b',
         }
       },
       fontFamily: {
@@ -52,7 +66,9 @@ export default {
         'fade-in': 'fadeIn 0.5s ease-out forwards',
         'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
-        'shimmer': 'shimmer 2.5s linear infinite',
+        'shimmer': 'shimmer 3s linear infinite',
+        'border-beam': 'borderBeam 6s linear infinite',
+        'aurora-glow': 'auroraGlow 8s ease-in-out infinite alternate',
       },
       keyframes: {
         fadeIn: {
@@ -70,6 +86,14 @@ export default {
         shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
+        },
+        borderBeam: {
+          '100%': { offsetDistance: '100%' },
+        },
+        auroraGlow: {
+          '0%': { transform: 'scale(1) rotate(0deg)', opacity: '0.4' },
+          '50%': { transform: 'scale(1.1) rotate(5deg)', opacity: '0.65' },
+          '100%': { transform: 'scale(1) rotate(0deg)', opacity: '0.4' },
         },
       },
     },
