@@ -2,6 +2,8 @@ import React from 'react';
 import { PROFILE_DATA } from '../data/profile';
 import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
+import { SpotlightCard } from './motion/SpotlightCard';
+import { AnimatedCounter } from './motion/AnimatedCounter';
 
 export const EducationSection: React.FC = () => {
   return (
@@ -29,7 +31,13 @@ export const EducationSection: React.FC = () => {
               key={idx}
               delayMs={idx * 100}
             >
-              <div className="group rounded-xl border border-mono-800/90 bg-mono-900/60 p-6 sm:p-8 interactive-card hover:border-mono-700 hover:bg-mono-900">
+              <SpotlightCard
+                spotlightColor="rgba(6, 182, 212, 0.1)"
+                spotlightRadius={400}
+                enableTilt={true}
+                tiltIntensity={1.8}
+                className="group p-6 sm:p-8 hover:border-mono-600 hover:shadow-2xl"
+              >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-mono-800/80 pb-4">
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-mono-50 font-sans group-hover:text-white transition-colors">
@@ -41,8 +49,8 @@ export const EducationSection: React.FC = () => {
                   </div>
 
                   <div className="flex sm:flex-col sm:items-end justify-between items-center text-xs font-mono text-mono-400 gap-1.5">
-                    <span className="rounded-md bg-telemetry-emerald/10 border border-telemetry-emerald/40 px-2.5 py-1 font-bold text-telemetry-emerald text-xs shadow-sm">
-                      {edu.grade}
+                    <span className="inline-flex items-center gap-1 rounded-md bg-telemetry-emerald/10 border border-telemetry-emerald/40 px-2.5 py-1 font-bold text-telemetry-emerald text-xs shadow-sm">
+                      <AnimatedCounter value={9.21} decimals={2} suffix=" CGPA" />
                     </span>
                     <div className="flex items-center gap-1.5 mt-1 text-mono-400">
                       <Calendar className="h-3 w-3 text-telemetry-cyan" />
@@ -72,10 +80,10 @@ export const EducationSection: React.FC = () => {
 
                 {/* Academic Distinction Badge */}
                 <div className="mt-6 pt-4 border-t border-mono-800/80 flex items-center gap-2 text-xs font-mono text-mono-400">
-                  <Award className="h-4 w-4 text-telemetry-amber" />
+                  <Award className="h-4 w-4 text-telemetry-amber animate-pulse" />
                   <span>Graduated with Distinction (9.21 CGPA) • GATE CS 2025 Qualified</span>
                 </div>
-              </div>
+              </SpotlightCard>
             </AnimatedSection>
           ))}
         </div>

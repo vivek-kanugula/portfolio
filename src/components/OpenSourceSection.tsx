@@ -1,7 +1,9 @@
 import React from 'react';
 import { PROFILE_DATA } from '../data/profile';
-import { GitPullRequest, GitMerge, AlertCircle, ExternalLink, TrendingUp } from 'lucide-react';
+import { GitPullRequest, ExternalLink, TrendingUp } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
+import { SpotlightCard } from './motion/SpotlightCard';
+import { LivePulseBadge } from './motion/LivePulseBadge';
 
 export const OpenSourceSection: React.FC = () => {
   return (
@@ -35,9 +37,15 @@ export const OpenSourceSection: React.FC = () => {
                 key={contrib.id}
                 delayMs={idx * 120}
               >
-                <article className="group relative rounded-xl border border-mono-800/90 bg-mono-900/60 p-6 sm:p-8 interactive-card hover:border-mono-700 hover:bg-mono-900 overflow-hidden">
+                <SpotlightCard
+                  spotlightColor={isMerged ? 'rgba(16, 185, 129, 0.12)' : 'rgba(245, 158, 11, 0.12)'}
+                  spotlightRadius={420}
+                  enableTilt={true}
+                  tiltIntensity={1.8}
+                  className="group relative p-6 sm:p-8 hover:border-mono-600 hover:shadow-2xl"
+                >
                   {/* Subtle top edge glow */}
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-telemetry-emerald/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent ${isMerged ? 'via-telemetry-emerald/70' : 'via-telemetry-amber/70'} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
 
                   {/* Header Row */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-mono-800/80 pb-4">
@@ -52,20 +60,10 @@ export const OpenSourceSection: React.FC = () => {
                         <ExternalLink className="h-3.5 w-3.5 text-mono-500" />
                       </a>
 
-                      <span
-                        className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-mono font-medium ${
-                          isMerged
-                            ? 'bg-telemetry-emerald/10 border border-telemetry-emerald/40 text-telemetry-emerald'
-                            : 'bg-telemetry-amber/10 border border-telemetry-amber/40 text-telemetry-amber'
-                        }`}
-                      >
-                        <span className="relative flex h-2 w-2">
-                          <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isMerged ? 'bg-telemetry-emerald' : 'bg-telemetry-amber'}`} />
-                          <span className={`relative inline-flex rounded-full h-2 w-2 ${isMerged ? 'bg-telemetry-emerald' : 'bg-telemetry-amber'}`} />
-                        </span>
-                        {isMerged ? <GitMerge className="h-3.5 w-3.5" /> : <AlertCircle className="h-3.5 w-3.5" />}
-                        <span>{contrib.status}</span>
-                      </span>
+                      <LivePulseBadge
+                        label={contrib.status}
+                        variant={isMerged ? 'emerald' : 'amber'}
+                      />
                     </div>
 
                     {/* Direct Issue and PR Links */}
@@ -115,7 +113,7 @@ export const OpenSourceSection: React.FC = () => {
                     </ul>
 
                     {/* Quantifiable Metrics Highlight Box */}
-                    <div className="mt-5 rounded-lg border border-mono-800 bg-mono-850/90 p-4 space-y-2 shadow-inner">
+                    <div className="mt-5 rounded-xl border border-mono-800 bg-mono-850/90 p-4 space-y-2 shadow-inner">
                       <div className="flex items-center gap-2 text-xs font-mono text-mono-400 uppercase tracking-wider">
                         <TrendingUp className="h-3.5 w-3.5 text-telemetry-emerald" />
                         <span>Quantifiable Outcomes & Metrics Achieved</span>
@@ -131,7 +129,7 @@ export const OpenSourceSection: React.FC = () => {
                       </ul>
                     </div>
                   </div>
-                </article>
+                </SpotlightCard>
               </AnimatedSection>
             );
           })}

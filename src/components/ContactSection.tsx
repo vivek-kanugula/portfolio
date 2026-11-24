@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PROFILE_DATA } from '../data/profile';
 import { Mail, Copy, Check, ExternalLink, Send, Loader2, CheckCircle2, MapPin, Phone, MessageSquare } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
+import { SpotlightCard } from './motion/SpotlightCard';
 
 export const ContactSection: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -107,7 +108,13 @@ export const ContactSection: React.FC = () => {
             
             {/* Primary Email Card */}
             <AnimatedSection delayMs={100}>
-              <div className="group rounded-xl border border-mono-800/90 bg-mono-900/60 p-6 interactive-card hover:border-mono-700 hover:bg-mono-900">
+              <SpotlightCard
+                spotlightColor="rgba(245, 158, 11, 0.12)"
+                spotlightRadius={380}
+                enableTilt={true}
+                tiltIntensity={1.8}
+                className="group p-6 hover:border-mono-600 hover:shadow-2xl"
+              >
                 <div className="flex items-center justify-between text-xs font-mono text-mono-400">
                   <span>PRIMARY WORK EMAIL</span>
                   <span className="flex items-center gap-1.5 text-telemetry-emerald font-medium">
@@ -127,7 +134,7 @@ export const ContactSection: React.FC = () => {
                   </a>
                   <button
                     onClick={handleCopyEmail}
-                    className="btn-tactile flex items-center gap-1.5 rounded border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono text-mono-200 hover:bg-mono-750 hover:text-white transition-colors shrink-0"
+                    className="btn-tactile flex items-center gap-1.5 rounded-md border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono text-mono-200 hover:bg-mono-750 hover:text-white transition-colors shrink-0"
                   >
                     {copiedEmail ? (
                       <>
@@ -158,19 +165,25 @@ export const ContactSection: React.FC = () => {
                     href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(PROFILE_DATA.email)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-tactile inline-flex items-center gap-1.5 rounded bg-mono-100 px-3.5 py-1.5 text-xs font-mono font-semibold text-mono-950 hover:bg-white transition-all hover:shadow-md"
+                    className="btn-tactile inline-flex items-center gap-1.5 rounded-md bg-mono-100 px-3.5 py-1.5 text-xs font-mono font-semibold text-mono-950 hover:bg-white transition-all hover:shadow-md"
                   >
                     <Mail className="h-3.5 w-3.5" />
                     <span>Send via Gmail</span>
                     <ExternalLink className="h-3 w-3 text-mono-600" />
                   </a>
                 </div>
-              </div>
+              </SpotlightCard>
             </AnimatedSection>
 
             {/* Direct Phone & WhatsApp Card */}
             <AnimatedSection delayMs={150}>
-              <div className="group rounded-xl border border-mono-800/90 bg-mono-900/60 p-6 interactive-card hover:border-mono-700 hover:bg-mono-900">
+              <SpotlightCard
+                spotlightColor="rgba(6, 182, 212, 0.12)"
+                spotlightRadius={380}
+                enableTilt={true}
+                tiltIntensity={1.8}
+                className="group p-6 hover:border-mono-600 hover:shadow-2xl"
+              >
                 <div className="flex items-center justify-between text-xs font-mono text-mono-400">
                   <span className="flex items-center gap-1.5">
                     <Phone className="h-3.5 w-3.5 text-telemetry-cyan" />
@@ -191,7 +204,7 @@ export const ContactSection: React.FC = () => {
                   </a>
                   <button
                     onClick={handleCopyPhone}
-                    className="btn-tactile flex items-center gap-1.5 rounded border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono text-mono-200 hover:bg-mono-750 hover:text-white transition-colors shrink-0"
+                    className="btn-tactile flex items-center gap-1.5 rounded-md border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono text-mono-200 hover:bg-mono-750 hover:text-white transition-colors shrink-0"
                   >
                     {copiedPhone ? (
                       <>
@@ -211,7 +224,7 @@ export const ContactSection: React.FC = () => {
                 <div className="mt-4 pt-3.5 border-t border-mono-800/80 flex flex-wrap items-center gap-2.5">
                   <a
                     href={`tel:${PROFILE_DATA.phone.replace(/\s+/g, '')}`}
-                    className="btn-tactile inline-flex items-center gap-1.5 rounded bg-mono-100 px-3.5 py-1.5 text-xs font-mono font-semibold text-mono-950 hover:bg-white transition-all hover:shadow-md"
+                    className="btn-tactile inline-flex items-center gap-1.5 rounded-md bg-mono-100 px-3.5 py-1.5 text-xs font-mono font-semibold text-mono-950 hover:bg-white transition-all hover:shadow-md"
                   >
                     <Phone className="h-3.5 w-3.5" />
                     <span>Call Directly</span>
@@ -220,14 +233,14 @@ export const ContactSection: React.FC = () => {
                     href={`https://wa.me/${PROFILE_DATA.phone.replace(/[^0-9]/g, '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-tactile inline-flex items-center gap-1.5 rounded border border-mono-700 bg-mono-800 px-3.5 py-1.5 text-xs font-mono font-medium text-mono-200 hover:border-mono-600 hover:bg-mono-750 hover:text-white transition-all"
+                    className="btn-tactile inline-flex items-center gap-1.5 rounded-md border border-mono-700 bg-mono-800 px-3.5 py-1.5 text-xs font-mono font-medium text-mono-200 hover:border-mono-600 hover:bg-mono-750 hover:text-white transition-all"
                   >
                     <MessageSquare className="h-3.5 w-3.5 text-telemetry-emerald" />
                     <span>WhatsApp</span>
                     <ExternalLink className="h-3 w-3 text-mono-500" />
                   </a>
                 </div>
-              </div>
+              </SpotlightCard>
             </AnimatedSection>
 
             {/* Direct Profiles Card */}
@@ -291,7 +304,7 @@ export const ContactSection: React.FC = () => {
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="btn-tactile mt-4 inline-flex items-center gap-2 rounded border border-mono-700 bg-mono-800 px-4 py-2 text-xs font-mono text-mono-200 hover:text-white transition-all"
+                    className="btn-tactile mt-4 inline-flex items-center gap-2 rounded-md border border-mono-700 bg-mono-800 px-4 py-2 text-xs font-mono text-mono-200 hover:text-white transition-all"
                   >
                     Send Another Message
                   </button>

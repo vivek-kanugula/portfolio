@@ -3,6 +3,7 @@ import { PROFILE_DATA } from '../data/profile';
 import { FolderGit2, ExternalLink } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { AnimatedSection } from './AnimatedSection';
+import { SpotlightCard } from './motion/SpotlightCard';
 
 export const ProjectsSection: React.FC = () => {
   return (
@@ -34,15 +35,27 @@ export const ProjectsSection: React.FC = () => {
               delayMs={idx * 100}
               className="h-full"
             >
-              <div className="group relative flex h-full flex-col justify-between rounded-xl border border-mono-800/90 bg-mono-900/60 p-6 sm:p-7 interactive-card hover:border-mono-700 hover:bg-mono-900 overflow-hidden">
+              <SpotlightCard
+                spotlightColor="rgba(6, 182, 212, 0.12)"
+                spotlightRadius={380}
+                enableTilt={true}
+                tiltIntensity={2.5}
+                className="group relative flex h-full flex-col justify-between p-6 sm:p-7 hover:border-mono-600 hover:shadow-2xl hover:shadow-cyan-950/20"
+              >
                 {/* Sleek top highlight on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-telemetry-cyan/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-telemetry-cyan/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div>
                   {/* Title & Tagline */}
-                  <h3 className="text-xl font-bold text-mono-50 font-sans group-hover:text-white transition-colors">
-                    {project.title}
-                  </h3>
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="text-xl font-bold text-mono-50 font-sans group-hover:text-white transition-colors">
+                      {project.title}
+                    </h3>
+                    <span className="shrink-0 rounded-full border border-mono-800 bg-mono-850 px-2 py-0.5 text-[10px] font-mono text-telemetry-cyan">
+                      0{idx + 1}
+                    </span>
+                  </div>
+
                   <p className="mt-1 text-xs sm:text-sm font-medium text-telemetry-amber font-sans">
                     {project.tagline}
                   </p>
@@ -74,7 +87,7 @@ export const ProjectsSection: React.FC = () => {
                       {project.techStack.map((tech, tIdx) => (
                         <span
                           key={tIdx}
-                          className="rounded border border-mono-800 bg-mono-850 px-2 py-0.5 text-xs font-mono text-mono-300 transition-colors hover:border-mono-600 hover:text-white"
+                          className="rounded-md border border-mono-800 bg-mono-850/90 px-2 py-0.5 text-xs font-mono text-mono-300 transition-all hover:border-telemetry-cyan/60 hover:text-white hover:bg-mono-800 hover:-translate-y-0.5"
                         >
                           {tech}
                         </span>
@@ -88,7 +101,7 @@ export const ProjectsSection: React.FC = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-tactile inline-flex items-center gap-1.5 rounded border border-mono-700 bg-mono-850 px-3 py-1.5 text-xs font-mono text-mono-200 transition-all hover:bg-mono-800 hover:text-white hover:border-mono-600"
+                      className="btn-tactile inline-flex items-center gap-1.5 rounded-lg border border-mono-700 bg-mono-850 px-3 py-1.5 text-xs font-mono text-mono-200 transition-all hover:bg-mono-800 hover:text-white hover:border-mono-600"
                     >
                       <GithubIcon className="h-3.5 w-3.5" />
                       <span>GitHub</span>
@@ -99,7 +112,7 @@ export const ProjectsSection: React.FC = () => {
                         href={project.liveDemoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-tactile inline-flex items-center gap-1.5 rounded border border-mono-700 bg-mono-100 px-3 py-1.5 text-xs font-mono font-medium text-mono-950 transition-all hover:bg-white hover:shadow-md"
+                        className="btn-tactile inline-flex items-center gap-1.5 rounded-lg border border-mono-700 bg-mono-100 px-3 py-1.5 text-xs font-mono font-medium text-mono-950 transition-all hover:bg-white hover:shadow-lg hover:shadow-white/10"
                       >
                         <ExternalLink className="h-3.5 w-3.5" />
                         <span>Live Demo</span>
@@ -107,7 +120,7 @@ export const ProjectsSection: React.FC = () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             </AnimatedSection>
           ))}
         </div>

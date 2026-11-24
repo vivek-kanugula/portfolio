@@ -2,6 +2,8 @@ import React from 'react';
 import { PROFILE_DATA } from '../data/profile';
 import { Briefcase, Award, Calendar, MapPin, ExternalLink } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
+import { SpotlightCard } from './motion/SpotlightCard';
+import { AnimatedCounter } from './motion/AnimatedCounter';
 
 export const ExperienceSection: React.FC = () => {
   return (
@@ -31,9 +33,15 @@ export const ExperienceSection: React.FC = () => {
                 key={idx}
                 delayMs={idx * 100}
               >
-                <div className="group relative rounded-xl border border-mono-800/90 bg-mono-900/60 p-6 sm:p-7 interactive-card hover:border-mono-700 hover:bg-mono-900 overflow-hidden">
+                <SpotlightCard
+                  spotlightColor="rgba(245, 158, 11, 0.1)"
+                  spotlightRadius={400}
+                  enableTilt={true}
+                  tiltIntensity={2.0}
+                  className="group relative p-6 sm:p-7 hover:border-mono-600 hover:shadow-2xl"
+                >
                   {/* Subtle top edge glow */}
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-telemetry-amber/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-telemetry-amber/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-mono-800/80 pb-4">
                     <div>
@@ -57,15 +65,27 @@ export const ExperienceSection: React.FC = () => {
                     </div>
                   </div>
 
-                  <ul className="mt-5 space-y-2.5 text-xs sm:text-sm text-mono-300 font-sans">
+                  <ul className="mt-5 space-y-3 text-xs sm:text-sm text-mono-300 font-sans">
                     {exp.bullets.map((bullet, bIdx) => (
                       <li key={bIdx} className="flex items-start gap-2.5">
                         <span className="text-telemetry-emerald font-mono font-bold shrink-0 mt-0.5">›</span>
-                        <span className="text-justify leading-relaxed">{bullet}</span>
+                        <span className="text-justify leading-relaxed">
+                          {bullet.includes('60%') ? (
+                            <>
+                              Automated repetitive operational workflows using Python and AI tooling, parsing exported SAP short dumps (ST22) to cut daily audit time by{' '}
+                              <span className="inline-flex items-center font-mono font-bold text-telemetry-emerald bg-telemetry-emerald/10 border border-telemetry-emerald/30 px-1.5 py-0.2 rounded">
+                                <AnimatedCounter value={60} suffix="%" />
+                              </span>
+                              .
+                            </>
+                          ) : (
+                            bullet
+                          )}
+                        </span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </SpotlightCard>
               </AnimatedSection>
             ))}
           </div>
@@ -79,38 +99,67 @@ export const ExperienceSection: React.FC = () => {
               </h3>
             </AnimatedSection>
 
-            {PROFILE_DATA.achievements.map((item, idx) => (
-              <AnimatedSection
-                key={idx}
-                delayMs={200 + idx * 100}
-              >
-                <div className="group relative rounded-xl border border-mono-800/90 bg-mono-900/60 p-5 sm:p-6 interactive-card hover:border-mono-700 hover:bg-mono-900 overflow-hidden">
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-md bg-mono-800/90 px-2.5 py-1 text-xs font-mono font-bold text-telemetry-amber border border-mono-700 shadow-sm">
-                      {item.badge}
-                    </span>
-                  </div>
-                  <h4 className="mt-3 text-sm sm:text-base font-bold text-mono-100 font-sans group-hover:text-white transition-colors">
-                    {item.title}
-                  </h4>
-                  <p className="mt-1.5 text-xs sm:text-sm font-sans text-mono-400 leading-relaxed text-justify">
-                    {item.description}
-                  </p>
+            {PROFILE_DATA.achievements.map((item, idx) => {
+              const isGate = item.badge.includes('7912');
+              const isLeetcode = item.badge.includes('500');
 
-                  {item.url && (
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-tactile mt-4 inline-flex items-center gap-1.5 text-xs font-mono text-telemetry-cyan hover:text-white transition-colors font-medium"
-                    >
-                      <span>View LeetCode Profile (21241A0595)</span>
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
-                  )}
-                </div>
-              </AnimatedSection>
-            ))}
+              return (
+                <AnimatedSection
+                  key={idx}
+                  delayMs={200 + idx * 100}
+                >
+                  <SpotlightCard
+                    spotlightColor={isGate ? 'rgba(245, 158, 11, 0.12)' : 'rgba(6, 182, 212, 0.12)'}
+                    spotlightRadius={300}
+                    enableTilt={true}
+                    tiltIntensity={2.5}
+                    className="group relative p-5 sm:p-6 hover:border-mono-600 hover:shadow-xl"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1 rounded-md bg-mono-800/90 px-2.5 py-1 text-xs font-mono font-bold text-telemetry-amber border border-mono-700 shadow-sm">
+                        {isGate ? (
+                          <>AIR <AnimatedCounter value={7912} /></>
+                        ) : isLeetcode ? (
+                          <><AnimatedCounter value={500} suffix="+" /> Active Days</>
+                        ) : (
+                          item.badge
+                        )}
+                      </span>
+                    </div>
+
+                    <h4 className="mt-3 text-sm sm:text-base font-bold text-mono-100 font-sans group-hover:text-white transition-colors">
+                      {item.title}
+                    </h4>
+
+                    <p className="mt-1.5 text-xs sm:text-sm font-sans text-mono-400 leading-relaxed text-justify">
+                      {isLeetcode ? (
+                        <>
+                          Earned the 500-Day Badge on LeetCode representing 500+ active days of problem solving, with over{' '}
+                          <span className="font-mono font-semibold text-telemetry-cyan">
+                            <AnimatedCounter value={850} suffix="+" />
+                          </span>{' '}
+                          problems solved across competitive programming platforms.
+                        </>
+                      ) : (
+                        item.description
+                      )}
+                    </p>
+
+                    {item.url && (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-tactile mt-4 inline-flex items-center gap-1.5 text-xs font-mono text-telemetry-cyan hover:text-white transition-colors font-medium"
+                      >
+                        <span>View LeetCode Profile (21241A0595)</span>
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    )}
+                  </SpotlightCard>
+                </AnimatedSection>
+              );
+            })}
           </div>
 
         </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { PROFILE_DATA } from '../data/profile';
 import { Compass, BookOpen, Film, Sparkles, Heart } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
+import { SpotlightCard } from './motion/SpotlightCard';
 
 export const InterestsSection: React.FC = () => {
   const getIcon = (idx: number) => {
@@ -15,6 +16,20 @@ export const InterestsSection: React.FC = () => {
       case 3:
       default:
         return <Sparkles className="h-5 w-5 text-telemetry-emerald" />;
+    }
+  };
+
+  const getSpotlightColor = (idx: number) => {
+    switch (idx) {
+      case 0:
+        return 'rgba(245, 158, 11, 0.1)';
+      case 1:
+        return 'rgba(6, 182, 212, 0.1)';
+      case 2:
+        return 'rgba(192, 132, 252, 0.1)';
+      case 3:
+      default:
+        return 'rgba(16, 185, 129, 0.1)';
     }
   };
 
@@ -44,7 +59,13 @@ export const InterestsSection: React.FC = () => {
               delayMs={idx * 100}
               className="h-full"
             >
-              <div className="group h-full flex flex-col justify-between rounded-xl border border-mono-800/90 bg-mono-900/60 p-6 sm:p-7 interactive-card hover:border-mono-700 hover:bg-mono-900">
+              <SpotlightCard
+                spotlightColor={getSpotlightColor(idx)}
+                spotlightRadius={350}
+                enableTilt={true}
+                tiltIntensity={2.0}
+                className="group h-full p-6 sm:p-7 hover:border-mono-600 hover:shadow-xl"
+              >
                 <div>
                   <div className="flex items-center gap-3.5 mb-4">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-mono-800 bg-mono-850 shadow-inner group-hover:border-mono-700 transition-colors">
@@ -64,7 +85,7 @@ export const InterestsSection: React.FC = () => {
                     {item.description}
                   </p>
                 </div>
-              </div>
+              </SpotlightCard>
             </AnimatedSection>
           ))}
         </div>
