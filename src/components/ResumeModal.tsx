@@ -10,8 +10,8 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-mono-950/85 p-2 sm:p-4 backdrop-blur-sm">
-      <div className="flex flex-col w-full max-w-5xl h-[92vh] rounded-lg border border-mono-700 bg-mono-900 shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-mono-950/85 p-2 sm:p-4 backdrop-blur-sm animate-fade-in">
+      <div className="flex flex-col w-full max-w-5xl h-[92vh] rounded-xl border border-mono-700 bg-mono-900 shadow-2xl overflow-hidden animate-fade-in-up">
         
         {/* Top Control Bar */}
         <div className="flex items-center justify-between border-b border-mono-800 bg-mono-850 px-3 sm:px-6 py-2.5 sm:py-3 shrink-0 gap-2">
@@ -29,7 +29,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <a
               href="/resume.pdf"
               download="Vivek_Kanugula_Resume.pdf"
-              className="inline-flex items-center gap-1.5 rounded border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono font-medium text-mono-200 hover:text-white hover:bg-mono-700 transition-colors"
+              className="btn-tactile inline-flex items-center gap-1.5 rounded border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono font-medium text-mono-200 hover:text-white hover:bg-mono-700 transition-colors"
               title="Download PDF"
             >
               <Download className="h-3.5 w-3.5 text-telemetry-emerald" />
@@ -41,7 +41,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 rounded border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono font-medium text-mono-300 hover:text-white hover:bg-mono-700 transition-colors"
+              className="btn-tactile hidden sm:inline-flex items-center gap-1.5 rounded border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono font-medium text-mono-300 hover:text-white hover:bg-mono-700 transition-colors"
               title="Open in new window"
             >
               <ExternalLink className="h-3.5 w-3.5 text-telemetry-cyan" />
@@ -51,7 +51,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="rounded p-1.5 text-mono-400 hover:text-mono-100 hover:bg-mono-800 transition-colors"
+              className="btn-tactile rounded p-1.5 text-mono-400 hover:text-mono-100 hover:bg-mono-800 transition-colors"
               title="Close Resume View"
               aria-label="Close"
             >
