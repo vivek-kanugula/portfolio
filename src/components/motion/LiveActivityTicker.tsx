@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Activity } from 'lucide-react';
+import { TelemetryWaveform } from './TelemetryWaveform';
 
 const ACTIVITIES = [
   "Tracing PostgreSQL distributed outbox & Kafka event streams",
@@ -29,14 +30,13 @@ export const LiveActivityTicker: React.FC = () => {
   }, []);
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-xl border border-aurora-indigo/25 bg-mono-900/80 px-3.5 py-1.5 text-xs font-mono backdrop-blur-md shadow-lg shadow-indigo-950/20 max-w-full overflow-hidden">
-      <div className="relative flex h-2 w-2 shrink-0">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-telemetry-cyan opacity-75" />
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-telemetry-cyan" />
+    <div className="inline-flex items-center gap-2.5 rounded-xl border border-aurora-indigo/30 bg-mono-900/85 px-3.5 py-1.5 text-xs font-mono backdrop-blur-md shadow-lg shadow-indigo-950/20 max-w-full overflow-hidden group hover:border-aurora-indigo/60 transition-colors">
+      <div className="flex items-center gap-1.5 shrink-0">
+        <TelemetryWaveform variant="cyan" barCount={4} />
       </div>
 
       <span className="text-telemetry-cyan font-semibold shrink-0 flex items-center gap-1 text-[11px]">
-        <Activity className="h-3 w-3 text-telemetry-cyan" />
+        <Activity className="h-3 w-3 text-telemetry-cyan animate-pulse" />
         <span>CURRENT FOCUS:</span>
       </span>
 

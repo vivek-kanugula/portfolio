@@ -4,19 +4,20 @@ import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
 import { SpotlightCard } from './motion/SpotlightCard';
 import { AnimatedCounter } from './motion/AnimatedCounter';
+import { BorderBeam } from './motion/BorderBeam';
 
 export const EducationSection: React.FC = () => {
   return (
-    <section id="education" className="relative border-b border-mono-800 bg-mono-950 py-8 sm:py-10 lg:py-12 overflow-hidden">
+    <section id="education" className="relative border-b border-mono-800/80 bg-mono-950 py-8 sm:py-10 lg:py-12 overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <AnimatedSection className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-telemetry-cyan">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-telemetry-cyan font-semibold">
             <GraduationCap className="h-4 w-4" />
             <span>Academic Background</span>
           </div>
-          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-mono-50 font-sans">
+          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white font-sans">
             Education
           </h2>
           <p className="mt-2.5 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
@@ -32,12 +33,16 @@ export const EducationSection: React.FC = () => {
               delayMs={idx * 100}
             >
               <SpotlightCard
-                spotlightColor="rgba(6, 182, 212, 0.1)"
+                spotlightColor="rgba(6, 182, 212, 0.14)"
                 spotlightRadius={400}
                 enableTilt={true}
                 tiltIntensity={1.8}
-                className="group p-6 sm:p-8 hover:border-mono-600 hover:shadow-2xl"
+                featured={true}
+                className="group p-6 sm:p-8 hover:border-telemetry-cyan/50 hover:shadow-2xl overflow-hidden relative"
               >
+                {/* Active Border Beam on Degree Card */}
+                <BorderBeam size={260} duration={6} colorFrom="#10b981" colorTo="#38bdf8" borderWidth={1.5} />
+
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-mono-800/80 pb-4">
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-mono-50 font-sans group-hover:text-white transition-colors">
@@ -49,7 +54,8 @@ export const EducationSection: React.FC = () => {
                   </div>
 
                   <div className="flex sm:flex-col sm:items-end justify-between items-center text-xs font-mono text-mono-400 gap-1.5">
-                    <span className="inline-flex items-center gap-1 rounded-md bg-telemetry-emerald/10 border border-telemetry-emerald/40 px-2.5 py-1 font-bold text-telemetry-emerald text-xs shadow-sm">
+                    <span className="inline-flex items-center gap-1.5 rounded-lg bg-telemetry-emerald/15 border border-telemetry-emerald/40 px-3 py-1 font-bold text-telemetry-emerald text-xs shadow-sm">
+                      <span className="h-1.5 w-1.5 rounded-full bg-telemetry-emerald animate-ping" />
                       <AnimatedCounter value={9.21} decimals={2} suffix=" CGPA" />
                     </span>
                     <div className="flex items-center gap-1.5 mt-1 text-mono-400">
@@ -65,7 +71,7 @@ export const EducationSection: React.FC = () => {
 
                 {/* Highlights */}
                 <div className="mt-5 space-y-2">
-                  <span className="text-xs font-mono uppercase tracking-wider text-mono-400 block mb-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-mono-400 block mb-2 font-semibold">
                     Academic Focus & Highlights
                   </span>
                   <ul className="space-y-2 text-xs sm:text-sm text-mono-300 font-sans">

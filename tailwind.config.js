@@ -69,6 +69,10 @@ export default {
         'shimmer': 'shimmer 3s linear infinite',
         'border-beam': 'borderBeam 6s linear infinite',
         'aurora-glow': 'auroraGlow 8s ease-in-out infinite alternate',
+        'float-slow': 'float 5s ease-in-out infinite',
+        'float-delayed': 'float 5s ease-in-out 2.5s infinite',
+        'radar-spin': 'radarSpin 7s linear infinite',
+        'text-glow-sweep': 'textGlowSweep 6s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -94,6 +98,18 @@ export default {
           '0%': { transform: 'scale(1) rotate(0deg)', opacity: '0.4' },
           '50%': { transform: 'scale(1.1) rotate(5deg)', opacity: '0.65' },
           '100%': { transform: 'scale(1) rotate(0deg)', opacity: '0.4' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-4px)' },
+        },
+        radarSpin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        textGlowSweep: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
       },
     },

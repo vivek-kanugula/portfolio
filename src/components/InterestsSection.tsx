@@ -8,42 +8,42 @@ export const InterestsSection: React.FC = () => {
   const getIcon = (idx: number) => {
     switch (idx) {
       case 0:
-        return <Compass className="h-5 w-5 text-telemetry-amber" />;
+        return <Compass className="h-5 w-5 text-telemetry-amber group-hover:rotate-45 transition-transform duration-500" />;
       case 1:
-        return <BookOpen className="h-5 w-5 text-telemetry-cyan" />;
+        return <BookOpen className="h-5 w-5 text-telemetry-cyan group-hover:scale-110 transition-transform duration-300" />;
       case 2:
-        return <Film className="h-5 w-5 text-purple-400" />;
+        return <Film className="h-5 w-5 text-purple-400 group-hover:scale-110 transition-transform duration-300" />;
       case 3:
       default:
-        return <Sparkles className="h-5 w-5 text-telemetry-emerald" />;
+        return <Sparkles className="h-5 w-5 text-telemetry-emerald group-hover:rotate-180 transition-transform duration-700" />;
     }
   };
 
   const getSpotlightColor = (idx: number) => {
     switch (idx) {
       case 0:
-        return 'rgba(245, 158, 11, 0.1)';
+        return 'rgba(245, 158, 11, 0.12)';
       case 1:
-        return 'rgba(6, 182, 212, 0.1)';
+        return 'rgba(6, 182, 212, 0.12)';
       case 2:
-        return 'rgba(192, 132, 252, 0.1)';
+        return 'rgba(192, 132, 252, 0.12)';
       case 3:
       default:
-        return 'rgba(16, 185, 129, 0.1)';
+        return 'rgba(16, 185, 129, 0.12)';
     }
   };
 
   return (
-    <section id="interests" className="relative border-b border-mono-800 bg-mono-950 py-8 sm:py-10 lg:py-12 overflow-hidden">
+    <section id="interests" className="relative border-b border-mono-800/80 bg-mono-950 py-8 sm:py-10 lg:py-12 overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <AnimatedSection className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-telemetry-amber">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-telemetry-amber font-semibold">
             <Heart className="h-4 w-4" />
             <span>Beyond the Code</span>
           </div>
-          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-mono-50 font-sans">
+          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white font-sans">
             Curiosity & Interests
           </h2>
           <p className="mt-2.5 text-mono-300 font-sans text-sm sm:text-base leading-relaxed text-justify">
@@ -64,7 +64,7 @@ export const InterestsSection: React.FC = () => {
                 spotlightRadius={350}
                 enableTilt={true}
                 tiltIntensity={2.0}
-                className="group h-full p-6 sm:p-7 hover:border-mono-600 hover:shadow-xl"
+                className="group h-full p-6 sm:p-7 hover:border-mono-600 hover:shadow-xl overflow-hidden"
               >
                 <div>
                   <div className="flex items-center gap-3.5 mb-4">

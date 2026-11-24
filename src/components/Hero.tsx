@@ -7,6 +7,8 @@ import { SpotlightCard } from './motion/SpotlightCard';
 import { LivePulseBadge } from './motion/LivePulseBadge';
 import { LiveActivityTicker } from './motion/LiveActivityTicker';
 import { MagneticButton } from './motion/MagneticButton';
+import { BorderBeam } from './motion/BorderBeam';
+import { RadarSweep } from './motion/RadarSweep';
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -16,7 +18,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   return (
     <section className="relative border-b border-mono-800/80 bg-mono-950 pt-8 pb-10 sm:pt-10 sm:pb-12 lg:pt-14 lg:pb-16 overflow-hidden">
       {/* Living Dynamic Multi-spectral Particle Canvas */}
-      <ParticleBackground particleCount={42} interactive={true} />
+      <ParticleBackground particleCount={44} interactive={true} />
 
       {/* Atmospheric Ambient Lighting Gradients */}
       <div className="absolute inset-0 radial-spotlight-hero pointer-events-none" />
@@ -44,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           />
         </div>
 
-        {/* Live Engineering Current Focus Ticker */}
+        {/* Live Engineering Current Focus Ticker with Active Waveform */}
         <div className="mb-6 animate-fade-in">
           <LiveActivityTicker />
         </div>
@@ -59,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             <div className="flex items-center justify-between gap-3.5 sm:gap-4 md:hidden">
               <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-mono-50 font-sans leading-tight">
                 Hi, I'm
-                <span className="block mt-0.5 sm:mt-1 bg-gradient-to-r from-mono-50 via-mono-100 to-aurora-indigo bg-clip-text text-transparent">
+                <span className="block mt-0.5 sm:mt-1 aurora-text-gradient">
                   Vivek Kanugula.
                 </span>
               </h1>
@@ -67,7 +69,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               <div className="shrink-0">
                 <div className="relative group">
                   <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-aurora-indigo/40 via-telemetry-cyan/30 to-telemetry-emerald/30 blur-md opacity-80 group-hover:opacity-100 transition duration-300 animate-pulse-subtle" />
-                  <div className="relative w-[100px] h-[100px] sm:w-28 sm:h-28 rounded-2xl border border-mono-700/80 bg-gradient-to-b from-mono-900 to-mono-950 p-1.5 shadow-xl">
+                  <div className="relative w-[100px] h-[100px] sm:w-28 sm:h-28 rounded-2xl border border-mono-700/80 bg-gradient-to-b from-mono-900 to-mono-950 p-1.5 shadow-xl overflow-hidden">
+                    <RadarSweep className="opacity-40" />
                     <div className="relative aspect-square w-full h-full overflow-hidden rounded-xl bg-mono-900">
                       <img
                         src="/profile.jpg"
@@ -84,7 +87,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             {/* Desktop Headline (Hidden on mobile, visible on md+) */}
             <h1 className="hidden md:block md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-mono-50 font-sans leading-tight">
               Hi, I'm{' '}
-              <span className="bg-gradient-to-r from-white via-mono-100 to-aurora-indigo bg-clip-text text-transparent">
+              <span className="aurora-text-gradient font-bold">
                 {PROFILE_DATA.name}.
               </span>
             </h1>
@@ -94,12 +97,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               {PROFILE_DATA.bio}
             </p>
 
-            {/* Magnetic Action Buttons */}
+            {/* Magnetic Action Buttons with Shimmer Reflection */}
             <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-2.5 sm:gap-4">
               <MagneticButton strength={0.3}>
                 <a
                   href="#experience"
-                  className="btn-tactile inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-white via-mono-50 to-mono-100 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-mono-950 transition-all hover:shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-0.5 border border-white"
+                  className="shimmer-sweep btn-tactile inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-white via-mono-50 to-mono-100 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-mono-950 transition-all hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 border border-white"
                 >
                   <span>View Experience</span>
                   <ArrowDownRight className="h-4 w-4" />
@@ -109,7 +112,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               <MagneticButton strength={0.3}>
                 <a
                   href="#projects"
-                  className="btn-tactile inline-flex items-center gap-2 rounded-xl border border-mono-750 bg-mono-900/90 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-medium text-mono-100 transition-all hover:border-aurora-indigo hover:bg-mono-850 hover:text-white hover:shadow-lg hover:shadow-indigo-950/30 hover:-translate-y-0.5"
+                  className="shimmer-sweep btn-tactile inline-flex items-center gap-2 rounded-xl border border-mono-750 bg-mono-900/90 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-medium text-mono-100 transition-all hover:border-aurora-indigo hover:bg-mono-850 hover:text-white hover:shadow-lg hover:shadow-indigo-950/30 hover:-translate-y-0.5"
                 >
                   <span>Projects</span>
                 </a>
@@ -118,7 +121,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               <MagneticButton strength={0.3}>
                 <button
                   onClick={onOpenResume}
-                  className="btn-tactile inline-flex items-center gap-2 rounded-xl border border-mono-750 bg-mono-900/90 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-medium text-mono-100 transition-all hover:border-telemetry-cyan hover:bg-mono-850 hover:text-white hover:shadow-lg hover:shadow-cyan-950/30 hover:-translate-y-0.5"
+                  className="shimmer-sweep btn-tactile inline-flex items-center gap-2 rounded-xl border border-mono-750 bg-mono-900/90 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-medium text-mono-100 transition-all hover:border-telemetry-cyan hover:bg-mono-850 hover:text-white hover:shadow-lg hover:shadow-cyan-950/30 hover:-translate-y-0.5"
                 >
                   <FileText className="h-4 w-4 text-telemetry-cyan" />
                   <span>View Resume</span>
@@ -129,7 +132,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <a
                   href="/resume.pdf"
                   download="Vivek_Kanugula_Resume.pdf"
-                  className="btn-tactile inline-flex items-center gap-2 rounded-xl border border-mono-750 bg-mono-900/90 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-medium text-mono-100 transition-all hover:border-telemetry-emerald hover:bg-mono-850 hover:text-white hover:shadow-lg hover:shadow-emerald-950/30 hover:-translate-y-0.5"
+                  className="shimmer-sweep btn-tactile inline-flex items-center gap-2 rounded-xl border border-mono-750 bg-mono-900/90 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-medium text-mono-100 transition-all hover:border-telemetry-emerald hover:bg-mono-850 hover:text-white hover:shadow-lg hover:shadow-emerald-950/30 hover:-translate-y-0.5"
                 >
                   <Download className="h-4 w-4 text-telemetry-emerald" />
                   <span>Download PDF</span>
@@ -194,19 +197,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             <div className="relative w-full max-w-[360px] lg:max-w-[380px] xl:max-w-[400px]">
               
               {/* Distinctive Aurora Glow Aura with breathing animation */}
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-aurora-indigo/30 via-telemetry-cyan/25 to-telemetry-emerald/30 blur-2xl opacity-60 group-hover:opacity-90 transition duration-700 animate-aurora-glow" />
+              <div className="absolute -inset-3 rounded-3xl bg-gradient-to-r from-aurora-indigo/35 via-telemetry-cyan/25 to-telemetry-emerald/35 blur-2xl opacity-65 group-hover:opacity-95 transition duration-700 animate-aurora-glow" />
 
-              {/* Interactive 3D Tilt Card Container */}
+              {/* Interactive 3D Tilt Card Container with Rotating Border Beam and Radar Sweep */}
               <SpotlightCard
                 enableTilt={true}
                 tiltIntensity={3.5}
                 spotlightColor="rgba(99, 102, 241, 0.2)"
                 spotlightRadius={420}
                 featured={true}
-                className="relative rounded-2xl border border-aurora-indigo/30 bg-gradient-to-b from-mono-900/90 via-mono-900/80 to-mono-950 p-2 sm:p-2.5 shadow-2xl backdrop-blur-md group"
+                className="relative rounded-2xl border border-aurora-indigo/40 bg-gradient-to-b from-mono-900/90 via-mono-900/80 to-mono-950 p-2.5 sm:p-3 shadow-2xl backdrop-blur-md group overflow-hidden"
               >
+                {/* Active Comet Border Beam */}
+                <BorderBeam size={220} duration={5} colorFrom="#818cf8" colorTo="#22d3ee" borderWidth={1.5} />
+
+                {/* Internal HUD Radar Sweep Behind Image */}
+                <RadarSweep className="opacity-30" />
+
                 {/* Image Frame */}
-                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-mono-900">
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-mono-900 z-10">
                   <img
                     src="/profile.jpg"
                     alt={PROFILE_DATA.name}

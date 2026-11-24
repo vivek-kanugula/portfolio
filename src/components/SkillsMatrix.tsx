@@ -48,11 +48,12 @@ export const SkillsMatrix: React.FC = () => {
                 spotlightRadius={320}
                 enableTilt={true}
                 tiltIntensity={2.0}
-                className="group h-full p-6 hover:border-aurora-indigo/40 hover:shadow-xl"
+                className="group h-full p-6 hover:border-aurora-indigo/40 hover:shadow-xl overflow-hidden"
               >
                 <div>
                   <div className="flex items-center justify-between border-b border-mono-800/80 pb-3">
-                    <h3 className="text-sm font-bold font-sans text-mono-100 uppercase tracking-wider group-hover:text-white transition-colors">
+                    <h3 className="text-sm font-bold font-sans text-mono-100 uppercase tracking-wider group-hover:text-white transition-colors flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-aurora-indigo group-hover:animate-ping" />
                       {cat.title}
                     </h3>
                     <span className="rounded-full border border-aurora-indigo/30 bg-aurora-indigo/10 px-2 py-0.5 text-[10px] font-mono text-aurora-indigo font-bold">
@@ -64,7 +65,9 @@ export const SkillsMatrix: React.FC = () => {
                     {cat.skills.map((skill, sIdx) => (
                       <span
                         key={sIdx}
-                        className="rounded-lg border border-mono-800 bg-mono-850 px-2.5 py-1 text-xs font-mono text-mono-300 transition-all hover:border-aurora-indigo/60 hover:text-white hover:bg-mono-800 hover:-translate-y-0.5 shadow-sm"
+                        className={`rounded-lg border border-mono-800 bg-mono-850 px-2.5 py-1 text-xs font-mono text-mono-300 transition-all hover:border-aurora-indigo/60 hover:text-white hover:bg-mono-800 hover:-translate-y-0.5 shadow-sm ${
+                          sIdx % 2 === 0 ? 'group-hover:animate-float-slow' : 'group-hover:animate-float-delayed'
+                        }`}
                       >
                         {skill}
                       </span>

@@ -136,6 +136,65 @@
   pointer-events: none;
 }
 
+/* Rotating Radar HUD Scanner */
+.radar-sweep-disk {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(6, 182, 212, 0.15) 340deg, rgba(99, 102, 241, 0.35) 360deg);
+  animation: radarSpin 6s linear infinite;
+  pointer-events: none;
+}
+
+/* Animated Flowing Gradient Text */
+.aurora-text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #dbe1f4 25%, #818cf8 50%, #22d3ee 75%, #ffffff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textGlowSweep 6s ease-in-out infinite;
+}
+
+/* Audio/Telemetry Waveform Equalizer Bars */
+@keyframes barPulse {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+.waveform-bar-1 { animation: barPulse 1.2s ease-in-out infinite; }
+.waveform-bar-2 { animation: barPulse 0.9s ease-in-out 0.2s infinite; }
+.waveform-bar-3 { animation: barPulse 1.4s ease-in-out 0.4s infinite; }
+.waveform-bar-4 { animation: barPulse 1.0s ease-in-out 0.1s infinite; }
+.waveform-bar-5 { animation: barPulse 1.3s ease-in-out 0.3s infinite; }
+
+/* Shimmer Button Reflection */
+.shimmer-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.shimmer-sweep:hover::after {
+  transform: translateX(100%);
+}
+
 /* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,

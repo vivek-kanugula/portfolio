@@ -5,6 +5,7 @@ import { GithubIcon } from './Icons';
 import { AnimatedSection } from './AnimatedSection';
 import { SpotlightCard } from './motion/SpotlightCard';
 import { MagneticButton } from './motion/MagneticButton';
+import { BorderBeam } from './motion/BorderBeam';
 
 export const ProjectsSection: React.FC = () => {
   const getProjectSpotlight = (idx: number) => {
@@ -57,8 +58,13 @@ export const ProjectsSection: React.FC = () => {
                   enableTilt={true}
                   tiltIntensity={2.5}
                   featured={isFeatured}
-                  className="group relative flex h-full flex-col justify-between p-6 sm:p-7 hover:border-aurora-indigo/50 hover:shadow-2xl hover:shadow-indigo-950/20"
+                  className="group relative flex h-full flex-col justify-between p-6 sm:p-7 hover:border-aurora-indigo/50 hover:shadow-2xl hover:shadow-indigo-950/20 overflow-hidden"
                 >
+                  {/* Active Border Beam on featured project (Notify) */}
+                  {isFeatured && (
+                    <BorderBeam size={240} duration={6} colorFrom="#818cf8" colorTo="#22d3ee" borderWidth={1.5} />
+                  )}
+
                   {/* Sleek top highlight on hover */}
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-aurora-indigo/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -68,7 +74,8 @@ export const ProjectsSection: React.FC = () => {
                       <h3 className="text-xl font-bold text-mono-50 font-sans group-hover:text-white transition-colors">
                         {project.title}
                       </h3>
-                      <span className="shrink-0 rounded-full border border-aurora-indigo/30 bg-aurora-indigo/10 px-2 py-0.5 text-[10px] font-mono text-aurora-indigo font-bold">
+                      <span className="shrink-0 rounded-full border border-aurora-indigo/30 bg-aurora-indigo/10 px-2 py-0.5 text-[10px] font-mono text-aurora-indigo font-bold flex items-center gap-1">
+                        <span className="h-1.5 w-1.5 rounded-full bg-aurora-indigo animate-pulse" />
                         0{idx + 1}
                       </span>
                     </div>
@@ -95,7 +102,7 @@ export const ProjectsSection: React.FC = () => {
 
                   {/* Bottom: Tech Stack & Links */}
                   <div className="mt-6 pt-5 border-t border-mono-800/80 space-y-4">
-                    {/* Tech Stack Pills */}
+                    {/* Tech Stack Pills with staggered organic float on hover */}
                     <div>
                       <span className="text-[11px] font-mono text-mono-400 block mb-2 uppercase tracking-wider">
                         Technologies
@@ -104,7 +111,9 @@ export const ProjectsSection: React.FC = () => {
                         {project.techStack.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            className="rounded-lg border border-mono-800/90 bg-mono-850/90 px-2.5 py-0.5 text-xs font-mono text-mono-300 transition-all hover:border-aurora-indigo/60 hover:text-white hover:bg-mono-800 hover:-translate-y-0.5 shadow-sm"
+                            className={`rounded-lg border border-mono-800/90 bg-mono-850/90 px-2.5 py-0.5 text-xs font-mono text-mono-300 transition-all hover:border-aurora-indigo/60 hover:text-white hover:bg-mono-800 hover:-translate-y-0.5 shadow-sm ${
+                              tIdx % 2 === 0 ? 'group-hover:animate-float-slow' : 'group-hover:animate-float-delayed'
+                            }`}
                           >
                             {tech}
                           </span>
@@ -119,7 +128,7 @@ export const ProjectsSection: React.FC = () => {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-tactile inline-flex items-center gap-1.5 rounded-lg border border-mono-700 bg-mono-850 px-3 py-1.5 text-xs font-mono text-mono-200 transition-all hover:bg-mono-800 hover:text-white hover:border-aurora-indigo/60"
+                          className="shimmer-sweep btn-tactile inline-flex items-center gap-1.5 rounded-lg border border-mono-750 bg-mono-850 px-3 py-1.5 text-xs font-mono text-mono-200 transition-all hover:bg-mono-800 hover:text-white hover:border-aurora-indigo/60"
                         >
                           <GithubIcon className="h-3.5 w-3.5" />
                           <span>GitHub</span>
@@ -132,7 +141,7 @@ export const ProjectsSection: React.FC = () => {
                             href={project.liveDemoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-tactile inline-flex items-center gap-1.5 rounded-lg border border-white bg-gradient-to-r from-white to-mono-100 px-3 py-1.5 text-xs font-mono font-medium text-mono-950 transition-all hover:shadow-lg hover:shadow-white/20"
+                            className="shimmer-sweep btn-tactile inline-flex items-center gap-1.5 rounded-lg border border-white bg-gradient-to-r from-white to-mono-100 px-3 py-1.5 text-xs font-mono font-medium text-mono-950 transition-all hover:shadow-lg hover:shadow-white/20"
                           >
                             <ExternalLink className="h-3.5 w-3.5" />
                             <span>Live Demo</span>

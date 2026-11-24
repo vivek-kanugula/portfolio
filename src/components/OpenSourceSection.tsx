@@ -5,6 +5,8 @@ import { AnimatedSection } from './AnimatedSection';
 import { SpotlightCard } from './motion/SpotlightCard';
 import { LivePulseBadge } from './motion/LivePulseBadge';
 import { MagneticButton } from './motion/MagneticButton';
+import { BorderBeam } from './motion/BorderBeam';
+import { TelemetryWaveform } from './motion/TelemetryWaveform';
 
 export const OpenSourceSection: React.FC = () => {
   return (
@@ -44,8 +46,13 @@ export const OpenSourceSection: React.FC = () => {
                   enableTilt={true}
                   tiltIntensity={1.8}
                   featured={isMerged}
-                  className="group relative p-6 sm:p-8 hover:border-telemetry-emerald/40 hover:shadow-2xl"
+                  className="group relative p-6 sm:p-8 hover:border-telemetry-emerald/40 hover:shadow-2xl overflow-hidden"
                 >
+                  {/* Active Border Beam on Merged Contribution */}
+                  {isMerged && (
+                    <BorderBeam size={280} duration={7} colorFrom="#10b981" colorTo="#06b6d4" borderWidth={1.5} />
+                  )}
+
                   {/* Subtle top edge glow */}
                   <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent ${isMerged ? 'via-telemetry-emerald/70' : 'via-telemetry-amber/70'} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
 
@@ -116,11 +123,14 @@ export const OpenSourceSection: React.FC = () => {
                       ))}
                     </ul>
 
-                    {/* Quantifiable Metrics Highlight Box with Aurora Glass */}
-                    <div className="mt-5 rounded-xl border border-aurora-indigo/20 bg-mono-850/80 p-4 space-y-2 shadow-inner">
-                      <div className="flex items-center gap-2 text-xs font-mono text-mono-400 uppercase tracking-wider">
-                        <TrendingUp className="h-3.5 w-3.5 text-telemetry-emerald" />
-                        <span>Quantifiable Outcomes & Metrics Achieved</span>
+                    {/* Quantifiable Metrics Highlight Box with Active Waveform */}
+                    <div className="mt-5 rounded-xl border border-aurora-indigo/25 bg-mono-850/80 p-4 space-y-2.5 shadow-inner">
+                      <div className="flex items-center justify-between text-xs font-mono text-mono-400 uppercase tracking-wider">
+                        <div className="flex items-center gap-2">
+                          <TrendingUp className="h-3.5 w-3.5 text-telemetry-emerald" />
+                          <span>Quantifiable Outcomes & Metrics Achieved</span>
+                        </div>
+                        <TelemetryWaveform variant="emerald" barCount={4} />
                       </div>
 
                       <ul className="space-y-1.5 text-xs sm:text-sm text-mono-200 font-sans">
