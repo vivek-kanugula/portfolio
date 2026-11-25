@@ -53,13 +53,6 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
           'rgba(74, 222, 128, ',  // Matrix Mint
           'rgba(234, 179, 8, ',   // Amber Signal
         ]
-      : theme === 'light'
-      ? [
-          'rgba(37, 99, 235, ',   // Royal Cobalt
-          'rgba(79, 70, 229, ',   // Indigo
-          'rgba(5, 150, 105, ',   // Deep Emerald
-          'rgba(100, 116, 139, ', // Slate Grey
-        ]
       : [
           'rgba(99, 102, 241, ',   // Electric Indigo
           'rgba(139, 92, 246, ',  // Hyper Violet
@@ -70,14 +63,10 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 
     const rayStrokeColor = theme === 'terminal'
       ? 'rgba(34, 197, 94, '
-      : theme === 'light'
-      ? 'rgba(37, 99, 235, '
       : 'rgba(99, 102, 241, ';
 
     const lineStrokeColor = theme === 'terminal'
       ? 'rgba(34, 197, 94, '
-      : theme === 'light'
-      ? 'rgba(100, 116, 139, '
       : 'rgba(139, 149, 190, ';
 
     const resize = () => {
@@ -95,9 +84,7 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 
       particles = [];
       for (let i = 0; i < adjustedCount; i++) {
-        const baseAlpha = theme === 'light'
-          ? Math.random() * 0.22 + 0.12
-          : Math.random() * 0.45 + 0.25;
+        const baseAlpha = Math.random() * 0.45 + 0.25;
 
         particles.push({
           x: Math.random() * width,

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTheme, THEMES, ThemeType } from '../context/ThemeContext';
-import { Sparkles, Terminal, Sun, ChevronDown, Check } from 'lucide-react';
+import { Sparkles, Terminal, ChevronDown, Check } from 'lucide-react';
 import { MagneticButton } from './motion/MagneticButton';
 
 export const ThemeToggle: React.FC = () => {
@@ -28,8 +28,6 @@ export const ThemeToggle: React.FC = () => {
     switch (id) {
       case 'terminal':
         return <Terminal className="h-3.5 w-3.5 text-telemetry-emerald" />;
-      case 'light':
-        return <Sun className="h-3.5 w-3.5 text-amber-500" />;
       case 'obsidian':
       default:
         return <Sparkles className="h-3.5 w-3.5 text-aurora-indigo" />;
