@@ -13,7 +13,7 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = '',
-  spotlightColor = 'rgba(99, 102, 241, 0.12)',
+  spotlightColor = 'rgb(var(--aurora-indigo) / 0.14)',
   spotlightRadius = 380,
   enableTilt = true,
   tiltIntensity = 2.5,
@@ -120,7 +120,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
           className="pointer-events-none absolute -inset-px rounded-xl transition-opacity duration-300"
           style={{
             opacity: isHovered ? 0.75 : 0,
-            background: `radial-gradient(280px circle at ${mousePos.x}px ${mousePos.y}px, rgba(99, 102, 241, 0.35), transparent 70%)`,
+            background: `radial-gradient(280px circle at ${mousePos.x}px ${mousePos.y}px, rgb(var(--aurora-indigo) / 0.4), transparent 70%)`,
             mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
             WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
             maskComposite: 'exclude',

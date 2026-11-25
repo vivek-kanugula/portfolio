@@ -8,39 +8,40 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Obsidian Space Palette: Rich, deep, midnight obsidian undertones (never dull gray)
+        // Dynamic theme-driven monochrome palette supporting opacity modifiers (e.g. bg-mono-900/60)
         mono: {
-          950: '#05060a',
-          900: '#090b13',
-          850: '#0f121e',
-          800: '#161a2b',
-          700: '#22273f',
-          600: '#343c5e',
-          500: '#545f8b',
-          400: '#8491be',
-          300: '#aeb9dc',
-          200: '#d7def2',
-          100: '#edf1fb',
-          50: '#f8f9fe',
+          950: 'rgb(var(--mono-950) / <alpha-value>)',
+          900: 'rgb(var(--mono-900) / <alpha-value>)',
+          850: 'rgb(var(--mono-850) / <alpha-value>)',
+          800: 'rgb(var(--mono-800) / <alpha-value>)',
+          750: 'rgb(var(--mono-750) / <alpha-value>)',
+          700: 'rgb(var(--mono-700) / <alpha-value>)',
+          600: 'rgb(var(--mono-600) / <alpha-value>)',
+          500: 'rgb(var(--mono-500) / <alpha-value>)',
+          400: 'rgb(var(--mono-400) / <alpha-value>)',
+          300: 'rgb(var(--mono-300) / <alpha-value>)',
+          200: 'rgb(var(--mono-200) / <alpha-value>)',
+          100: 'rgb(var(--mono-100) / <alpha-value>)',
+          50: 'rgb(var(--mono-50) / <alpha-value>)',
         },
-        // Quantum Aurora telemetry colors
+        // Dynamic telemetry colors
         telemetry: {
-          amber: '#f59e0b',
-          emerald: '#10b981',
-          cyan: '#06b6d4',
-          rose: '#f43f5e',
-          violet: '#8b5cf6',
-          indigo: '#6366f1',
-          sky: '#38bdf8',
+          amber: 'rgb(var(--telemetry-amber) / <alpha-value>)',
+          emerald: 'rgb(var(--telemetry-emerald) / <alpha-value>)',
+          cyan: 'rgb(var(--telemetry-cyan) / <alpha-value>)',
+          rose: 'rgb(var(--telemetry-rose) / <alpha-value>)',
+          violet: 'rgb(var(--telemetry-violet) / <alpha-value>)',
+          indigo: 'rgb(var(--telemetry-indigo) / <alpha-value>)',
+          sky: 'rgb(var(--telemetry-sky) / <alpha-value>)',
         },
-        // Aurora Accent Accents
+        // Dynamic Aurora accents
         aurora: {
-          indigo: '#6366f1',
-          violet: '#8b5cf6',
-          fuchsia: '#d946ef',
-          cyan: '#06b6d4',
-          emerald: '#10b981',
-          amber: '#f59e0b',
+          indigo: 'rgb(var(--aurora-indigo) / <alpha-value>)',
+          violet: 'rgb(var(--aurora-violet) / <alpha-value>)',
+          fuchsia: 'rgb(var(--aurora-fuchsia) / <alpha-value>)',
+          cyan: 'rgb(var(--aurora-cyan) / <alpha-value>)',
+          emerald: 'rgb(var(--aurora-emerald) / <alpha-value>)',
+          amber: 'rgb(var(--aurora-amber) / <alpha-value>)',
         }
       },
       fontFamily: {

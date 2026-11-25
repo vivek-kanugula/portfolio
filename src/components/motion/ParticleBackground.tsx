@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../../context/ThemeContext';
 
 interface ParticleBackgroundProps {
   className?: string;
@@ -24,6 +25,7 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
   interactive = true,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -43,14 +45,40 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
     let particles: Particle[] = [];
     const mouse = { x: -1000, y: -1000, active: false };
 
-    // Distinctive Aurora Color Palette
-    const colors = [
-      'rgba(99, 102, 241, ',   // Electric Indigo
-      'rgba(139, 92, 246, ',  // Hyper Violet
-      'rgba(6, 182, 212, ',   // Celestial Cyan
-      'rgba(16, 185, 129, ',  // Bioluminescent Emerald
-      'rgba(245, 158, 11, ',  // Solar Amber
-    ];
+    // Distinctive Theme-Adaptive Color Palette
+    const colors = theme === 'terminal'
+      ? [
+          'rgba(34, 197, 94, ',   // Phosphor Green
+          'rgba(20, 184, 166, ',  // Cyber Teal
+          'rgba(74, 222, 128, ',  // Matrix Mint
+          'rgba(234, 179, 8, ',   // Amber Signal
+        ]
+      : theme === 'light'
+      ? [
+          'rgba(37, 99, 235, ',   // Royal Cobalt
+          'rgba(79, 70, 229, ',   // Indigo
+          'rgba(5, 150, 105, ',   // Deep Emerald
+          'rgba(100, 116, 139, ', // Slate Grey
+        ]
+      : [
+          'rgba(99, 102, 241, ',   // Electric Indigo
+          'rgba(139, 92, 246, ',  // Hyper Violet
+          'rgba(6, 182, 212, ',   // Celestial Cyan
+          'rgba(16, 185, 129, ',  // Bioluminescent Emerald
+          'rgba(245, 158, 11, ',  // Solar Amber
+        ];
+
+    const rayStrokeColor = theme === 'terminal'
+      ? 'rgba(34, 197, 94, '
+      : theme === 'light'
+      ? 'rgba(37, 99, 235, '
+      : 'rgba(99, 102, 241, ';
+
+    const lineStrokeColor = theme === 'terminal'
+      ? 'rgba(34, 197, 94, '
+      : theme === 'light'
+      ? 'rgba(100, 116, 139, '
+      : 'rgba(139, 149, 190, ';
 
     const resize = () => {
       if (!canvas.parentElement) return;
@@ -67,6 +95,10 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 
       particles = [];
       for (let i = 0; i < adjustedCount; i++) {
+        const baseAlpha = theme === 'light'
+          ? Math.random() * 0.22 + 0.12
+          : Math.random() * 0.45 + 0.25;
+
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
@@ -74,7 +106,7 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
           vy: (Math.random() - 0.5) * 0.35,
           radius: Math.random() * 1.8 + 1.2,
           color: colors[Math.floor(Math.random() * colors.length)],
-          alpha: Math.random() * 0.45 + 0.25,
+          alpha: baseAlpha,
           pulseSpeed: Math.random() * 0.02 + 0.01,
           pulsePhase: Math.random() * Math.PI * 2,
         });
@@ -146,7 +178,7 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 
             // Luminous connecting ray to cursor
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(99, 102, 241, ${(1 - dist / maxMouseDist) * 0.35})`;
+            ctx.strokeStyle = `${rayStrokeColor}${(1 - dist / maxMouseDist) * 0.35})`;
             ctx.lineWidth = 1;
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(mouse.x, mouse.y);
@@ -174,7 +206,7 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
           if (dist < maxConnectDist) {
             const lineAlpha = (1 - dist / maxConnectDist) * 0.16;
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(139, 149, 190, ${lineAlpha.toFixed(2)})`;
+            ctx.strokeStyle = `${lineStrokeColor}${lineAlpha.toFixed(2)})`;
             ctx.lineWidth = 0.65;
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -197,7 +229,7 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
         parent.removeEventListener('mouseleave', onPointerLeave);
       }
     };
-  }, [particleCount, interactive]);
+  }, [particleCount, interactive, theme]);
 
   return (
     <canvas

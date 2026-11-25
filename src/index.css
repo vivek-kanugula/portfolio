@@ -3,18 +3,134 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  /* 🌌 Theme 1: Obsidian Aurora (Signature Dark Mode) */
+  :root,
+  [data-theme="obsidian"] {
     color-scheme: dark;
+    --mono-950: 5 6 10;       /* #05060A */
+    --mono-900: 9 11 19;      /* #090B13 */
+    --mono-850: 15 18 30;     /* #0F121E */
+    --mono-800: 22 26 43;     /* #161A2B */
+    --mono-750: 28 33 53;     /* #1C2135 */
+    --mono-700: 34 39 63;     /* #22273F */
+    --mono-600: 52 60 94;     /* #343C5E */
+    --mono-500: 84 95 139;    /* #545F8B */
+    --mono-400: 132 145 190;  /* #8491BE */
+    --mono-300: 174 185 220;  /* #AEB9DC */
+    --mono-200: 215 222 242;  /* #D7DEF2 */
+    --mono-100: 237 241 251;  /* #EDF1FB */
+    --mono-50: 248 249 254;   /* #F8F9FE */
+
+    --telemetry-amber: 245 158 11;
+    --telemetry-emerald: 16 185 129;
+    --telemetry-cyan: 6 182 212;
+    --telemetry-rose: 244 63 94;
+    --telemetry-violet: 139 92 246;
+    --telemetry-indigo: 99 102 241;
+    --telemetry-sky: 56 189 248;
+
+    --aurora-indigo: 99 102 241;
+    --aurora-violet: 139 92 246;
+    --aurora-fuchsia: 217 70 239;
+    --aurora-cyan: 6 182 212;
+    --aurora-emerald: 16 185 129;
+    --aurora-amber: 245 158 11;
+
+    --bg-page: #05060a;
+    --text-page: #e2e7f7;
+    --selection-bg: #312e81;
+    --selection-text: #e0e7ff;
+    --grid-line: rgba(99, 102, 241, 0.04);
+  }
+
+  /* ⚡ Theme 2: Terminal Matrix (High-Contrast Hacker Dark Mode) */
+  [data-theme="terminal"] {
+    color-scheme: dark;
+    --mono-950: 4 5 7;        /* #040507 - Void OLED */
+    --mono-900: 8 13 9;       /* #080D09 */
+    --mono-850: 12 20 14;     /* #0C140E */
+    --mono-800: 18 34 22;     /* #122216 */
+    --mono-750: 23 44 28;     /* #172C1C */
+    --mono-700: 28 56 34;     /* #1C3822 */
+    --mono-600: 42 82 50;     /* #2A5232 */
+    --mono-500: 63 125 75;    /* #3F7D4B */
+    --mono-400: 93 179 108;   /* #5DB36C */
+    --mono-300: 134 224 150;  /* #86E096 */
+    --mono-200: 185 243 195;  /* #B9F3C3 */
+    --mono-100: 224 250 229;  /* #E0FAE5 */
+    --mono-50: 240 253 244;   /* #F0FDF4 */
+
+    --telemetry-amber: 234 179 8;
+    --telemetry-emerald: 34 197 94;
+    --telemetry-cyan: 20 184 166;
+    --telemetry-rose: 239 68 68;
+    --telemetry-violet: 16 185 129;
+    --telemetry-indigo: 34 197 94;
+    --telemetry-sky: 45 212 191;
+
+    --aurora-indigo: 34 197 94;
+    --aurora-violet: 22 163 74;
+    --aurora-fuchsia: 74 222 128;
+    --aurora-cyan: 20 184 166;
+    --aurora-emerald: 34 197 94;
+    --aurora-amber: 234 179 8;
+
+    --bg-page: #040507;
+    --text-page: #b9f3c3;
+    --selection-bg: #14532d;
+    --selection-text: #86efac;
+    --grid-line: rgba(34, 197, 94, 0.05);
+  }
+
+  /* ☀️ Theme 3: Swiss Studio Light (Clean Daylight Paper & Ink) */
+  [data-theme="light"],
+  .light {
+    color-scheme: light;
+    --mono-950: 248 250 252;   /* #F8FAFC - Soft Daylight Base */
+    --mono-900: 255 255 255;   /* #FFFFFF - Pure White Surface */
+    --mono-850: 241 245 249;   /* #F1F5F9 - Elevated Surface */
+    --mono-800: 226 232 240;   /* #E2E8F0 - Card Border */
+    --mono-750: 215 224 235;   /* #D7E0EB */
+    --mono-700: 203 213 225;   /* #CBD5E1 - Active Border */
+    --mono-600: 148 163 184;   /* #94A3B8 */
+    --mono-500: 100 116 139;   /* #64748B - Muted text */
+    --mono-400: 71 85 105;     /* #475569 - Secondary text */
+    --mono-300: 51 65 85;      /* #334155 - Body text */
+    --mono-200: 30 41 59;      /* #1E293B - Headings */
+    --mono-100: 15 23 42;      /* #0F172A - Strong Dark Headings */
+    --mono-50: 2 6 23;         /* #020617 - High-contrast Titles */
+
+    --telemetry-amber: 217 119 6;    /* Amber 600 */
+    --telemetry-emerald: 5 150 105;  /* Emerald 600 */
+    --telemetry-cyan: 2 132 199;     /* Sky 600 */
+    --telemetry-rose: 225 29 72;     /* Rose 600 */
+    --telemetry-violet: 79 70 229;   /* Indigo 600 */
+    --telemetry-indigo: 37 99 235;   /* Blue 600 */
+    --telemetry-sky: 2 132 199;
+
+    --aurora-indigo: 37 99 235;
+    --aurora-violet: 79 70 229;
+    --aurora-fuchsia: 124 58 237;
+    --aurora-cyan: 2 132 199;
+    --aurora-emerald: 5 150 105;
+    --aurora-amber: 217 119 6;
+
+    --bg-page: #f8fafc;
+    --text-page: #1e293b;
+    --selection-bg: #bfdbfe;
+    --selection-text: #1e3a8a;
+    --grid-line: rgba(15, 23, 42, 0.04);
   }
 
   body {
-    background-color: #05060a;
-    color: #e2e7f7;
+    background-color: var(--bg-page);
+    color: var(--text-page);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     max-width: 100vw;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   html {
@@ -22,29 +138,55 @@
     scroll-padding-top: 4.5rem;
   }
 
-  /* Distinctive Obsidian Aurora Text Selection */
+  /* Distinctive Theme-Sensitive Text Selection */
   ::selection {
-    background-color: #312e81;
-    color: #e0e7ff;
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
   }
 
-  /* Custom Engineered Scrollbar with Aurora Tint */
+  /* Custom Engineered Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #080a11;
+    background: rgb(var(--mono-950));
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1f253d;
+    background: rgb(var(--mono-800));
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #3730a3;
+    background: rgb(var(--aurora-indigo) / 0.8);
+  }
+
+  /* Ensure text remains crisp and readable across dark & light themes */
+  [data-theme="light"] .hover\:text-white:hover,
+  [data-theme="light"] .group:hover .group-hover\:text-white,
+  .light .hover\:text-white:hover,
+  .light .group:hover .group-hover\:text-white {
+    color: rgb(var(--mono-50)) !important;
+  }
+
+  /* Saturated badge buttons preserve white text in light mode */
+  [data-theme="light"] .bg-aurora-indigo,
+  [data-theme="light"] .bg-telemetry-emerald,
+  [data-theme="light"] .btn-primary {
+    color: #ffffff;
+  }
+
+  /* Card drop shadows for light theme elevation */
+  [data-theme="light"] .interactive-card,
+  .light .interactive-card {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  [data-theme="light"] .interactive-card:hover,
+  .light .interactive-card:hover {
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
   }
 
   /* Tabular Numerals for Metrics and Latencies */
@@ -53,33 +195,33 @@
   }
 }
 
-/* Subtle Technical Grid Lines with Obsidian Mesh */
+/* Subtle Technical Grid Lines with Theme Awareness */
 .bg-grid-pattern {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(99, 102, 241, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
 }
 
 /* Atmospheric Aurora Ambient Lighting Gradients */
 .radial-spotlight-hero {
-  background: radial-gradient(750px circle at 50% 10%, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.08) 35%, rgba(16, 185, 129, 0.03) 65%, transparent 80%);
+  background: radial-gradient(750px circle at 50% 10%, rgb(var(--aurora-indigo) / 0.12), rgb(var(--telemetry-cyan) / 0.08) 35%, rgb(var(--telemetry-emerald) / 0.03) 65%, transparent 80%);
 }
 
 .radial-spotlight-cyan {
-  background: radial-gradient(650px circle at 85% 15%, rgba(6, 182, 212, 0.09), rgba(99, 102, 241, 0.04) 50%, transparent 70%);
+  background: radial-gradient(650px circle at 85% 15%, rgb(var(--telemetry-cyan) / 0.1), rgb(var(--aurora-indigo) / 0.04) 50%, transparent 70%);
 }
 
 .radial-spotlight-amber {
-  background: radial-gradient(600px circle at 15% 25%, rgba(245, 158, 11, 0.08), rgba(217, 70, 239, 0.04) 50%, transparent 70%);
+  background: radial-gradient(600px circle at 15% 25%, rgb(var(--telemetry-amber) / 0.1), rgb(var(--aurora-violet) / 0.04) 50%, transparent 70%);
 }
 
 .radial-spotlight-emerald {
-  background: radial-gradient(700px circle at 50% 0%, rgba(16, 185, 129, 0.09), rgba(6, 182, 212, 0.05) 50%, transparent 75%);
+  background: radial-gradient(700px circle at 50% 0%, rgb(var(--telemetry-emerald) / 0.1), rgb(var(--telemetry-cyan) / 0.05) 50%, transparent 75%);
 }
 
 .radial-spotlight-violet {
-  background: radial-gradient(650px circle at 50% 30%, rgba(139, 92, 246, 0.09), rgba(99, 102, 241, 0.04) 50%, transparent 70%);
+  background: radial-gradient(650px circle at 50% 30%, rgb(var(--aurora-violet) / 0.1), rgb(var(--aurora-indigo) / 0.04) 50%, transparent 70%);
 }
 
 /* Tactile Card Elevation & Subtle Border Glow */
@@ -94,7 +236,7 @@
 @media (hover: hover) and (pointer: fine) {
   .interactive-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.6), 0 0 24px -6px rgba(99, 102, 241, 0.14);
+    box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.35), 0 0 24px -6px rgb(var(--aurora-indigo) / 0.18);
   }
 }
 
@@ -113,7 +255,7 @@
 
 /* High-contrast focus states for accessibility */
 *:focus-visible {
-  outline: 2px solid #818cf8;
+  outline: 2px solid rgb(var(--aurora-indigo));
   outline-offset: 2px;
 }
 
@@ -129,7 +271,7 @@
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.6), rgba(6, 182, 212, 0.8), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--aurora-indigo) / 0.6), rgb(var(--telemetry-cyan) / 0.8), transparent);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -141,14 +283,14 @@
   position: absolute;
   inset: -20%;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(6, 182, 212, 0.15) 340deg, rgba(99, 102, 241, 0.35) 360deg);
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgb(var(--telemetry-cyan) / 0.15) 340deg, rgb(var(--aurora-indigo) / 0.35) 360deg);
   animation: radarSpin 6s linear infinite;
   pointer-events: none;
 }
 
 /* Animated Flowing Gradient Text */
 .aurora-text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #dbe1f4 25%, #818cf8 50%, #22d3ee 75%, #ffffff 100%);
+  background: linear-gradient(135deg, rgb(var(--mono-50)) 0%, rgb(var(--mono-200)) 25%, rgb(var(--aurora-indigo)) 50%, rgb(var(--telemetry-cyan)) 75%, rgb(var(--mono-50)) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -184,7 +326,7 @@
   background: linear-gradient(
     60deg,
     transparent 35%,
-    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.25) 50%,
     transparent 65%
   );
   transform: translateX(-100%);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PROFILE_DATA } from '../data/profile';
 import { FileText, Check, Copy, Menu, X } from 'lucide-react';
 import { MagneticButton } from './motion/MagneticButton';
+import { ThemeToggle } from './ThemeToggle';
 
 interface HeaderProps {
   onOpenResume: () => void;
@@ -111,6 +112,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
 
         {/* Action Controls */}
         <div className="flex items-center gap-2 shrink-0">
+          {/* Visual Theme Mode Switcher */}
+          <ThemeToggle />
+
           <MagneticButton strength={0.25}>
             <button
               onClick={onOpenResume}
@@ -159,27 +163,35 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-mono-800 bg-mono-950/95 backdrop-blur-md px-4 py-4 space-y-2 font-mono text-sm text-mono-300 animate-fade-in">
-          {NAV_ITEMS.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between rounded-lg px-3 py-2 transition-colors ${
-                  isActive
-                    ? 'bg-mono-900 text-white border-l-2 border-aurora-indigo font-medium'
-                    : 'hover:bg-mono-900/60 hover:text-mono-100'
-                }`}
-              >
-                <span>→ {item.label}</span>
-                {isActive && (
-                  <span className="h-1.5 w-1.5 rounded-full bg-aurora-indigo" />
-                )}
-              </a>
-            );
-          })}
+        <div className="lg:hidden border-b border-mono-800 bg-mono-950/95 backdrop-blur-md px-4 py-4 space-y-3 font-mono text-sm text-mono-300 animate-fade-in">
+          {/* Quick theme selector on mobile */}
+          <div className="flex items-center justify-between pb-3 border-b border-mono-800/80">
+            <span className="text-xs font-mono uppercase tracking-wider text-mono-400">Theme</span>
+            <ThemeToggle />
+          </div>
+
+          <div className="space-y-1">
+            {NAV_ITEMS.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center justify-between rounded-lg px-3 py-2 transition-colors ${
+                    isActive
+                      ? 'bg-mono-900 text-white border-l-2 border-aurora-indigo font-medium'
+                      : 'hover:bg-mono-900/60 hover:text-mono-100'
+                  }`}
+                >
+                  <span>→ {item.label}</span>
+                  {isActive && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-aurora-indigo" />
+                  )}
+                </a>
+              );
+            })}
+          </div>
         </div>
       )}
     </header>
