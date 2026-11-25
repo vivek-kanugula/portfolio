@@ -173,19 +173,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   rel="noopener noreferrer"
                   className="btn-tactile flex items-center gap-1.5 hover:text-white transition-colors text-telemetry-amber font-medium"
                 >
-                  <span>LeetCode</span>
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-              </MagneticButton>
-
-              <MagneticButton strength={0.25}>
-                <a
-                  href={PROFILE_DATA.socials.codolio}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-tactile flex items-center gap-1.5 hover:text-white transition-colors text-telemetry-cyan font-medium"
-                >
-                  <span>Codolio</span>
+                  <span>LeetCode (21241A0595)</span>
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </MagneticButton>

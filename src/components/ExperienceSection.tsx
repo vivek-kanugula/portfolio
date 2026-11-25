@@ -136,7 +136,7 @@ export const ExperienceSection: React.FC = () => {
                         {isGate ? (
                           <>AIR <AnimatedCounter value={7912} /></>
                         ) : isLeetcode ? (
-                          <><AnimatedCounter value={500} />-Day Badge</>
+                          <><AnimatedCounter value={500} suffix="+" /> Active Days</>
                         ) : (
                           item.badge
                         )}
@@ -150,45 +150,30 @@ export const ExperienceSection: React.FC = () => {
                     <p className="mt-1.5 text-xs sm:text-sm font-sans text-mono-400 leading-relaxed text-justify">
                       {isLeetcode ? (
                         <>
-                          Earned the 500-Day Badge on LeetCode representing 500+ active days of problem solving, securing{' '}
+                          Earned the 500-Day Badge on LeetCode representing 500+ active days of problem solving, with over{' '}
                           <span className="font-mono font-semibold text-telemetry-cyan">
-                            <AnimatedCounter value={1000} suffix="+" />
+                            <AnimatedCounter value={850} suffix="+" />
                           </span>{' '}
-                          problems solved across coding platforms.
+                          problems solved across competitive programming platforms.
                         </>
                       ) : (
                         item.description
                       )}
                     </p>
 
-                    <div className="flex flex-wrap items-center gap-3 mt-4">
-                      {item.url && (
-                        <MagneticButton strength={0.3}>
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="shimmer-sweep btn-tactile inline-flex items-center gap-1.5 text-xs font-mono text-telemetry-cyan hover:text-white transition-colors font-medium"
-                          >
-                            <span>View LeetCode Profile</span>
-                            <ExternalLink className="h-3 w-3" />
-                          </a>
-                        </MagneticButton>
-                      )}
-                      {isLeetcode && PROFILE_DATA.socials.codolio && (
-                        <MagneticButton strength={0.3}>
-                          <a
-                            href={PROFILE_DATA.socials.codolio}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="shimmer-sweep btn-tactile inline-flex items-center gap-1.5 text-xs font-mono text-telemetry-amber hover:text-white transition-colors font-medium"
-                          >
-                            <span>Codolio Profile</span>
-                            <ExternalLink className="h-3 w-3" />
-                          </a>
-                        </MagneticButton>
-                      )}
-                    </div>
+                    {item.url && (
+                      <MagneticButton strength={0.3}>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shimmer-sweep btn-tactile mt-4 inline-flex items-center gap-1.5 text-xs font-mono text-telemetry-cyan hover:text-white transition-colors font-medium"
+                        >
+                          <span>View LeetCode Profile (21241A0595)</span>
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      </MagneticButton>
+                    )}
                   </SpotlightCard>
                 </AnimatedSection>
               );

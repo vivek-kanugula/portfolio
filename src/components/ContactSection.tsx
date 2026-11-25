@@ -259,7 +259,7 @@ export const ContactSection: React.FC = () => {
                   Verified Engineering Profiles
                 </span>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 font-mono text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
                   <MagneticButton strength={0.25} className="w-full">
                     <a
                       href={PROFILE_DATA.socials.github}
@@ -292,18 +292,6 @@ export const ContactSection: React.FC = () => {
                       className="btn-tactile flex items-center justify-between rounded-lg border border-mono-800 bg-mono-950 p-3 hover:border-telemetry-amber/50 text-mono-200 hover:text-white transition-all hover:bg-mono-900 w-full"
                     >
                       <span>LeetCode</span>
-                      <ExternalLink className="h-3.5 w-3.5 text-mono-500" />
-                    </a>
-                  </MagneticButton>
-
-                  <MagneticButton strength={0.25} className="w-full">
-                    <a
-                      href={PROFILE_DATA.socials.codolio}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-tactile flex items-center justify-between rounded-lg border border-mono-800 bg-mono-950 p-3 hover:border-telemetry-emerald/50 text-mono-200 hover:text-white transition-all hover:bg-mono-900 w-full"
-                    >
-                      <span>Codolio</span>
                       <ExternalLink className="h-3.5 w-3.5 text-mono-500" />
                     </a>
                   </MagneticButton>

@@ -79,17 +79,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
                 LeetCode
               </a>
             </MagneticButton>
-
-            <MagneticButton strength={0.25}>
-              <a
-                href={PROFILE_DATA.socials.codolio}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                Codolio
-              </a>
-            </MagneticButton>
           </div>
         </div>
 
