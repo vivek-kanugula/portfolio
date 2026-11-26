@@ -7,6 +7,7 @@ import { LivePulseBadge } from './motion/LivePulseBadge';
 import { MagneticButton } from './motion/MagneticButton';
 import { BorderBeam } from './motion/BorderBeam';
 import { TelemetryWaveform } from './motion/TelemetryWaveform';
+import { trackInteraction } from '../utils/telemetry';
 
 export const OpenSourceSection: React.FC = () => {
   return (
@@ -83,6 +84,7 @@ export const OpenSourceSection: React.FC = () => {
                             href={issue.url}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => trackInteraction('opensource_pr', `${contrib.repo} ${issue.label}`, issue.url)}
                             className="btn-tactile text-mono-400 hover:text-mono-200 transition-colors flex items-center gap-1"
                           >
                             <span>{issue.label}</span>
@@ -97,6 +99,7 @@ export const OpenSourceSection: React.FC = () => {
                             href={pr.url}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => trackInteraction('opensource_pr', `${contrib.repo} ${pr.label}`, pr.url)}
                             className="btn-tactile text-telemetry-cyan hover:text-white transition-colors flex items-center gap-1 font-semibold"
                           >
                             <span>{pr.label}</span>

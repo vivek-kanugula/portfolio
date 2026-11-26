@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTheme, THEMES, ThemeType } from '../context/ThemeContext';
 import { Sparkles, Terminal, ChevronDown, Check } from 'lucide-react';
 import { MagneticButton } from './motion/MagneticButton';
+import { trackInteraction } from '../utils/telemetry';
 
 export const ThemeToggle: React.FC = () => {
   const { theme, setTheme, cycleTheme, currentThemeMeta } = useTheme();
@@ -83,6 +84,7 @@ export const ThemeToggle: React.FC = () => {
                   onClick={() => {
                     setTheme(themeKey);
                     setDropdownOpen(false);
+                    trackInteraction('theme_toggle', item.name);
                   }}
                   className={`w-full flex items-center justify-between rounded-lg px-2.5 py-2 text-xs transition-all ${
                     isSelected

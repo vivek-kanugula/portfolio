@@ -6,6 +6,7 @@ import { AnimatedSection } from './AnimatedSection';
 import { SpotlightCard } from './motion/SpotlightCard';
 import { MagneticButton } from './motion/MagneticButton';
 import { BorderBeam } from './motion/BorderBeam';
+import { trackInteraction } from '../utils/telemetry';
 
 export const ProjectsSection: React.FC = () => {
   const getProjectSpotlight = (idx: number) => {
@@ -128,6 +129,7 @@ export const ProjectsSection: React.FC = () => {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => trackInteraction('project_github', project.title, project.githubUrl)}
                           className="shimmer-sweep btn-tactile inline-flex items-center gap-1.5 rounded-lg border border-mono-750 bg-mono-850 px-3 py-1.5 text-xs font-mono text-mono-200 transition-all hover:bg-mono-800 hover:text-white hover:border-aurora-indigo/60"
                         >
                           <GithubIcon className="h-3.5 w-3.5" />
@@ -141,6 +143,7 @@ export const ProjectsSection: React.FC = () => {
                             href={project.liveDemoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => trackInteraction('project_demo', project.title, project.liveDemoUrl)}
                             className="shimmer-sweep btn-tactile inline-flex items-center gap-1.5 rounded-lg border border-white bg-gradient-to-r from-white to-mono-100 px-3 py-1.5 text-xs font-mono font-medium text-mono-950 transition-all hover:shadow-lg hover:shadow-white/20"
                           >
                             <ExternalLink className="h-3.5 w-3.5" />

@@ -3,6 +3,7 @@ import { PROFILE_DATA } from '../data/profile';
 import { FileText, Check, Copy, Menu, X } from 'lucide-react';
 import { MagneticButton } from './motion/MagneticButton';
 import { ThemeToggle } from './ThemeToggle';
+import { trackInteraction } from '../utils/telemetry';
 
 interface HeaderProps {
   onOpenResume: () => void;
@@ -53,6 +54,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PROFILE_DATA.email);
     setCopied(true);
+    trackInteraction('contact_action', 'Copied Email Address (Header)');
     setTimeout(() => setCopied(false), 2000);
   };
 

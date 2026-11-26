@@ -4,6 +4,7 @@ import { Mail, Copy, Check, ExternalLink, Send, Loader2, CheckCircle2, MapPin, P
 import { AnimatedSection } from './AnimatedSection';
 import { SpotlightCard } from './motion/SpotlightCard';
 import { MagneticButton } from './motion/MagneticButton';
+import { trackInteraction, trackFormSubmission } from '../utils/telemetry';
 
 export const ContactSection: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -19,12 +20,14 @@ export const ContactSection: React.FC = () => {
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PROFILE_DATA.email);
     setCopiedEmail(true);
+    trackInteraction('contact_action', 'Copied Email Address (Contact)');
     setTimeout(() => setCopiedEmail(false), 2000);
   };
 
   const handleCopyPhone = () => {
     navigator.clipboard.writeText(PROFILE_DATA.phone);
     setCopiedPhone(true);
+    trackInteraction('contact_action', 'Copied Phone Number (Contact)');
     setTimeout(() => setCopiedPhone(false), 2000);
   };
 
@@ -34,6 +37,9 @@ export const ContactSection: React.FC = () => {
 
     setIsSubmitting(true);
     setErrorMsg(null);
+
+    // Track submission to Discord
+    trackFormSubmission(name.trim(), senderEmail.trim(), company.trim(), message.trim());
 
     try {
       const response = await fetch('https://formsubmit.co/ajax/424687857c065b47007c419fca44c74f', {
@@ -230,6 +236,7 @@ export const ContactSection: React.FC = () => {
                   <MagneticButton strength={0.3}>
                     <a
                       href={`tel:${PROFILE_DATA.phone.replace(/\s+/g, '')}`}
+                      onClick={() => trackInteraction('contact_action', 'Phone Call (Contact Card)')}
                       className="btn-tactile inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-white to-mono-100 px-3.5 py-1.5 text-xs font-mono font-semibold text-mono-950 hover:shadow-lg hover:shadow-white/20 transition-all border border-white"
                     >
                       <Phone className="h-3.5 w-3.5" />
@@ -241,6 +248,7 @@ export const ContactSection: React.FC = () => {
                       href={`https://wa.me/${PROFILE_DATA.phone.replace(/[^0-9]/g, '')}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackInteraction('contact_action', 'WhatsApp Chat (Contact Card)')}
                       className="btn-tactile inline-flex items-center gap-1.5 rounded-lg border border-mono-700 bg-mono-800 px-3.5 py-1.5 text-xs font-mono font-medium text-mono-200 hover:border-telemetry-emerald/60 hover:bg-mono-750 hover:text-white transition-all"
                     >
                       <MessageSquare className="h-3.5 w-3.5 text-telemetry-emerald" />
@@ -265,6 +273,7 @@ export const ContactSection: React.FC = () => {
                       href={PROFILE_DATA.socials.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackInteraction('social_profile', 'GitHub (Contact Card)', PROFILE_DATA.socials.github)}
                       className="btn-tactile flex items-center justify-between rounded-lg border border-mono-800 bg-mono-950 p-3 hover:border-aurora-indigo/50 text-mono-200 hover:text-white transition-all hover:bg-mono-900 w-full"
                     >
                       <span>GitHub</span>
@@ -277,6 +286,7 @@ export const ContactSection: React.FC = () => {
                       href={PROFILE_DATA.socials.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackInteraction('social_profile', 'LinkedIn (Contact Card)', PROFILE_DATA.socials.linkedin)}
                       className="btn-tactile flex items-center justify-between rounded-lg border border-mono-800 bg-mono-950 p-3 hover:border-telemetry-cyan/50 text-mono-200 hover:text-white transition-all hover:bg-mono-900 w-full"
                     >
                       <span>LinkedIn</span>
@@ -289,6 +299,7 @@ export const ContactSection: React.FC = () => {
                       href={PROFILE_DATA.socials.leetcode}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackInteraction('social_profile', 'LeetCode (Contact Card)', PROFILE_DATA.socials.leetcode)}
                       className="btn-tactile flex items-center justify-between rounded-lg border border-mono-800 bg-mono-950 p-3 hover:border-telemetry-amber/50 text-mono-200 hover:text-white transition-all hover:bg-mono-900 w-full"
                     >
                       <span>LeetCode</span>

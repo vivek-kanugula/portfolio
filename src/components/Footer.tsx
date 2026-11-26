@@ -2,6 +2,7 @@ import React from 'react';
 import { PROFILE_DATA } from '../data/profile';
 import { GitCommit, Phone } from 'lucide-react';
 import { MagneticButton } from './motion/MagneticButton';
+import { trackInteraction } from '../utils/telemetry';
 
 interface FooterProps {
   onOpenResume: () => void;
@@ -39,6 +40,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
             <MagneticButton strength={0.25}>
               <a
                 href={`tel:${PROFILE_DATA.phone.replace(/\s+/g, '')}`}
+                onClick={() => trackInteraction('contact_action', 'Phone Call (Footer)')}
                 className="flex items-center gap-1.5 hover:text-white transition-colors text-mono-300"
                 title="Call directly"
               >
@@ -52,6 +54,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
                 href={PROFILE_DATA.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackInteraction('social_profile', 'GitHub (Footer)', PROFILE_DATA.socials.github)}
                 className="hover:text-white transition-colors"
               >
                 GitHub
@@ -63,6 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
                 href={PROFILE_DATA.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackInteraction('social_profile', 'LinkedIn (Footer)', PROFILE_DATA.socials.linkedin)}
                 className="hover:text-white transition-colors"
               >
                 LinkedIn
@@ -74,6 +78,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
                 href={PROFILE_DATA.socials.leetcode}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackInteraction('social_profile', 'LeetCode (Footer)', PROFILE_DATA.socials.leetcode)}
                 className="hover:text-white transition-colors"
               >
                 LeetCode

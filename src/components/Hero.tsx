@@ -9,6 +9,7 @@ import { LiveActivityTicker } from './motion/LiveActivityTicker';
 import { MagneticButton } from './motion/MagneticButton';
 import { BorderBeam } from './motion/BorderBeam';
 import { RadarSweep } from './motion/RadarSweep';
+import { trackInteraction } from '../utils/telemetry';
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -147,6 +148,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   href={PROFILE_DATA.socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackInteraction('social_profile', 'GitHub (Hero)', PROFILE_DATA.socials.github)}
                   className="btn-tactile flex items-center gap-1.5 hover:text-white transition-colors"
                 >
                   <GithubIcon className="h-4 w-4 text-mono-300" />
@@ -159,6 +161,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   href={PROFILE_DATA.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackInteraction('social_profile', 'LinkedIn (Hero)', PROFILE_DATA.socials.linkedin)}
                   className="btn-tactile flex items-center gap-1.5 hover:text-white transition-colors"
                 >
                   <LinkedinIcon className="h-4 w-4 text-mono-300" />
@@ -171,6 +174,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   href={PROFILE_DATA.socials.leetcode}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackInteraction('social_profile', 'LeetCode (Hero)', PROFILE_DATA.socials.leetcode)}
                   className="btn-tactile flex items-center gap-1.5 hover:text-white transition-colors text-telemetry-amber font-medium"
                 >
                   <span>LeetCode (21241A0595)</span>
@@ -181,6 +185,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               <MagneticButton strength={0.25}>
                 <a
                   href={`tel:${PROFILE_DATA.phone.replace(/\s+/g, '')}`}
+                  onClick={() => trackInteraction('contact_action', 'Phone Call (Hero)')}
                   className="btn-tactile flex items-center gap-1.5 hover:text-white transition-colors text-mono-300"
                   title="Call directly"
                 >
