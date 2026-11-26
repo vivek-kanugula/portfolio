@@ -127,6 +127,9 @@ const formatDuration = (seconds?: number): string => {
   return `${m}m ${s}s`;
 };
 
+const DEFAULT_WEBHOOK_URL =
+  'https://discord.com/api/webhooks/1575379542548152351/AYSDXTb9U-lYeF9_QjkkZ0qzldxGbCwO42TEnpTsZ5A4AvzB9NEf-44yGVUZxoKtm8L_';
+
 /**
  * Main telemetry dispatcher for Resume actions
  */
@@ -136,7 +139,7 @@ export const trackResumeAction = async (
 ): Promise<void> => {
   if (typeof window === 'undefined') return;
 
-  const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK_URL;
+  const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK_URL || DEFAULT_WEBHOOK_URL;
 
   // Debounce duplicate clicks on download/tab within 8 seconds
   const debounceKey = `${SESSION_KEYS.LAST_ACTION}${action}`;
