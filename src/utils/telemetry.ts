@@ -52,9 +52,6 @@ const SESSION_KEYS = {
   LAST_ACTION: 'vk_telemetry_last_action_',
 };
 
-const DEFAULT_WEBHOOK_URL =
-  'https://discord.com/api/webhooks/1575379542548152351/AYSDXTb9U-lYeF9_QjkkZ0qzldxGbCwO42TEnpTsZ5A4AvzB9NEf-44yGVUZxoKtm8L_';
-
 /**
  * Extracts and persists any recruiter/campaign tag from URL query params.
  * e.g., portfolio.vivekstack.dev/?ref=google or ?src=cisco-application
@@ -195,7 +192,7 @@ const dispatchDiscordWebhook = async (
 ): Promise<void> => {
   if (typeof window === 'undefined') return;
 
-  const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK_URL || DEFAULT_WEBHOOK_URL;
+  const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK_URL;
 
   if (!webhookUrl || typeof webhookUrl !== 'string' || !webhookUrl.startsWith('http')) {
     if (import.meta.env.DEV) {
