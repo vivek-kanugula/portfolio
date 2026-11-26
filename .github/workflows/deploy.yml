@@ -33,6 +33,8 @@ jobs:
 
       - name: Build Static Production Assets
         run: npm run build
+        env:
+          VITE_DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

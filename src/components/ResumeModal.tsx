@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X, Download, ExternalLink } from 'lucide-react';
 import { MagneticButton } from './motion/MagneticButton';
+import { trackResumeAction } from '../utils/telemetry';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -8,6 +9,26 @@ interface ResumeModalProps {
 }
 
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
+  const openTimeRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      openTimeRef.current = Date.now();
+      trackResumeAction('opened');
+
+      return () => {
+        if (openTimeRef.current) {
+          const dwellSeconds = Math.round((Date.now() - openTimeRef.current) / 1000);
+          // Only send dwell time if they looked at it for at least 2 seconds
+          if (dwellSeconds >= 2) {
+            trackResumeAction('closed', dwellSeconds);
+          }
+          openTimeRef.current = null;
+        }
+      };
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -31,6 +52,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <a
                 href="/resume.pdf"
                 download="Vivek_Kanugula_Resume.pdf"
+                onClick={() => trackResumeAction('downloaded')}
                 className="btn-tactile inline-flex items-center gap-1.5 rounded-lg border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono font-medium text-mono-200 hover:text-white hover:bg-mono-750 transition-colors"
                 title="Download PDF"
               >
@@ -45,6 +67,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackResumeAction('opened_in_tab')}
                 className="btn-tactile hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-mono-700 bg-mono-800 px-3 py-1.5 text-xs font-mono font-medium text-mono-300 hover:text-white hover:bg-mono-750 transition-colors"
                 title="Open in new window"
               >
@@ -98,6 +121,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackResumeAction('opened_in_tab')}
                 className="inline-flex items-center gap-1 rounded border border-mono-700 bg-mono-800 px-2.5 py-1 text-mono-200 hover:text-white"
               >
                 <ExternalLink className="h-3 w-3 text-telemetry-cyan" />
@@ -106,6 +130,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <a
                 href="/resume.pdf"
                 download="Vivek_Kanugula_Resume.pdf"
+                onClick={() => trackResumeAction('downloaded')}
                 className="inline-flex items-center gap-1 rounded bg-telemetry-emerald/20 border border-telemetry-emerald/40 px-2.5 py-1 text-telemetry-emerald font-semibold"
               >
                 <Download className="h-3 w-3" />
